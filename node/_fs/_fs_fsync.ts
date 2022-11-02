@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { CallbackWithError } from "./_fs_common.ts";
+import { CallbackWithError } from "./_fs_common.js";
 
 export function fsync(
   fd: number,

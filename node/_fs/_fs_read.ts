@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Buffer } from "../buffer.ts";
-import { ERR_INVALID_ARG_TYPE } from "../internal/errors.ts";
+import { Buffer } from "../buffer.js";
+import { ERR_INVALID_ARG_TYPE } from "../internal/errors.js";
 import {
   validateOffsetLengthRead,
   validatePosition,

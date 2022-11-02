@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { CallbackWithError } from "./_fs_common.ts";
-import { fromFileUrl } from "../path.ts";
+import { CallbackWithError } from "./_fs_common.js";
+import { fromFileUrl } from "../path.js";
 import { promisify } from "../internal/util.mjs";
 
 type SymlinkType = "file" | "dir";

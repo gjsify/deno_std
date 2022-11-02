@@ -1,12 +1,12 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { validateFunction } from "../internal/validators.mjs";
-import type { ErrnoException } from "../_global.d.ts";
+import type { ErrnoException } from "../_global.js";
 import {
   BinaryEncodings,
   Encodings,
   notImplemented,
   TextEncodings,
-} from "../_utils.ts";
+} from "../_utils.js";
 
 export type CallbackWithError = (err: ErrnoException | null) => void;
 

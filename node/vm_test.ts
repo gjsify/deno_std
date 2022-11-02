@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertThrows } from "../testing/asserts.ts";
-import * as vm from "./vm.ts";
+import { assert, assertThrows } from "../testing/asserts.js";
+import * as vm from "./vm.js";
 
 Deno.test("createScript", function () {
   const script = vm.createScript("foo", {});

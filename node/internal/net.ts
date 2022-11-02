@@ -20,9 +20,9 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { Buffer } from "../buffer.ts";
-import { uvException } from "./errors.ts";
-import { writeBuffer } from "../internal_binding/node_file.ts";
+import { Buffer } from "../buffer.js";
+import { uvException } from "./errors.js";
+import { writeBuffer } from "../internal_binding/node_file.js";
 
 // IPv4 Segment
 const v4Seg = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])";

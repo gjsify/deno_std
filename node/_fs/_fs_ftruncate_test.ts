@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, assertThrows, fail } from "../../testing/asserts.ts";
-import { ftruncate, ftruncateSync } from "./_fs_ftruncate.ts";
+import { assertEquals, assertThrows, fail } from "../../testing/asserts.js";
+import { ftruncate, ftruncateSync } from "./_fs_ftruncate.js";
 
 Deno.test({
   name: "ASYNC: no callback function results in Error",

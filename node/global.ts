@@ -1,14 +1,14 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // deno-lint-ignore-file no-var
-import processModule from "./process.ts";
-import { Buffer as bufferModule } from "./buffer.ts";
+import processModule from "./process.js";
+import { Buffer as bufferModule } from "./buffer.js";
 import {
   clearInterval,
   clearTimeout,
   setInterval,
   setTimeout,
-} from "./timers.ts";
-import timers from "./timers.ts";
+} from "./timers.js";
+import timers from "./timers.js";
 
 type GlobalType = {
   process: typeof processModule;

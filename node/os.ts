@@ -20,11 +20,11 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { notImplemented } from "./_utils.ts";
-import { validateIntegerRange } from "./_utils.ts";
-import { EOL as fsEOL } from "../fs/eol.ts";
-import process from "./process.ts";
-import { isWindows, osType } from "../_util/os.ts";
+import { notImplemented } from "./_utils.js";
+import { validateIntegerRange } from "./_utils.js";
+import { EOL as fsEOL } from "../fs/eol.js";
+import process from "./process.js";
+import { isWindows, osType } from "../_util/os.js";
 
 const SEE_GITHUB_ISSUE = "See https://github.com/denoland/deno_std/issues/1436";
 

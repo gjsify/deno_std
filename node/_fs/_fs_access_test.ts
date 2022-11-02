@@ -1,6 +1,6 @@
 // Copyright 2018-2021 the Deno authors. All rights reserved. MIT license.
-import * as fs from "../fs.ts";
-import { assertRejects, assertThrows } from "../../testing/asserts.ts";
+import * as fs from "../fs.js";
+import { assertRejects, assertThrows } from "../../testing/asserts.js";
 
 Deno.test(
   "[node/fs.access] Uses the owner permission when the user is the owner",

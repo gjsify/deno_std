@@ -4,10 +4,10 @@ import {
   isFd,
   maybeCallback,
   WriteFileOptions,
-} from "./_fs_common.ts";
-import { Encodings } from "../_utils.ts";
+} from "./_fs_common.js";
+import { Encodings } from "../_utils.js";
 import { copyObject, getOptions } from "../internal/fs/utils.mjs";
-import { writeFile, writeFileSync } from "./_fs_writeFile.ts";
+import { writeFile, writeFileSync } from "./_fs_writeFile.js";
 import { promisify } from "../internal/util.mjs";
 
 /**

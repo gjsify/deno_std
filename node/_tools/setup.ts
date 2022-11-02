@@ -2,8 +2,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
 import { gunzip } from "https://deno.land/x/denoflate@1.2.1/mod.ts";
-import { Untar } from "../../archive/tar.ts";
-import { walk } from "../../fs/walk.ts";
+import { Untar } from "../../archive/tar.js";
+import { walk } from "../../fs/walk.js";
 import {
   basename,
   dirname,
@@ -11,12 +11,12 @@ import {
   join,
   resolve,
   sep,
-} from "../../path/mod.ts";
-import { ensureFile } from "../../fs/ensure_file.ts";
-import { config, ignoreList } from "./common.ts";
-import { Buffer } from "../../io/buffer.ts";
-import { copy, readAll, writeAll } from "../../streams/conversion.ts";
-import { downloadFile } from "../../_util/download_file.ts";
+} from "../../path/mod.js";
+import { ensureFile } from "../../fs/ensure_file.js";
+import { config, ignoreList } from "./common.js";
+import { Buffer } from "../../io/buffer.js";
+import { copy, readAll, writeAll } from "../../streams/conversion.js";
+import { downloadFile } from "../../_util/download_file.js";
 
 /**
  * This script will download and extract the test files specified in the

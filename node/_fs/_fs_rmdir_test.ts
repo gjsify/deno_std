@@ -1,11 +1,11 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, fail } from "../../testing/asserts.ts";
-import { rmdir, rmdirSync } from "./_fs_rmdir.ts";
-import { closeSync } from "./_fs_close.ts";
-import { existsSync } from "../../fs/exists.ts";
-import { join } from "../../path/mod.ts";
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import { isWindows } from "../../_util/os.ts";
+import { assertEquals, fail } from "../../testing/asserts.js";
+import { rmdir, rmdirSync } from "./_fs_rmdir.js";
+import { closeSync } from "./_fs_close.js";
+import { existsSync } from "../../fs/exists.js";
+import { join } from "../../path/mod.js";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import { isWindows } from "../../_util/os.js";
 
 Deno.test({
   name: "ASYNC: removing empty folder",

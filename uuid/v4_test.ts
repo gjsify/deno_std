@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert } from "../testing/asserts.ts";
-import { validate } from "./v4.ts";
+import { assert } from "../testing/asserts.js";
+import { validate } from "./v4.js";
 
 Deno.test("[UUID] is_valid_uuid_v4", () => {
   const u = crypto.randomUUID();

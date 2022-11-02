@@ -1,10 +1,10 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { KeyObject } from "./keys.ts";
-import { notImplemented } from "../../_utils.ts";
-import { Buffer } from "../../buffer.ts";
-import { KeyFormat, KeyType } from "./types.ts";
+import { KeyObject } from "./keys.js";
+import { notImplemented } from "../../_utils.js";
+import { Buffer } from "../../buffer.js";
+import { KeyFormat, KeyType } from "./types.js";
 
 export function generateKey(
   _type: "hmac" | "aes",

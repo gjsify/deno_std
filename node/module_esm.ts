@@ -26,7 +26,7 @@
  * Unfortunately we have no way to call ESM resolution in Rust from TypeScript code.
  */
 
-import { fileURLToPath, pathToFileURL } from "./url.ts";
+import { fileURLToPath, pathToFileURL } from "./url.js";
 import {
   ERR_INVALID_MODULE_SPECIFIER,
   ERR_INVALID_PACKAGE_CONFIG,
@@ -35,7 +35,7 @@ import {
   ERR_PACKAGE_IMPORT_NOT_DEFINED,
   ERR_PACKAGE_PATH_NOT_EXPORTED,
   NodeError,
-} from "./internal/errors.ts";
+} from "./internal/errors.js";
 
 const { hasOwn } = Object;
 

@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { strict } from "../assert.ts";
+import { strict } from "../assert.js";
 
 export {
   AssertionError,
@@ -20,7 +20,7 @@ export {
   rejects,
   strictEqual,
   throws,
-} from "../assert.ts";
+} from "../assert.js";
 
 export { strict };
 export default strict;

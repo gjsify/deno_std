@@ -1,14 +1,14 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import "./global.ts";
+import "./global.js";
 import {
   assert,
   assertEquals,
   assertNotEquals,
   assertStrictEquals,
-} from "../testing/asserts.ts";
-import { Buffer as BufferModule } from "./buffer.ts";
-import processModule from "./process.ts";
-import timers from "./timers.ts";
+} from "../testing/asserts.js";
+import { Buffer as BufferModule } from "./buffer.js";
+import processModule from "./process.js";
+import timers from "./timers.js";
 
 // Definitions for this are quite delicate
 // This ensures modifications to the global namespace don't break on TypeScript
@@ -89,14 +89,14 @@ Deno.test("clearImmediate is correctly defined", () => {
 });
 
 // https://github.com/denoland/deno_std/issues/2097
-Deno.test("global.ts evaluates synchronously", async () => {
-  const tempPath = await Deno.makeTempFile({ suffix: ".ts" });
+Deno.test("global.js evaluates synchronously", async () => {
+  const tempPath = await Deno.makeTempFile({ suffix: ".js" });
   try {
     await Deno.writeTextFile(
       tempPath,
       `\
       import "data:application/javascript,import '${
-        new URL("global.ts", import.meta.url).href
+        new URL("global.js", import.meta.url).href
       }'; console.log(globalThis.async ? 'async' : 'sync')";
       import "data:application/javascript,globalThis.async = true";`,
     );

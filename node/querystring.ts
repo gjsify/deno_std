@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Buffer } from "./buffer.ts";
-import { encodeStr, hexTable } from "./internal/querystring.ts";
+import { Buffer } from "./buffer.js";
+import { encodeStr, hexTable } from "./internal/querystring.js";
 
 /**
  * Alias of querystring.parse()

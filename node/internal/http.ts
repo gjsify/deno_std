@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { setUnrefTimeout } from "../timers.ts";
-import { notImplemented } from "../_utils.ts";
+import { setUnrefTimeout } from "../timers.js";
+import { notImplemented } from "../_utils.js";
 
 let utcCache: string | undefined;
 

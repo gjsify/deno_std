@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import { readFile, readFileSync } from "./_fs_readFile.ts";
-import * as path from "../../path/mod.ts";
-import { assert, assertEquals } from "../../testing/asserts.ts";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import { readFile, readFileSync } from "./_fs_readFile.js";
+import * as path from "../../path/mod.js";
+import { assert, assertEquals } from "../../testing/asserts.js";
 
 const moduleDir = path.dirname(path.fromFileUrl(import.meta.url));
 const testData = path.resolve(moduleDir, "testdata", "hello.txt");

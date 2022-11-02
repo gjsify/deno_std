@@ -26,10 +26,10 @@
 //
 // See also: http://docs.libuv.org/en/v1.x/errors.html#error-constants
 
-import { unreachable } from "../../testing/asserts.ts";
-import { osType } from "../../_util/os.ts";
-import { uvTranslateSysError } from "./_libuv_winerror.ts";
-import { os } from "./constants.ts";
+import { unreachable } from "../../testing/asserts.js";
+import { osType } from "../../_util/os.js";
+import { uvTranslateSysError } from "./_libuv_winerror.js";
+import { os } from "./constants.js";
 
 export const UV_EEXIST = os.errno.EEXIST;
 export const UV_ENOENT = os.errno.ENOENT;

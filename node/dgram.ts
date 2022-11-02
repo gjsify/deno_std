@@ -20,10 +20,10 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { Buffer } from "./buffer.ts";
-import { EventEmitter } from "./events.ts";
-import { lookup as defaultLookup } from "./dns.ts";
-import type { ErrnoException, NodeSystemErrorCtx } from "./internal/errors.ts";
+import { Buffer } from "./buffer.js";
+import { EventEmitter } from "./events.js";
+import { lookup as defaultLookup } from "./dns.js";
+import type { ErrnoException, NodeSystemErrorCtx } from "./internal/errors.js";
 import {
   ERR_BUFFER_OUT_OF_BOUNDS,
   ERR_INVALID_ARG_TYPE,
@@ -37,16 +37,16 @@ import {
   ERR_SOCKET_DGRAM_NOT_RUNNING,
   errnoException,
   exceptionWithHostPort,
-} from "./internal/errors.ts";
-import type { Abortable } from "./_events.d.ts";
-import { kStateSymbol, newHandle } from "./internal/dgram.ts";
-import type { SocketType } from "./internal/dgram.ts";
+} from "./internal/errors.js";
+import type { Abortable } from "./_events.mjs";
+import { kStateSymbol, newHandle } from "./internal/dgram.js";
+import type { SocketType } from "./internal/dgram.js";
 import {
   asyncIdSymbol,
   defaultTriggerAsyncIdScope,
   ownerSymbol,
-} from "./internal/async_hooks.ts";
-import { SendWrap, UDP } from "./internal_binding/udp_wrap.ts";
+} from "./internal/async_hooks.js";
+import { SendWrap, UDP } from "./internal_binding/udp_wrap.js";
 import {
   isInt32,
   validateAbortSignal,
@@ -54,10 +54,10 @@ import {
   validatePort,
   validateString,
 } from "./internal/validators.mjs";
-import { guessHandleType } from "./internal_binding/util.ts";
-import { os } from "./internal_binding/constants.ts";
-import { nextTick } from "./process.ts";
-import { isArrayBufferView } from "./internal/util/types.ts";
+import { guessHandleType } from "./internal_binding/util.js";
+import { os } from "./internal_binding/constants.js";
+import { nextTick } from "./process.js";
+import { isArrayBufferView } from "./internal/util/types.js";
 
 const { UV_UDP_REUSEADDR, UV_UDP_IPV6ONLY } = os;
 

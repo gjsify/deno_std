@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { withoutAll } from "../../collections/without_all.ts";
+import { withoutAll } from "../../collections/without_all.js";
 import config from "./config.json" assert { type: "json" };
 
 // deno-lint-ignore no-explicit-any

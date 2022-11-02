@@ -7,13 +7,13 @@ import {
   assertNotStrictEquals,
   assertStrictEquals,
   assertStringIncludes,
-} from "../testing/asserts.ts";
-import CP from "./child_process.ts";
-import { Deferred, deferred } from "../async/deferred.ts";
-import { isWindows } from "../_util/os.ts";
-import * as path from "../path/mod.ts";
-import { Buffer } from "./buffer.ts";
-import { ERR_CHILD_PROCESS_STDIO_MAXBUFFER } from "./internal/errors.ts";
+} from "../testing/asserts.js";
+import CP from "./child_process.js";
+import { Deferred, deferred } from "../async/deferred.js";
+import { isWindows } from "../_util/os.js";
+import * as path from "../path/mod.js";
+import { Buffer } from "./buffer.js";
+import { ERR_CHILD_PROCESS_STDIO_MAXBUFFER } from "./internal/errors.js";
 
 const { spawn, execFile, execFileSync, ChildProcess } = CP;
 

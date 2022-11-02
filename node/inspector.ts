@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { EventEmitter } from "./events.ts";
-import { notImplemented } from "./_utils.ts";
+import { EventEmitter } from "./events.js";
+import { notImplemented } from "./_utils.js";
 
 const connectionSymbol = Symbol("connectionProperty");
 const messageCallbacksSymbol = Symbol("messageCallbacks");

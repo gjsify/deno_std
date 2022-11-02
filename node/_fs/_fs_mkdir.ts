@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import type { CallbackWithError } from "./_fs_common.ts";
+import type { CallbackWithError } from "./_fs_common.js";
 import { promisify } from "../internal/util.mjs";
-import { denoErrorToNodeError } from "../internal/errors.ts";
+import { denoErrorToNodeError } from "../internal/errors.js";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
 import { validateBoolean } from "../internal/validators.mjs";
 

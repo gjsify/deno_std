@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "./_utils.ts";
-import _tls_common from "./_tls_common.ts";
-import _tls_wrap from "./_tls_wrap.ts";
+import { notImplemented } from "./_utils.js";
+import _tls_common from "./_tls_common.js";
+import _tls_wrap from "./_tls_wrap.js";
 
 // openssl -> rustls
 const cipherMap = {

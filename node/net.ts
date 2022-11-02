@@ -20,16 +20,16 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { notImplemented } from "./_utils.ts";
-import { EventEmitter } from "./events.ts";
-import { isIP, isIPv4, isIPv6, normalizedArgsSymbol } from "./internal/net.ts";
-import { Duplex } from "./stream.ts";
+import { notImplemented } from "./_utils.js";
+import { EventEmitter } from "./events.js";
+import { isIP, isIPv4, isIPv6, normalizedArgsSymbol } from "./internal/net.js";
+import { Duplex } from "./stream.js";
 import {
   asyncIdSymbol,
   defaultTriggerAsyncIdScope,
   newAsyncId,
   ownerSymbol,
-} from "./internal/async_hooks.ts";
+} from "./internal/async_hooks.js";
 import {
   ERR_INVALID_ADDRESS_FAMILY,
   ERR_INVALID_ARG_TYPE,
@@ -44,10 +44,10 @@ import {
   exceptionWithHostPort,
   genericNodeError,
   uvExceptionWithHostPort,
-} from "./internal/errors.ts";
-import type { ErrnoException } from "./internal/errors.ts";
-import { Encodings } from "./_utils.ts";
-import { isUint8Array } from "./internal/util/types.ts";
+} from "./internal/errors.js";
+import type { ErrnoException } from "./internal/errors.js";
+import { Encodings } from "./_utils.js";
+import { isUint8Array } from "./internal/util/types.js";
 import {
   kAfterAsyncWrite,
   kBuffer,
@@ -59,15 +59,15 @@ import {
   setStreamTimeout,
   writeGeneric,
   writevGeneric,
-} from "./internal/stream_base_commons.ts";
+} from "./internal/stream_base_commons.js";
 import { kTimeout } from "./internal/timers.mjs";
-import { nextTick } from "./_next_tick.ts";
+import { nextTick } from "./_next_tick.js";
 import {
   DTRACE_NET_SERVER_CONNECTION,
   DTRACE_NET_STREAM_END,
-} from "./internal/dtrace.ts";
-import { Buffer } from "./buffer.ts";
-import type { LookupOneOptions } from "./internal/dns/utils.ts";
+} from "./internal/dtrace.js";
+import { Buffer } from "./buffer.js";
+import type { LookupOneOptions } from "./internal/dns/utils.js";
 import {
   validateAbortSignal,
   validateFunction,
@@ -80,22 +80,22 @@ import {
   constants as TCPConstants,
   TCP,
   TCPConnectWrap,
-} from "./internal_binding/tcp_wrap.ts";
+} from "./internal_binding/tcp_wrap.js";
 import {
   constants as PipeConstants,
   Pipe,
   PipeConnectWrap,
-} from "./internal_binding/pipe_wrap.ts";
-import { ShutdownWrap } from "./internal_binding/stream_wrap.ts";
-import { assert } from "../_util/assert.ts";
-import { isWindows } from "../_util/os.ts";
-import { ADDRCONFIG, lookup as dnsLookup } from "./dns.ts";
-import { codeMap } from "./internal_binding/uv.ts";
-import { guessHandleType } from "./internal_binding/util.ts";
-import { debuglog } from "./internal/util/debuglog.ts";
-import type { DuplexOptions } from "./_stream.d.ts";
-import type { BufferEncoding } from "./_global.d.ts";
-import type { Abortable } from "./_events.d.ts";
+} from "./internal_binding/pipe_wrap.js";
+import { ShutdownWrap } from "./internal_binding/stream_wrap.js";
+import { assert } from "../_util/assert.js";
+import { isWindows } from "../_util/os.js";
+import { ADDRCONFIG, lookup as dnsLookup } from "./dns.js";
+import { codeMap } from "./internal_binding/uv.js";
+import { guessHandleType } from "./internal_binding/util.js";
+import { debuglog } from "./internal/util/debuglog.js";
+import type { DuplexOptions } from "./_stream.mjs";
+import type { BufferEncoding } from "./_global.d.js";
+import type { Abortable } from "./_events.mjs";
 
 let debug = debuglog("net", (fn) => {
   debug = fn;
@@ -982,7 +982,7 @@ export class Socket extends Duplex {
    * end the connection.
    *
    * ```ts
-   * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.ts";
+   * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.js";
    *
    * const require = createRequire(import.meta.url);
    * const net = require("net");
@@ -2030,7 +2030,7 @@ export class Server extends EventEmitter {
    * after a certain amount of time:
    *
    * ```ts
-   * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.ts";
+   * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.js";
    *
    * const require = createRequire(import.meta.url);
    * const net = require("net");
@@ -2278,8 +2278,8 @@ export class Server extends EventEmitter {
    * as a string.
    *
    * ```ts
-   * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.ts";
-   * import { Socket } from "https://deno.land/std@$STD_VERSION/node/net.ts";
+   * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.js";
+   * import { Socket } from "https://deno.land/std@$STD_VERSION/node/net.js";
    *
    * const require = createRequire(import.meta.url);
    * const net = require("net");
@@ -2487,8 +2487,8 @@ export class Server extends EventEmitter {
  * port 8124:
  *
  * ```ts
- * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.ts";
- * import { Socket } from "https://deno.land/std@$STD_VERSION/node/net.ts";
+ * import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.js";
+ * import { Socket } from "https://deno.land/std@$STD_VERSION/node/net.js";
  *
  * const require = createRequire(import.meta.url);
  * const net = require("net");

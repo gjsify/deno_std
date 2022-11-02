@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Buffer } from "../../buffer.ts";
-import { createHash } from "./hash.ts";
-import { HASH_DATA } from "./types.ts";
+import { Buffer } from "../../buffer.js";
+import { createHash } from "./hash.js";
+import { HASH_DATA } from "./types.js";
 
 export const MAX_ALLOC = Math.pow(2, 30) - 1;
 

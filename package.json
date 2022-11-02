@@ -1,0 +1,30 @@
+{
+    "name": "@gjsify/deno_std",
+    "version": "0.0.1",
+    "description": "Gjsify fork of Deno standard library to make use of the node compatibility layer",
+    "main": "lib/index.js",
+    "module": "lib/index.js",
+    "type": "module",
+    "scripts": {
+        "clear": "rm -rf lib",
+        "print:name": "echo '@gjsify/deno_std'",
+        "build": "yarn run build:gjsify && yarn run build:types",
+        "build:gjsify": "gjsify build --library node/**/*.{ts,js}",
+        "build:types": "tsc --emitDeclarationOnly || exit 0",
+        "build:test": "yarn run build:test:gjs",
+        "build:test:gjs": "gjsify build src/test.mts --app gjs --outfile test.gjs.mjs",
+        "test": "yarn run print:name && yarn run build && yarn run build:test && yarn run test:gjs",
+        "test:gjs": "gjs -m test.gjs.mjs"
+    },
+    "keywords": [
+        "gjs",
+        "node"
+    ],
+    "devDependencies": {
+        "@gjsify/cli": "workspace:^",
+        "@gjsify/unit": "workspace:^",
+        "@tsconfig/deno": "^1.0.6",
+        "@types/node": "^18.7.18",
+        "typescript": "^4.8.3"
+    }
+}

@@ -4,11 +4,11 @@ import {
   assertRejects,
   assertThrows,
   fail,
-} from "../../testing/asserts.ts";
-import { rm, rmSync } from "./_fs_rm.ts";
-import { closeSync, existsSync } from "../fs.ts";
-import { join } from "../../path/mod.ts";
-import { isWindows } from "../../_util/os.ts";
+} from "../../testing/asserts.js";
+import { rm, rmSync } from "./_fs_rm.js";
+import { closeSync, existsSync } from "../fs.js";
+import { join } from "../../path/mod.js";
+import { isWindows } from "../../_util/os.js";
 
 Deno.test({
   name: "ASYNC: removing empty folder",

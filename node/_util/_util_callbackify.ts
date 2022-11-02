@@ -23,7 +23,7 @@
 
 // These are simplified versions of the "real" errors in Node.
 
-import { nextTick } from "../_next_tick.ts";
+import { nextTick } from "../_next_tick.js";
 
 class NodeFalsyValueRejectionError extends Error {
   public reason: unknown;

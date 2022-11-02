@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { fromFileUrl } from "../path.ts";
+import { fromFileUrl } from "../path.js";
 import { promisify } from "../internal/util.mjs";
 
 export function rename(

@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, fail } from "../../testing/asserts.ts";
-import { isWindows } from "../../_util/os.ts";
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import { chmod, chmodSync } from "./_fs_chmod.ts";
+import { assert, fail } from "../../testing/asserts.js";
+import { isWindows } from "../../_util/os.js";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import { chmod, chmodSync } from "./_fs_chmod.js";
 
 Deno.test({
   name: "ASYNC: Permissions are changed (non-Windows)",
@@ -49,7 +49,7 @@ Deno.test({
   ignore: isWindows,
   async fn() {
     const tempFile = await Deno.makeTempFile();
-    const importUrl = new URL("./_fs_chmod.ts", import.meta.url);
+    const importUrl = new URL("./_fs_chmod.js", import.meta.url);
     await assertCallbackErrorUncaught({
       prelude: `import { chmod } from ${JSON.stringify(importUrl)}`,
       invocation: `chmod(${JSON.stringify(tempFile)}, 0o777, `,

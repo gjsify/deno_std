@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals } from "../testing/asserts.ts";
-import { Buffer } from "./buffer.ts";
-import { StringDecoder } from "./string_decoder.ts";
+import { assertEquals } from "../testing/asserts.js";
+import { Buffer } from "./buffer.js";
+import { StringDecoder } from "./string_decoder.js";
 
 Deno.test({
   name: "String decoder is encoding utf8 correctly",

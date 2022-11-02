@@ -6,12 +6,12 @@ import {
   validateRmOptions,
   validateRmOptionsSync,
 } from "../internal/fs/utils.mjs";
-import { toNamespacedPath } from "../path.ts";
+import { toNamespacedPath } from "../path.js";
 import {
   denoErrorToNodeError,
   ERR_FS_RMDIR_ENOTDIR,
-} from "../internal/errors.ts";
-import { Buffer } from "../buffer.ts";
+} from "../internal/errors.js";
+import { Buffer } from "../buffer.js";
 import { promisify } from "../internal/util.mjs";
 
 type rmdirOptions = {

@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { createRequire } from "../module.ts";
-import { isAbsolute } from "../../path/mod.ts";
+import { createRequire } from "../module.js";
+import { isAbsolute } from "../../path/mod.js";
 
 /**
  * This module is used as an entry point for each test file

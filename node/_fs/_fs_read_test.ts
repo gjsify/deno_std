@@ -3,12 +3,12 @@ import {
   assertEquals,
   assertMatch,
   assertStrictEquals,
-} from "../../testing/asserts.ts";
-import { read, readSync } from "./_fs_read.ts";
-import { open, openSync } from "./_fs_open.ts";
-import { Buffer } from "../buffer.ts";
-import * as path from "../../path/mod.ts";
-import { closeSync } from "./_fs_close.ts";
+} from "../../testing/asserts.js";
+import { read, readSync } from "./_fs_read.js";
+import { open, openSync } from "./_fs_open.js";
+import { Buffer } from "../buffer.js";
+import * as path from "../../path/mod.js";
+import { closeSync } from "./_fs_close.js";
 
 async function readTest(
   testData: string,

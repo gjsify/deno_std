@@ -2,14 +2,14 @@
 // Ported from https://github.com/browserify/path-browserify/
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import type { FormatInputPathObject, ParsedPath } from "./_interface.ts";
+import type { FormatInputPathObject, ParsedPath } from "./_interface.js";
 import {
   CHAR_BACKWARD_SLASH,
   CHAR_COLON,
   CHAR_DOT,
   CHAR_QUESTION_MARK,
-} from "./_constants.ts";
-import { ERR_INVALID_ARG_TYPE } from "../internal/errors.ts";
+} from "./_constants.js";
+import { ERR_INVALID_ARG_TYPE } from "../internal/errors.js";
 
 import {
   _format,
@@ -18,8 +18,8 @@ import {
   isPathSeparator,
   isWindowsDeviceRoot,
   normalizeString,
-} from "./_util.ts";
-import { assert } from "../../_util/assert.ts";
+} from "./_util.js";
+import { assert } from "../../_util/assert.js";
 
 export const sep = "\\";
 export const delimiter = ";";

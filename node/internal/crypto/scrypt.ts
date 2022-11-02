@@ -23,9 +23,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-import { Buffer } from "../../buffer.ts";
-import { pbkdf2Sync as pbkdf2 } from "./pbkdf2.ts";
-import { HASH_DATA } from "./types.ts";
+import { Buffer } from "../../buffer.js";
+import { pbkdf2Sync as pbkdf2 } from "./pbkdf2.js";
+import { HASH_DATA } from "./types.js";
 
 type Opts = Partial<{
   N: number;

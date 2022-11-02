@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { notImplemented } from "../_utils.ts";
+import { notImplemented } from "../_utils.js";
 
 export default class Dirent {
   constructor(private entry: Deno.DirEntry) {}

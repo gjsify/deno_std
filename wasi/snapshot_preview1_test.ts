@@ -1,10 +1,10 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import Context from "./snapshot_preview1.ts";
-import { assertEquals, assertThrows } from "../testing/asserts.ts";
-import { copy } from "../fs/copy.ts";
-import * as path from "../path/mod.ts";
-import { writeAll } from "../streams/conversion.ts";
-import { isWindows } from "../_util/os.ts";
+import Context from "./snapshot_preview1.js";
+import { assertEquals, assertThrows } from "../testing/asserts.js";
+import { copy } from "../fs/copy.js";
+import * as path from "../path/mod.js";
+import { writeAll } from "../streams/conversion.js";
+import { isWindows } from "../_util/os.js";
 
 const tests = [
   "testdata/std_env_args.wasm",

@@ -3,7 +3,7 @@
 // Copyright 2013 Maxwell Krohn. All rights reserved. MIT license.
 // Copyright 2009-2013 Jeff Mott. All rights reserved. MIT license.
 
-import { Buffer } from "../../../buffer.ts";
+import { Buffer } from "../../../buffer.js";
 
 export function xor(a: Buffer, b: Buffer): Buffer {
   const length = Math.min(a.length, b.length);

@@ -25,7 +25,7 @@
 // - https://github.com/nodejs/node/blob/master/src/node_options.cc
 // - https://github.com/nodejs/node/blob/master/src/node_options.h
 
-import { parse } from "../../flags/mod.ts";
+import { parse } from "../../flags/mod.js";
 
 export function getOptions() {
   const args = parse(Deno.args);

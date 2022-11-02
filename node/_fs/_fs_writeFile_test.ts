@@ -5,12 +5,12 @@ import {
   assertNotEquals,
   assertRejects,
   assertThrows,
-} from "../../testing/asserts.ts";
-import { writeFile, writeFileSync } from "./_fs_writeFile.ts";
-import type { TextEncodings } from "../_utils.ts";
-import * as path from "../../path/mod.ts";
-import { isWindows } from "../../_util/os.ts";
-import { AbortError } from "./../internal/errors.ts";
+} from "../../testing/asserts.js";
+import { writeFile, writeFileSync } from "./_fs_writeFile.js";
+import type { TextEncodings } from "../_utils.js";
+import * as path from "../../path/mod.js";
+import { isWindows } from "../../_util/os.js";
+import { AbortError } from "./../internal/errors.js";
 
 const moduleDir = path.dirname(path.fromFileUrl(import.meta.url));
 const testDataDir = path.resolve(moduleDir, "testdata");

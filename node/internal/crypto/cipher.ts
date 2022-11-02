@@ -1,15 +1,15 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { ERR_INVALID_ARG_TYPE } from "../errors.ts";
+import { ERR_INVALID_ARG_TYPE } from "../errors.js";
 import { validateInt32, validateObject } from "../validators.mjs";
-import { Buffer } from "../../buffer.ts";
-import { notImplemented } from "../../_utils.ts";
-import type { TransformOptions } from "../../_stream.d.ts";
+import { Buffer } from "../../buffer.js";
+import { notImplemented } from "../../_utils.js";
+import type { TransformOptions } from "../../_stream.mjs";
 import { Transform } from "../../_stream.mjs";
-import { KeyObject } from "./keys.ts";
-import type { BufferEncoding } from "../../_global.d.ts";
-import type { BinaryLike, Encoding } from "./types.ts";
+import { KeyObject } from "./keys.js";
+import type { BufferEncoding } from "../../_global.js";
+import type { BinaryLike, Encoding } from "./types.js";
 import {
   privateDecrypt,
   privateEncrypt,

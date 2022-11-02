@@ -4,11 +4,11 @@ import {
   assertEquals,
   assertStringIncludes,
   assertThrows,
-} from "../testing/asserts.ts";
+} from "../testing/asserts.js";
 
-import * as path from "../path/mod.ts";
-import Module, { createRequire } from "./module.ts";
-import nodeMods from "./module_all.ts";
+import * as path from "../path/mod.js";
+import Module, { createRequire } from "./module.js";
+import nodeMods from "./module_all.js";
 
 const moduleDir = path.dirname(path.fromFileUrl(import.meta.url));
 const testdataDir = path.resolve(moduleDir, path.join("_fs", "testdata"));
@@ -199,7 +199,7 @@ Deno.test("a module can have its own timers declarations", function () {
 
 Deno.test("require in a web worker", async () => {
   const code = `\
-    import { createRequire } from "${new URL("module.ts", import.meta.url)}";
+    import { createRequire } from "${new URL("module.js", import.meta.url)}";
     const require = createRequire("${import.meta.url}");
     const result = require("./_module/cjs/cjs_a.js");
     if (result.helloA() != "A") {

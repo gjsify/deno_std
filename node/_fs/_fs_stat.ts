@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { denoErrorToNodeError } from "../internal/errors.ts";
+import { denoErrorToNodeError } from "../internal/errors.js";
 import { promisify } from "../internal/util.mjs";
 
 export type statOptions = {

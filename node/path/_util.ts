@@ -2,7 +2,7 @@
 // Ported from https://github.com/browserify/path-browserify/
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import type { FormatInputPathObject } from "./_interface.ts";
+import type { FormatInputPathObject } from "./_interface.js";
 import {
   CHAR_BACKWARD_SLASH,
   CHAR_DOT,
@@ -11,8 +11,8 @@ import {
   CHAR_LOWERCASE_Z,
   CHAR_UPPERCASE_A,
   CHAR_UPPERCASE_Z,
-} from "./_constants.ts";
-import { ERR_INVALID_ARG_TYPE } from "../internal/errors.ts";
+} from "./_constants.js";
+import { ERR_INVALID_ARG_TYPE } from "../internal/errors.js";
 
 export function assertPath(path: string) {
   if (typeof path !== "string") {

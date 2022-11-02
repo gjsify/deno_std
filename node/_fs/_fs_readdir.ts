@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { asyncIterableToCallback } from "./_fs_watch.ts";
-import Dirent from "./_fs_dirent.ts";
-import { denoErrorToNodeError } from "../internal/errors.ts";
+import { asyncIterableToCallback } from "./_fs_watch.js";
+import Dirent from "./_fs_dirent.js";
+import { denoErrorToNodeError } from "../internal/errors.js";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
-import { Buffer } from "../buffer.ts";
+import { Buffer } from "../buffer.js";
 import { promisify } from "../internal/util.mjs";
 
 function toDirent(val: Deno.DirEntry): Dirent {

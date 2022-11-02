@@ -3,9 +3,9 @@ import {
   assert,
   assertEquals,
   assertStringIncludes,
-} from "../../testing/asserts.ts";
-import { exists, existsSync } from "./_fs_exists.ts";
-import { promisify } from "../util.ts";
+} from "../../testing/asserts.js";
+import { exists, existsSync } from "./_fs_exists.js";
+import { promisify } from "../util.js";
 
 Deno.test("[std/node/fs] exists", async function () {
   const availableFile = await new Promise((resolve) => {

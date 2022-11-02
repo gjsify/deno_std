@@ -4,12 +4,12 @@ import {
   assertEquals,
   assertThrows,
   fail,
-} from "../../testing/asserts.ts";
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import { open, openSync } from "./_fs_open.ts";
-import { join, parse } from "../../path/mod.ts";
-import { existsSync } from "../../fs/exists.ts";
-import { closeSync } from "./_fs_close.ts";
+} from "../../testing/asserts.js";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import { open, openSync } from "./_fs_open.js";
+import { join, parse } from "../../path/mod.js";
+import { existsSync } from "../../fs/exists.js";
+import { closeSync } from "./_fs_close.js";
 
 const tempDir = parse(Deno.makeTempFileSync()).dir;
 

@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import Dir from "./_fs_dir.ts";
-import { Buffer } from "../buffer.ts";
+import Dir from "./_fs_dir.js";
+import { Buffer } from "../buffer.js";
 import { getOptions, getValidatedPath } from "../internal/fs/utils.mjs";
-import { denoErrorToNodeError } from "../internal/errors.ts";
+import { denoErrorToNodeError } from "../internal/errors.js";
 import { validateFunction, validateInteger } from "../internal/validators.mjs";
 import { promisify } from "../internal/util.mjs";
 

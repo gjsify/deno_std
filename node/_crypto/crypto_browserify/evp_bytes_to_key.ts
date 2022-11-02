@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright 2017 crypto-browserify. All rights reserved. MIT license.
 
-import { Buffer } from "../../buffer.ts";
-import { createHash } from "../../internal/crypto/hash.ts";
+import { Buffer } from "../../buffer.js";
+import { createHash } from "../../internal/crypto/hash.js";
 
 export function EVP_BytesToKey(
   password: string | Buffer,

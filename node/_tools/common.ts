@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { join } from "../../path/mod.ts";
+import { join } from "../../path/mod.js";
 
 /**
  * The test suite matches the folders inside the `test` folder inside the

@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import type { CallbackWithError } from "./_fs_common.ts";
+import type { CallbackWithError } from "./_fs_common.js";
 import { getValidatedFd } from "../internal/fs/utils.mjs";
 
 export function close(fd: number, callback: CallbackWithError) {

@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "../../_utils.ts";
-import { Buffer } from "../../buffer.ts";
-import { BinaryLike } from "./types.ts";
+import { notImplemented } from "../../_utils.js";
+import { Buffer } from "../../buffer.js";
+import { BinaryLike } from "./types.js";
 
 export class Certificate {
   static Certificate = Certificate;

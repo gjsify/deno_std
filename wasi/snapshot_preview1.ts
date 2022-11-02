@@ -27,7 +27,7 @@
  * @module
  */
 
-import { relative, resolve } from "../path/mod.ts";
+import { relative, resolve } from "../path/mod.js";
 
 const CLOCKID_REALTIME = 0;
 const CLOCKID_MONOTONIC = 1;

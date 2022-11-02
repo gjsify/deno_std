@@ -1,14 +1,14 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { basename } from "../path.ts";
-import { EventEmitter } from "../events.ts";
-import { notImplemented } from "../_utils.ts";
-import { promisify } from "../util.ts";
+import { basename } from "../path.js";
+import { EventEmitter } from "../events.js";
+import { notImplemented } from "../_utils.js";
+import { promisify } from "../util.js";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
 import { validateFunction } from "../internal/validators.mjs";
-import { stat, Stats } from "./_fs_stat.ts";
+import { stat, Stats } from "./_fs_stat.js";
 import { Stats as StatsClass } from "../internal/fs/utils.mjs";
-import { Buffer } from "../buffer.ts";
-import { delay } from "../../async/delay.ts";
+import { Buffer } from "../buffer.js";
+import { delay } from "../../async/delay.js";
 
 const statPromisified = promisify(stat);
 const statAsync = async (filename: string): Promise<Stats | null> => {

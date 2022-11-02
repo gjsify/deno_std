@@ -1,11 +1,11 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Buffer } from "../../buffer.ts";
-import randomFill, { randomFillSync } from "./_randomFill.ts";
+import { Buffer } from "../../buffer.js";
+import randomFill, { randomFillSync } from "./_randomFill.js";
 import {
   assertEquals,
   assertNotEquals,
   assertThrows,
-} from "../../../testing/asserts.ts";
+} from "../../../testing/asserts.js";
 
 const validateNonZero = (buf: Buffer) => {
   if (!buf.some((ch) => ch > 0)) throw new Error("Error");

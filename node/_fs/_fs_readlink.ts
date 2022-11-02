@@ -3,8 +3,8 @@ import {
   intoCallbackAPIWithIntercept,
   MaybeEmpty,
   notImplemented,
-} from "../_utils.ts";
-import { fromFileUrl } from "../path.ts";
+} from "../_utils.js";
+import { fromFileUrl } from "../path.js";
 import { promisify } from "../internal/util.mjs";
 
 type ReadlinkCallback = (

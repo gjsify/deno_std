@@ -24,8 +24,8 @@
 // - https://github.com/nodejs/node/blob/master/src/connection_wrap.cc
 // - https://github.com/nodejs/node/blob/master/src/connection_wrap.h
 
-import { LibuvStreamWrap } from "./stream_wrap.ts";
-import { AsyncWrap, providerType } from "./async_wrap.ts";
+import { LibuvStreamWrap } from "./stream_wrap.js";
+import { AsyncWrap, providerType } from "./async_wrap.js";
 
 export class ConnectionWrap extends LibuvStreamWrap {
   /** Optional connection callback. */

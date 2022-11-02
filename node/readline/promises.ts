@@ -8,18 +8,18 @@ import {
   kQuestion,
   kQuestionCancel,
 } from "../internal/readline/interface.mjs";
-import { AbortError } from "../internal/errors.ts";
+import { AbortError } from "../internal/errors.js";
 import { validateAbortSignal } from "../internal/validators.mjs";
 
 import { kEmptyObject } from "../internal/util.mjs";
-import type { Abortable } from "../_events.d.ts";
+import type { Abortable } from "../_events.mjs";
 import type {
   AsyncCompleter,
   Completer,
   ReadLineOptions,
-} from "../_readline_shared_types.d.ts";
+} from "../_readline_shared_types.d.js";
 
-import type { ReadableStream, WritableStream } from "../_global.d.ts";
+import type { ReadableStream, WritableStream } from "../_global.d.js";
 
 /**
  * The `readline/promise` module provides an API for reading lines of input from a Readable stream one line at a time.

@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, fail } from "../../testing/asserts.ts";
-import { isWindows } from "../../_util/os.ts";
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import { chown, chownSync } from "./_fs_chown.ts";
+import { assertEquals, fail } from "../../testing/asserts.js";
+import { isWindows } from "../../_util/os.js";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import { chown, chownSync } from "./_fs_chown.js";
 
 // chown is difficult to test.  Best we can do is set the existing user id/group
 // id again
@@ -58,7 +58,7 @@ Deno.test({
   async fn() {
     const tempFile = await Deno.makeTempFile();
     const { uid, gid } = await Deno.lstat(tempFile);
-    const importUrl = new URL("./_fs_chown.ts", import.meta.url);
+    const importUrl = new URL("./_fs_chown.js", import.meta.url);
     await assertCallbackErrorUncaught({
       prelude: `import { chown } from ${JSON.stringify(importUrl)}`,
       invocation: `chown(${JSON.stringify(tempFile)}, ${uid}, ${gid}, `,

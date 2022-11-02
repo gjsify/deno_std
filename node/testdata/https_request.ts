@@ -1,6 +1,6 @@
-import * as https from "../https.ts";
-import { assert } from "../../testing/asserts.ts";
-import type { IncomingMessageForClient } from "../http.ts";
+import * as https from "../https.js";
+import { assert } from "../../testing/asserts.js";
+import type { IncomingMessageForClient } from "../http.js";
 https.request("https://localhost:4505", (res: IncomingMessageForClient) => {
   let data = "";
   assert(res.socket);

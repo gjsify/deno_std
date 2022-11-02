@@ -10,7 +10,7 @@ import {
   type SpawnSyncOptions,
   type SpawnSyncResult,
   stdioStringToArray,
-} from "./internal/child_process.ts";
+} from "./internal/child_process.js";
 import {
   validateAbortSignal,
   validateFunction,
@@ -24,7 +24,7 @@ import {
   ERR_INVALID_ARG_VALUE,
   ERR_OUT_OF_RANGE,
   genericNodeError,
-} from "./internal/errors.ts";
+} from "./internal/errors.js";
 import {
   ArrayIsArray,
   ArrayPrototypeJoin,
@@ -33,10 +33,10 @@ import {
   ObjectAssign,
   StringPrototypeSlice,
 } from "./internal/primordials.mjs";
-import { getSystemErrorName, promisify } from "./util.ts";
+import { getSystemErrorName, promisify } from "./util.js";
 import { createDeferredPromise } from "./internal/util.mjs";
-import { process } from "./process.ts";
-import { Buffer } from "./buffer.ts";
+import { process } from "./process.js";
+import { Buffer } from "./buffer.js";
 import { convertToValidSignal, kEmptyObject } from "./internal/util.mjs";
 
 const MAX_BUFFER = 1024 * 1024;

@@ -6,7 +6,7 @@ import {
   statCallbackBigInt,
   statOptions,
   Stats,
-} from "./_fs_stat.ts";
+} from "./_fs_stat.js";
 import { promisify } from "../internal/util.mjs";
 
 export function lstat(path: string | URL, callback: statCallback): void;

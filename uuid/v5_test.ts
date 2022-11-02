@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals } from "../testing/asserts.ts";
-import { generate, validate } from "./v5.ts";
+import { assert, assertEquals } from "../testing/asserts.js";
+import { generate, validate } from "./v5.js";
 
 const NAMESPACE = "1b671a64-40d5-491e-99b0-da01ff1f3341";
 

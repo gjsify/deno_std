@@ -3,10 +3,10 @@
 
 // deno-lint-ignore-file no-inner-declarations
 
-import { core } from "./_core.ts";
+import { core } from "./_core.js";
 import { validateFunction } from "./internal/validators.mjs";
-import { _exiting } from "./_process/exiting.ts";
-import { FixedQueue } from "./internal/fixed_queue.ts";
+import { _exiting } from "./_process/exiting.js";
+import { FixedQueue } from "./internal/fixed_queue.js";
 
 interface Tock {
   callback: (...args: Array<unknown>) => void;

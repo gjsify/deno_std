@@ -1,29 +1,29 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { ERR_INVALID_ARG_TYPE, ERR_OUT_OF_RANGE } from "../errors.ts";
+import { ERR_INVALID_ARG_TYPE, ERR_OUT_OF_RANGE } from "../errors.js";
 import { deprecate, kEmptyObject } from "../util.mjs";
 import { validateFunction, validateInteger } from "../validators.mjs";
 import { errorOrDestroy } from "../streams/destroy.mjs";
-import { open as fsOpen, type openFlags } from "../../_fs/_fs_open.ts";
-import { read as fsRead } from "../../_fs/_fs_read.ts";
+import { open as fsOpen, type openFlags } from "../../_fs/_fs_open.js";
+import { read as fsRead } from "../../_fs/_fs_read.js";
 // @deno-types="../../_fs/_fs_write.d.ts""
 import { write as fsWrite } from "../../_fs/_fs_write.mjs";
 // @deno-types="../../_fs/_fs_writev.d.ts""
 import { writev as fsWritev } from "../../_fs/_fs_writev.mjs";
-import { close as fsClose } from "../../_fs/_fs_close.ts";
-import { Buffer } from "../../buffer.ts";
+import { close as fsClose } from "../../_fs/_fs_close.js";
+import { Buffer } from "../../buffer.js";
 import {
   copyObject,
   getOptions,
   getValidatedFd,
   validatePath,
 } from "./utils.mjs";
-import { finished, Readable, Writable } from "../../stream.ts";
-import { ReadableOptions, WritableOptions } from "../../_stream.d.ts";
-import { toPathIfFileURL } from "../url.ts";
-import { BufferEncoding } from "../../_global.d.ts";
-import { nextTick } from "../../_next_tick.ts";
+import { finished, Readable, Writable } from "../../stream.js";
+import { ReadableOptions, WritableOptions } from "../../_stream.mjs";
+import { toPathIfFileURL } from "../url.js";
+import { BufferEncoding } from "../../_global.d.js";
+import { nextTick } from "../../_next_tick.js";
 const kIoDone = Symbol("kIoDone");
 const kIsPerformingIO = Symbol("kIsPerformingIO");
 

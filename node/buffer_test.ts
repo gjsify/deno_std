@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, assertThrows } from "../testing/asserts.ts";
-import "./internal/errors.ts";
-import { Buffer } from "./buffer.ts";
+import { assertEquals, assertThrows } from "../testing/asserts.js";
+import "./internal/errors.js";
+import { Buffer } from "./buffer.js";
 
 Deno.test({
   name: "alloc fails if size is not a number",

@@ -1,10 +1,10 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import EventEmitter from "./events.ts";
-import http from "./http.ts";
-import { ERR_SERVER_NOT_RUNNING } from "./internal/errors.ts";
-import { assert, assertEquals } from "../testing/asserts.ts";
-import { deferred } from "../async/deferred.ts";
+import EventEmitter from "./events.js";
+import http from "./http.js";
+import { ERR_SERVER_NOT_RUNNING } from "./internal/errors.js";
+import { assert, assertEquals } from "../testing/asserts.js";
+import { deferred } from "../async/deferred.js";
 
 Deno.test("[node/http listen]", async () => {
   {

@@ -24,13 +24,13 @@
 // - https://github.com/nodejs/node/blob/master/src/cares_wrap.cc
 // - https://github.com/nodejs/node/blob/master/src/cares_wrap.h
 
-import type { ErrnoException } from "../internal/errors.ts";
-import { isIPv4 } from "../internal/net.ts";
-import { codeMap } from "./uv.ts";
-import { AsyncWrap, providerType } from "./async_wrap.ts";
-import { ares_strerror } from "./ares.ts";
-import { notImplemented } from "../_utils.ts";
-import { isWindows } from "../../_util/os.ts";
+import type { ErrnoException } from "../internal/errors.js";
+import { isIPv4 } from "../internal/net.js";
+import { codeMap } from "./uv.js";
+import { AsyncWrap, providerType } from "./async_wrap.js";
+import { ares_strerror } from "./ares.js";
+import { notImplemented } from "../_utils.js";
+import { isWindows } from "../../_util/os.js";
 
 interface LookupAddress {
   address: string;

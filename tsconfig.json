@@ -1,0 +1,13 @@
+{
+    "extends": "@tsconfig/deno/tsconfig.json",
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "outDir": "lib",
+        "declarationDir": "lib",
+        "rootDir": ".",
+        "composite": true,
+        "resolveJsonModule": false
+    },
+    "exclude": ["testing", "lib"]
+}

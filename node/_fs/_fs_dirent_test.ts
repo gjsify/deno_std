@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals, assertThrows } from "../../testing/asserts.ts";
-import Dirent from "./_fs_dirent.ts";
+import { assert, assertEquals, assertThrows } from "../../testing/asserts.js";
+import Dirent from "./_fs_dirent.js";
 
 class DirEntryMock implements Deno.DirEntry {
   name = "";

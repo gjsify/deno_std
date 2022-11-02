@@ -3,18 +3,18 @@
 
 import { getDefaultHighWaterMark } from "./internal/streams/state.mjs";
 import assert from "./internal/assert.mjs";
-import EE from "./events.ts";
-import { Stream } from "./stream.ts";
+import EE from "./events.js";
+import { Stream } from "./stream.js";
 import * as internalUtil from "./internal/util.mjs";
-import type { Socket } from "./net.ts";
-import { kNeedDrain, kOutHeaders, utcDate } from "./internal/http.ts";
-import { Buffer } from "./buffer.ts";
+import type { Socket } from "./net.js";
+import { kNeedDrain, kOutHeaders, utcDate } from "./internal/http.js";
+import { Buffer } from "./buffer.js";
 import {
   _checkInvalidHeaderChar as checkInvalidHeaderChar,
   _checkIsHttpToken as checkIsHttpToken,
   chunkExpression as RE_TE_CHUNKED,
-} from "./_http_common.ts";
-import { defaultTriggerAsyncIdScope, symbols } from "./internal/async_hooks.ts";
+} from "./_http_common.js";
+import { defaultTriggerAsyncIdScope, symbols } from "./internal/async_hooks.js";
 // deno-lint-ignore camelcase
 const { async_id_symbol } = symbols;
 import {
@@ -32,11 +32,11 @@ import {
   ERR_STREAM_NULL_VALUES,
   ERR_STREAM_WRITE_AFTER_END,
   hideStackFrames,
-} from "./internal/errors.ts";
+} from "./internal/errors.js";
 import { validateString } from "./internal/validators.mjs";
-import { isUint8Array } from "./internal/util/types.ts";
+import { isUint8Array } from "./internal/util/types.js";
 
-import { debuglog } from "./internal/util/debuglog.ts";
+import { debuglog } from "./internal/util/debuglog.js";
 let debug = debuglog("http", (fn) => {
   debug = fn;
 });

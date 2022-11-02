@@ -27,7 +27,7 @@ import {
   ERR_INVALID_FILE_URL_PATH,
   ERR_INVALID_URL,
   ERR_INVALID_URL_SCHEME,
-} from "./internal/errors.ts";
+} from "./internal/errors.js";
 import { validateString } from "./internal/validators.mjs";
 import {
   CHAR_0,
@@ -65,13 +65,13 @@ import {
   CHAR_UPPERCASE_Z,
   CHAR_VERTICAL_LINE,
   CHAR_ZERO_WIDTH_NOBREAK_SPACE,
-} from "../path/_constants.ts";
-import * as path from "./path.ts";
-import { toASCII } from "./internal/idna.ts";
-import { isWindows, osType } from "../_util/os.ts";
-import { encodeStr, hexTable } from "./internal/querystring.ts";
-import querystring from "./querystring.ts";
-import type { ParsedUrlQuery, ParsedUrlQueryInput } from "./querystring.ts";
+} from "../path/_constants.js";
+import * as path from "./path.js";
+import { toASCII } from "./internal/idna.js";
+import { isWindows, osType } from "../_util/os.js";
+import { encodeStr, hexTable } from "./internal/querystring.js";
+import querystring from "./querystring.js";
+import type { ParsedUrlQuery, ParsedUrlQueryInput } from "./querystring.js";
 
 const forwardSlashRegEx = /\//g;
 const percentRegEx = /%/g;

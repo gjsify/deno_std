@@ -1,11 +1,11 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright 2017 crypto-browserify. All rights reserved. MIT license.
-import { randomBytes } from "./randombytes.ts";
+import { randomBytes } from "./randombytes.js";
 import {
   assert,
   assertEquals,
   assertThrows,
-} from "../../../testing/asserts.ts";
+} from "../../../testing/asserts.js";
 
 const MAX_BYTES = 65536;
 const MAX_UINT32 = 4294967295;

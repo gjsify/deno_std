@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import * as path from "../../path/mod.ts";
-import { assert } from "../../testing/asserts.ts";
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import { copyFile, copyFileSync } from "./_fs_copy.ts";
-import { existsSync } from "./_fs_exists.ts";
+import * as path from "../../path/mod.js";
+import { assert } from "../../testing/asserts.js";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import { copyFile, copyFileSync } from "./_fs_copy.js";
+import { existsSync } from "./_fs_exists.js";
 
 const destFile = "./destination.txt";
 
@@ -41,7 +41,7 @@ Deno.test("[std/node/fs] copyFile callback isn't called twice if error is thrown
   const tempFile1 = path.join(tempDir, "file1.txt");
   const tempFile2 = path.join(tempDir, "file2.txt");
   await Deno.writeTextFile(tempFile1, "hello world");
-  const importUrl = new URL("./_fs_copy.ts", import.meta.url);
+  const importUrl = new URL("./_fs_copy.js", import.meta.url);
   await assertCallbackErrorUncaught({
     prelude: `import { copyFile } from ${JSON.stringify(importUrl)}`,
     invocation: `copyFile(${JSON.stringify(tempFile1)},

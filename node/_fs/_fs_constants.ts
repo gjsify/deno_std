@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { fs } from "../internal_binding/constants.ts";
+import { fs } from "../internal_binding/constants.js";
 
 export const {
   F_OK,

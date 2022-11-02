@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { promisify } from "./internal/util.mjs";
-import { callbackify } from "./_util/_util_callbackify.ts";
-import { debuglog } from "./internal/util/debuglog.ts";
+import { callbackify } from "./_util/_util_callbackify.js";
+import { debuglog } from "./internal/util/debuglog.js";
 import { deprecate } from "./internal/util.mjs";
 import {
   format,
@@ -9,10 +9,10 @@ import {
   inspect,
   stripVTControlCharacters,
 } from "./internal/util/inspect.mjs";
-import { codes } from "./internal/error_codes.ts";
-import types from "./util/types.ts";
-import { Buffer } from "./buffer.ts";
-import { isDeepStrictEqual } from "./internal/util/comparisons.ts";
+import { codes } from "./internal/error_codes.js";
+import types from "./util/types.js";
+import { Buffer } from "./buffer.js";
+import { isDeepStrictEqual } from "./internal/util/comparisons.js";
 
 export {
   callbackify,
@@ -151,14 +151,14 @@ export function inherits<T, U>(
   Object.setPrototypeOf(ctor.prototype, superCtor.prototype);
 }
 
-import { _TextDecoder, _TextEncoder, getSystemErrorName } from "./_utils.ts";
+import { _TextDecoder, _TextEncoder, getSystemErrorName } from "./_utils.js";
 
 /** The global TextDecoder */
-export type TextDecoder = import("./_utils.ts")._TextDecoder;
+export type TextDecoder = import("./_utils.js")._TextDecoder;
 export const TextDecoder = _TextDecoder;
 
 /** The global TextEncoder */
-export type TextEncoder = import("./_utils.ts")._TextEncoder;
+export type TextEncoder = import("./_utils.js")._TextEncoder;
 export const TextEncoder = _TextEncoder;
 
 function pad(n: number) {

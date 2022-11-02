@@ -6,7 +6,7 @@ import {
   statCallbackBigInt,
   statOptions,
   Stats,
-} from "./_fs_stat.ts";
+} from "./_fs_stat.js";
 
 export function fstat(fd: number, callback: statCallback): void;
 export function fstat(

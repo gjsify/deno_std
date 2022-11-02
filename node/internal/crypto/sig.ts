@@ -1,10 +1,10 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "../../_utils.ts";
+import { notImplemented } from "../../_utils.js";
 import { validateString } from "../validators.mjs";
-import { Buffer } from "../../buffer.ts";
-import type { WritableOptions } from "../../_stream.d.ts";
+import { Buffer } from "../../buffer.js";
+import type { WritableOptions } from "../../_stream.mjs";
 import Writable from "../streams/writable.mjs";
 import type {
   BinaryLike,
@@ -12,8 +12,8 @@ import type {
   Encoding,
   PrivateKeyInput,
   PublicKeyInput,
-} from "./types.ts";
-import { KeyObject } from "./keys.ts";
+} from "./types.js";
+import { KeyObject } from "./keys.js";
 
 export type DSAEncoding = "der" | "ieee-p1363";
 

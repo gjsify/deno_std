@@ -1,13 +1,13 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { warnNotImplemented } from "./_utils.ts";
-import { EventEmitter } from "./events.ts";
+import { warnNotImplemented } from "./_utils.js";
+import { EventEmitter } from "./events.js";
 import { validateString } from "./internal/validators.mjs";
-import { ERR_INVALID_ARG_TYPE, ERR_UNKNOWN_SIGNAL } from "./internal/errors.ts";
-import { getOptionValue } from "./internal/options.ts";
-import { assert } from "../_util/assert.ts";
-import { fromFileUrl, join } from "../path/mod.ts";
+import { ERR_INVALID_ARG_TYPE, ERR_UNKNOWN_SIGNAL } from "./internal/errors.js";
+import { getOptionValue } from "./internal/options.js";
+import { assert } from "../_util/assert.js";
+import { fromFileUrl, join } from "../path/mod.js";
 import {
   arch,
   chdir,
@@ -18,8 +18,8 @@ import {
   platform,
   version,
   versions,
-} from "./_process/process.ts";
-import { _exiting } from "./_process/exiting.ts";
+} from "./_process/process.js";
+import { _exiting } from "./_process/exiting.js";
 export {
   _nextTick as nextTick,
   arch,
@@ -36,8 +36,8 @@ import {
   stdin as stdin_,
   stdout as stdout_,
 } from "./_process/streams.mjs";
-import { core } from "./_core.ts";
-import { processTicksAndRejections } from "./_next_tick.ts";
+import { core } from "./_core.js";
+import { processTicksAndRejections } from "./_next_tick.js";
 
 // TODO(kt3k): Give better types to stdio objects
 // deno-lint-ignore no-explicit-any
@@ -47,8 +47,8 @@ const stdin = stdin_ as any;
 // deno-lint-ignore no-explicit-any
 const stdout = stdout_ as any;
 export { stderr, stdin, stdout };
-import { getBinding } from "./internal_binding/mod.ts";
-import type { BindingName } from "./internal_binding/mod.ts";
+import { getBinding } from "./internal_binding/mod.js";
+import type { BindingName } from "./internal_binding/mod.js";
 import { buildAllowedFlags } from "./internal/process/per_thread.mjs";
 
 const notImplementedEvents = [

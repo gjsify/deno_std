@@ -4,10 +4,10 @@ import {
   assertEquals,
   assertNotEquals,
   assertRejects,
-} from "../../testing/asserts.ts";
-import { writeFile } from "./promises.ts";
-import type { TextEncodings } from "../_utils.ts";
-import { isWindows } from "../../_util/os.ts";
+} from "../../testing/asserts.js";
+import { writeFile } from "./promises.js";
+import type { TextEncodings } from "../_utils.js";
+import { isWindows } from "../../_util/os.js";
 
 const decoder = new TextDecoder("utf-8");
 

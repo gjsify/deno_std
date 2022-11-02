@@ -23,7 +23,7 @@
 // This module ports:
 // - https://github.com/libuv/libuv/blob/master/src/win/error.c
 
-import * as winErrors from "./_winerror.ts";
+import * as winErrors from "./_winerror.js";
 
 export function uvTranslateSysError(sysErrno: number): string {
   switch (sysErrno) {

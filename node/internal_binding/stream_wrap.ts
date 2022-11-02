@@ -27,12 +27,12 @@
 // - https://github.com/nodejs/node/blob/master/src/stream_wrap.h
 // - https://github.com/nodejs/node/blob/master/src/stream_wrap.cc
 
-import { Buffer } from "../buffer.ts";
-import { notImplemented } from "../_utils.ts";
-import { HandleWrap } from "./handle_wrap.ts";
-import { AsyncWrap, providerType } from "./async_wrap.ts";
-import { codeMap } from "./uv.ts";
-import { writeAll } from "../../streams/conversion.ts";
+import { Buffer } from "../buffer.js";
+import { notImplemented } from "../_utils.js";
+import { HandleWrap } from "./handle_wrap.js";
+import { AsyncWrap, providerType } from "./async_wrap.js";
+import { codeMap } from "./uv.js";
+import { writeAll } from "../../streams/conversion.js";
 
 enum StreamBaseStateFields {
   kReadBytesOrError,

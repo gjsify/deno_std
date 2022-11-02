@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import * as net from "./net.ts";
-import { assertEquals } from "../testing/asserts.ts";
-import { deferred } from "../async/deferred.ts";
-import * as http from "./http.ts";
+import * as net from "./net.js";
+import { assertEquals } from "../testing/asserts.js";
+import { deferred } from "../async/deferred.js";
+import * as http from "./http.js";
 
 Deno.test("[node/net] close event emits after error event", async () => {
   const socket = net.createConnection(27009, "doesnotexist");

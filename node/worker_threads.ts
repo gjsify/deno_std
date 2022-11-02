@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { resolve, toFileUrl } from "../path/mod.ts";
-import { notImplemented } from "./_utils.ts";
-import { EventEmitter, once } from "./events.ts";
+import { resolve, toFileUrl } from "../path/mod.js";
+import { notImplemented } from "./_utils.js";
+import { EventEmitter, once } from "./events.js";
 
 let environmentData = new Map();
 let threads = 0;

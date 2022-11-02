@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { writeBuffer } from "./node_file.ts";
-import { assertEquals } from "../../testing/asserts.ts";
-import { isWindows } from "../../_util/os.ts";
+import { writeBuffer } from "./node_file.js";
+import { assertEquals } from "../../testing/asserts.js";
+import { isWindows } from "../../_util/os.js";
 
 Deno.test("[node/internal_binding/node_file] writeBuffer", async () => {
   const tempfile = await Deno.makeTempFile();

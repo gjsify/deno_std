@@ -19,14 +19,14 @@ import {
   isStringObject,
   isSymbolObject,
   isTypedArray,
-} from "./types.ts";
+} from "./types.js";
 
-import { Buffer } from "../../buffer.ts";
+import { Buffer } from "../../buffer.js";
 import {
   getOwnNonIndexProperties,
   ONLY_ENUMERABLE,
   SKIP_SYMBOLS,
-} from "../../internal_binding/util.ts";
+} from "../../internal_binding/util.js";
 
 enum valueType {
   noIterator,

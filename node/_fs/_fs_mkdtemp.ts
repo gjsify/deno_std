@@ -1,11 +1,11 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Node.js contributors. All rights reserved. MIT License.
-import { existsSync } from "./_fs_exists.ts";
-import { mkdir, mkdirSync } from "./_fs_mkdir.ts";
+import { existsSync } from "./_fs_exists.js";
+import { mkdir, mkdirSync } from "./_fs_mkdir.js";
 import {
   ERR_INVALID_ARG_TYPE,
   ERR_INVALID_OPT_VALUE_ENCODING,
-} from "../internal/errors.ts";
+} from "../internal/errors.js";
 import { promisify } from "../internal/util.mjs";
 
 export type mkdtempCallback = (

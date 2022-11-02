@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { fromFileUrl, join } from "../../path/mod.ts";
-import { delay } from "../../async/delay.ts";
+import { fromFileUrl, join } from "../../path/mod.js";
+import { delay } from "../../async/delay.js";
 
 const env = {
   DENO_NODE_COMPAT_URL: new URL("../../", import.meta.url).href,

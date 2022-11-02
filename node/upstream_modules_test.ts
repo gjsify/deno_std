@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { createRequire } from "./module.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { createRequire } from "./module.js";
+import { assertEquals } from "../testing/asserts.js";
 
 const require = createRequire(import.meta.url);
 

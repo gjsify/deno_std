@@ -5,12 +5,12 @@ import {
   assertEquals,
   assertStrictEquals,
   assertThrows,
-} from "../testing/asserts.ts";
-import { stripColor } from "../fmt/colors.ts";
-import * as util from "./util.ts";
+} from "../testing/asserts.js";
+import { stripColor } from "../fmt/colors.js";
+import * as util from "./util.js";
 
 // Note: Need to import this to lazily initialize error classes
-import "./internal/errors.ts";
+import "./internal/errors.js";
 
 Deno.test({
   name: "[util] format",

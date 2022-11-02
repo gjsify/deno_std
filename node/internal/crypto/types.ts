@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { Buffer } from "../../buffer.ts";
+import { Buffer } from "../../buffer.js";
 
 export type HASH_DATA = string | ArrayBufferView | Buffer;
 

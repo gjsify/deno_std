@@ -4,7 +4,7 @@
 
 // This .d.ts file is provided to avoid circular dependencies.
 
-import type { ReadableStream, WritableStream } from "./_global.d.ts";
+import type { ReadableStream, WritableStream } from "./_global.js";
 
 export type Completer = (line: string) => CompleterResult;
 export type AsyncCompleter = (

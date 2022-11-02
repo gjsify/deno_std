@@ -1,17 +1,17 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { stripColor } from "../fmt/colors.ts";
+import { stripColor } from "../fmt/colors.js";
 import {
   assert,
   assertEquals,
   assertNotStrictEquals,
   assertStrictEquals,
-} from "../testing/asserts.ts";
+} from "../testing/asserts.js";
 import {
   AssertionError,
   copyError,
   createErrDiff,
   inspectValue,
-} from "./assertion_error.ts";
+} from "./assertion_error.js";
 
 Deno.test({
   name: "copyError()",

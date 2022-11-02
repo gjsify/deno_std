@@ -1,14 +1,14 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { ERR_CRYPTO_FIPS_FORCED } from "./internal/errors.ts";
-import { crypto as constants } from "./internal_binding/constants.ts";
-import { getOptionValue } from "./internal/options.ts";
+import { ERR_CRYPTO_FIPS_FORCED } from "./internal/errors.js";
+import { crypto as constants } from "./internal_binding/constants.js";
+import { getOptionValue } from "./internal/options.js";
 import {
   getFipsCrypto,
   setFipsCrypto,
   timingSafeEqual,
-} from "./internal_binding/crypto.ts";
+} from "./internal_binding/crypto.js";
 import {
   checkPrime,
   checkPrimeSync,
@@ -19,27 +19,27 @@ import {
   randomFillSync,
   randomInt,
   randomUUID,
-} from "./internal/crypto/random.ts";
+} from "./internal/crypto/random.js";
 import type {
   CheckPrimeOptions,
   GeneratePrimeOptions,
   GeneratePrimeOptionsArrayBuffer,
   GeneratePrimeOptionsBigInt,
   LargeNumberLike,
-} from "./internal/crypto/random.ts";
-import { pbkdf2, pbkdf2Sync } from "./internal/crypto/pbkdf2.ts";
+} from "./internal/crypto/random.js";
+import { pbkdf2, pbkdf2Sync } from "./internal/crypto/pbkdf2.js";
 import type {
   Algorithms,
   NormalizedAlgorithms,
-} from "./internal/crypto/pbkdf2.ts";
-import { scrypt, scryptSync } from "./internal/crypto/scrypt.ts";
-import { hkdf, hkdfSync } from "./internal/crypto/hkdf.ts";
+} from "./internal/crypto/pbkdf2.js";
+import { scrypt, scryptSync } from "./internal/crypto/scrypt.js";
+import { hkdf, hkdfSync } from "./internal/crypto/hkdf.js";
 import {
   generateKey,
   generateKeyPair,
   generateKeyPairSync,
   generateKeySync,
-} from "./internal/crypto/keygen.ts";
+} from "./internal/crypto/keygen.js";
 import type {
   BasePrivateKeyEncodingOptions,
   DSAKeyPairKeyObjectOptions,
@@ -60,26 +60,26 @@ import type {
   X25519KeyPairOptions,
   X448KeyPairKeyObjectOptions,
   X448KeyPairOptions,
-} from "./internal/crypto/keygen.ts";
+} from "./internal/crypto/keygen.js";
 import {
   createPrivateKey,
   createPublicKey,
   createSecretKey,
   KeyObject,
-} from "./internal/crypto/keys.ts";
+} from "./internal/crypto/keys.js";
 import type {
   AsymmetricKeyDetails,
   JsonWebKeyInput,
   JwkKeyExportOptions,
   KeyExportOptions,
   KeyObjectType,
-} from "./internal/crypto/keys.ts";
+} from "./internal/crypto/keys.js";
 import {
   DiffieHellman,
   diffieHellman,
   DiffieHellmanGroup,
   ECDH,
-} from "./internal/crypto/diffiehellman.ts";
+} from "./internal/crypto/diffiehellman.js";
 import {
   Cipheriv,
   Decipheriv,
@@ -88,7 +88,7 @@ import {
   privateEncrypt,
   publicDecrypt,
   publicEncrypt,
-} from "./internal/crypto/cipher.ts";
+} from "./internal/crypto/cipher.js";
 import type {
   Cipher,
   CipherCCM,
@@ -105,7 +105,7 @@ import type {
   DecipherCCM,
   DecipherGCM,
   DecipherOCB,
-} from "./internal/crypto/cipher.ts";
+} from "./internal/crypto/cipher.js";
 import type {
   BinaryLike,
   BinaryToTextEncoding,
@@ -118,13 +118,13 @@ import type {
   LegacyCharacterEncoding,
   PrivateKeyInput,
   PublicKeyInput,
-} from "./internal/crypto/types.ts";
+} from "./internal/crypto/types.js";
 import {
   Sign,
   signOneShot,
   Verify,
   verifyOneShot,
-} from "./internal/crypto/sig.ts";
+} from "./internal/crypto/sig.js";
 import type {
   DSAEncoding,
   KeyLike,
@@ -133,23 +133,23 @@ import type {
   SignPrivateKeyInput,
   VerifyKeyObjectInput,
   VerifyPublicKeyInput,
-} from "./internal/crypto/sig.ts";
-import { createHash, Hash, Hmac } from "./internal/crypto/hash.ts";
-import { X509Certificate } from "./internal/crypto/x509.ts";
+} from "./internal/crypto/sig.js";
+import { createHash, Hash, Hmac } from "./internal/crypto/hash.js";
+import { X509Certificate } from "./internal/crypto/x509.js";
 import type {
   PeerCertificate,
   X509CheckOptions,
-} from "./internal/crypto/x509.ts";
+} from "./internal/crypto/x509.js";
 import {
   getCiphers,
   getCurves,
   getHashes,
   secureHeapUsed,
   setEngine,
-} from "./internal/crypto/util.ts";
-import type { SecureHeapUsage } from "./internal/crypto/util.ts";
-import Certificate from "./internal/crypto/certificate.ts";
-import type { TransformOptions, WritableOptions } from "./_stream.d.ts";
+} from "./internal/crypto/util.js";
+import type { SecureHeapUsage } from "./internal/crypto/util.js";
+import Certificate from "./internal/crypto/certificate.js";
+import type { TransformOptions, WritableOptions } from "./_stream.mjs";
 
 const webcrypto = globalThis.crypto;
 const fipsForced = getOptionValue("--force-fips");

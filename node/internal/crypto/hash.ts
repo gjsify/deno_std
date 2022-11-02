@@ -5,17 +5,17 @@ import {
   DigestAlgorithm,
   DigestContext,
   instantiateWasm,
-} from "../../../crypto/_wasm_crypto/mod.ts";
-import { Buffer } from "../../buffer.ts";
-import { Transform } from "../../stream.ts";
-import { encode as encodeToHex } from "../../../encoding/hex.ts";
-import { encode as encodeToBase64 } from "../../../encoding/base64.ts";
-import { encode as encodeToBase64Url } from "../../../encoding/base64url.ts";
-import type { TransformOptions } from "../../_stream.d.ts";
+} from "../../../crypto/_wasm_crypto/mod.js";
+import { Buffer } from "../../buffer.js";
+import { Transform } from "../../stream.js";
+import { encode as encodeToHex } from "../../../encoding/hex.js";
+import { encode as encodeToBase64 } from "../../../encoding/base64.js";
+import { encode as encodeToBase64Url } from "../../../encoding/base64url.js";
+import type { TransformOptions } from "../../_stream.mjs";
 import { validateString } from "../validators.mjs";
-import { notImplemented } from "../../_utils.ts";
-import type { BinaryLike, BinaryToTextEncoding, Encoding } from "./types.ts";
-import { KeyObject } from "./keys.ts";
+import { notImplemented } from "../../_utils.js";
+import type { BinaryLike, BinaryToTextEncoding, Encoding } from "./types.js";
+import { KeyObject } from "./keys.js";
 
 const coerceToBytes = (data: string | BufferSource): Uint8Array => {
   if (data instanceof Uint8Array) {

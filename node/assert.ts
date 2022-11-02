@@ -3,17 +3,17 @@
 import {
   AssertionError,
   AssertionErrorConstructorOptions,
-} from "./assertion_error.ts";
-import * as asserts from "../testing/asserts.ts";
-import { inspect } from "./util.ts";
+} from "./assertion_error.js";
+import * as asserts from "../testing/asserts.js";
+import { inspect } from "./util.js";
 import {
   ERR_AMBIGUOUS_ARGUMENT,
   ERR_INVALID_ARG_TYPE,
   ERR_INVALID_ARG_VALUE,
   ERR_INVALID_RETURN_VALUE,
   ERR_MISSING_ARGS,
-} from "./internal/errors.ts";
-import { isDeepEqual } from "./internal/util/comparisons.ts";
+} from "./internal/errors.js";
+import { isDeepEqual } from "./internal/util/comparisons.js";
 
 function innerFail(obj: {
   actual?: unknown;

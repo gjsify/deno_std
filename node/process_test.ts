@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-undef
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import "./global.ts";
+import "./global.js";
 import {
   assert,
   assertEquals,
@@ -9,12 +9,12 @@ import {
   assertObjectMatch,
   assertStrictEquals,
   assertThrows,
-} from "../testing/asserts.ts";
-import { stripColor } from "../fmt/colors.ts";
-import { deferred } from "../async/deferred.ts";
-import * as path from "../path/mod.ts";
-import { delay } from "../async/delay.ts";
-import { env } from "./process.ts";
+} from "../testing/asserts.js";
+import { stripColor } from "../fmt/colors.js";
+import { deferred } from "../async/deferred.js";
+import * as path from "../path/mod.js";
+import { delay } from "../async/delay.js";
+import { env } from "./process.js";
 
 Deno.test({
   name: "process.cwd and process.chdir success",
@@ -136,7 +136,7 @@ Deno.test({
         "run",
         "--quiet",
         "--unstable",
-        "./testdata/process_exit.ts",
+        "./testdata/process_exit.js",
       ],
       cwd,
     });
@@ -477,7 +477,7 @@ Deno.test("process in worker", async () => {
   const promise = deferred();
 
   const worker = new Worker(
-    new URL("./testdata/process_worker.ts", import.meta.url).href,
+    new URL("./testdata/process_worker.js", import.meta.url).href,
     { type: "module" },
   );
   worker.addEventListener("message", (e) => {
@@ -511,7 +511,7 @@ Deno.test("process.execPath", () => {
 
 Deno.test("process.execPath is writable", () => {
   // pnpm writes to process.execPath
-  // https://github.com/pnpm/pnpm/blob/67d8b65d2e8da1df3725034b8c5b1fcf3af4ad81/packages/config/src/index.ts#L175
+  // https://github.com/pnpm/pnpm/blob/67d8b65d2e8da1df3725034b8c5b1fcf3af4ad81/packages/config/src/index.js#L175
   const originalExecPath = process.execPath;
   try {
     process.execPath = "/path/to/node";
@@ -547,7 +547,7 @@ Deno.test({
         "run",
         "--quiet",
         "--unstable",
-        "./testdata/process_exit2.ts",
+        "./testdata/process_exit2.js",
       ],
       cwd,
     });

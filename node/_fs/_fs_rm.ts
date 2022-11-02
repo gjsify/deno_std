@@ -3,7 +3,7 @@ import {
   validateRmOptions,
   validateRmOptionsSync,
 } from "../internal/fs/utils.mjs";
-import { denoErrorToNodeError } from "../internal/errors.ts";
+import { denoErrorToNodeError } from "../internal/errors.js";
 import { promisify } from "../internal/util.mjs";
 
 type rmOptions = {

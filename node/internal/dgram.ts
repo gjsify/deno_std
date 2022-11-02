@@ -20,13 +20,13 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { lookup as defaultLookup } from "../dns.ts";
+import { lookup as defaultLookup } from "../dns.js";
 import { isInt32, validateFunction } from "./validators.mjs";
-import type { ErrnoException } from "./errors.ts";
-import { ERR_SOCKET_BAD_TYPE } from "./errors.ts";
-import { UDP } from "../internal_binding/udp_wrap.ts";
-import { guessHandleType } from "../internal_binding/util.ts";
-import { codeMap } from "../internal_binding/uv.ts";
+import type { ErrnoException } from "./errors.js";
+import { ERR_SOCKET_BAD_TYPE } from "./errors.js";
+import { UDP } from "../internal_binding/udp_wrap.js";
+import { guessHandleType } from "../internal_binding/util.js";
+import { codeMap } from "../internal_binding/uv.js";
 
 export type SocketType = "udp4" | "udp6";
 

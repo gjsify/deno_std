@@ -24,21 +24,21 @@
 // - https://github.com/nodejs/node/blob/master/src/pipe_wrap.cc
 // - https://github.com/nodejs/node/blob/master/src/pipe_wrap.h
 
-import { notImplemented } from "../_utils.ts";
-import { unreachable } from "../../testing/asserts.ts";
-import { ConnectionWrap } from "./connection_wrap.ts";
-import { AsyncWrap, providerType } from "./async_wrap.ts";
-import { LibuvStreamWrap } from "./stream_wrap.ts";
-import { codeMap } from "./uv.ts";
-import { delay } from "../../async/mod.ts";
-import { kStreamBaseField } from "./stream_wrap.ts";
+import { notImplemented } from "../_utils.js";
+import { unreachable } from "../../testing/asserts.js";
+import { ConnectionWrap } from "./connection_wrap.js";
+import { AsyncWrap, providerType } from "./async_wrap.js";
+import { LibuvStreamWrap } from "./stream_wrap.js";
+import { codeMap } from "./uv.js";
+import { delay } from "../../async/mod.js";
+import { kStreamBaseField } from "./stream_wrap.js";
 import {
   ceilPowOf2,
   INITIAL_ACCEPT_BACKOFF_DELAY,
   MAX_ACCEPT_BACKOFF_DELAY,
-} from "./_listen.ts";
-import { isWindows } from "../../_util/os.ts";
-import { fs } from "./constants.ts";
+} from "./_listen.js";
+import { isWindows } from "../../_util/os.js";
+import { fs } from "./constants.js";
 
 export enum socketType {
   SOCKET,

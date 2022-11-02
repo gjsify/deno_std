@@ -2,8 +2,8 @@
 
 // Based on: https://github.com/nodejs/node/blob/0646eda/lib/constants.js
 
-import { constants as fsConstants } from "./fs.ts";
-import { constants as osConstants } from "./os.ts";
+import { constants as fsConstants } from "./fs.js";
+import { constants as osConstants } from "./os.js";
 
 export default {
   ...fsConstants,

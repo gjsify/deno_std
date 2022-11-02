@@ -1,3 +1,3 @@
-import "../global.ts";
+import "../global.js";
 
 self.postMessage("hello");

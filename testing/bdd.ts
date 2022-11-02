@@ -12,7 +12,7 @@ import {
   ItDefinition,
   TestSuite,
   TestSuiteInternal,
-} from "./_test_suite.ts";
+} from "./_test_suite.js";
 export type { DescribeDefinition, ItDefinition, TestSuite };
 
 /** The arguments for an ItFunction. */

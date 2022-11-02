@@ -2,9 +2,9 @@
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
 // deno-lint-ignore camelcase
-import * as async_wrap from "../internal_binding/async_wrap.ts";
-import { ERR_ASYNC_CALLBACK } from "./errors.ts";
-export { asyncIdSymbol, ownerSymbol } from "../internal_binding/symbols.ts";
+import * as async_wrap from "../internal_binding/async_wrap.js";
+import { ERR_ASYNC_CALLBACK } from "./errors.js";
+export { asyncIdSymbol, ownerSymbol } from "../internal_binding/symbols.js";
 
 interface ActiveHooks {
   array: AsyncHook[];

@@ -2,25 +2,25 @@
 
 // This module implements 'child_process' module of Node.JS API.
 // ref: https://nodejs.org/api/child_process.html
-import { assert } from "../../_util/assert.ts";
-import { EventEmitter } from "../events.ts";
-import { os } from "../internal_binding/constants.ts";
-import { notImplemented, warnNotImplemented } from "../_utils.ts";
-import { Readable, Stream, Writable } from "../stream.ts";
-import { deferred } from "../../async/deferred.ts";
-import { isWindows } from "../../_util/os.ts";
-import { nextTick } from "../_next_tick.ts";
+import { assert } from "../../_util/assert.js";
+import { EventEmitter } from "../events.js";
+import { os } from "../internal_binding/constants.js";
+import { notImplemented, warnNotImplemented } from "../_utils.js";
+import { Readable, Stream, Writable } from "../stream.js";
+import { deferred } from "../../async/deferred.js";
+import { isWindows } from "../../_util/os.js";
+import { nextTick } from "../_next_tick.js";
 import {
   AbortError,
   ERR_INVALID_ARG_TYPE,
   ERR_INVALID_ARG_VALUE,
   ERR_UNKNOWN_SIGNAL,
-} from "./errors.ts";
-import { mapValues } from "../../collections/map_values.ts";
-import { Buffer } from "../buffer.ts";
-import { errnoException } from "./errors.ts";
-import { ErrnoException } from "../_global.d.ts";
-import { codeMap } from "../internal_binding/uv.ts";
+} from "./errors.js";
+import { mapValues } from "../../collections/map_values.js";
+import { Buffer } from "../buffer.js";
+import { errnoException } from "./errors.js";
+import { ErrnoException } from "../_global.d.js";
+import { codeMap } from "../internal_binding/uv.js";
 import {
   isInt32,
   validateBoolean,
@@ -40,7 +40,7 @@ import {
 } from "./primordials.mjs";
 import { kEmptyObject } from "./util.mjs";
 import { getValidatedPath } from "./fs/utils.mjs";
-import process from "../process.ts";
+import process from "../process.js";
 
 type NodeStdio = "pipe" | "overlapped" | "ignore" | "inherit" | "ipc";
 type DenoStdio = "inherit" | "piped" | "null";

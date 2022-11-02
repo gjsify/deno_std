@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import { BigIntStats, stat, Stats, statSync } from "./_fs_stat.ts";
-import { assertEquals, fail } from "../../testing/asserts.ts";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import { BigIntStats, stat, Stats, statSync } from "./_fs_stat.js";
+import { assertEquals, fail } from "../../testing/asserts.js";
 
 export function assertStats(actual: Stats, expected: Deno.FileInfo) {
   assertEquals(actual.dev, expected.dev);

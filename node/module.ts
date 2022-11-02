@@ -20,33 +20,33 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import "./global.ts";
+import "./global.js";
 
-import { core } from "./_core.ts";
-import nodeMods from "./module_all.ts";
-import upstreamMods from "./upstream_modules.ts";
+import { core } from "./_core.js";
+import nodeMods from "./module_all.js";
+import upstreamMods from "./upstream_modules.js";
 
-import * as path from "../path/mod.ts";
-import { assert } from "../_util/assert.ts";
-import { fileURLToPath, pathToFileURL } from "./url.ts";
-import { isWindows } from "../_util/os.ts";
+import * as path from "../path/mod.js";
+import { assert } from "../_util/assert.js";
+import { fileURLToPath, pathToFileURL } from "./url.js";
+import { isWindows } from "../_util/os.js";
 import {
   ERR_INVALID_MODULE_SPECIFIER,
   ERR_MODULE_NOT_FOUND,
   NodeError,
-} from "./internal/errors.ts";
-import type { PackageConfig } from "./module_esm.ts";
+} from "./internal/errors.js";
+import type { PackageConfig } from "./module_esm.js";
 import {
   encodedSepRegEx,
   packageExportsResolve,
   packageImportsResolve,
-} from "./module_esm.ts";
+} from "./module_esm.js";
 import {
   clearInterval,
   clearTimeout,
   setInterval,
   setTimeout,
-} from "./timers.ts";
+} from "./timers.js";
 
 const { hasOwn } = Object;
 const CHAR_FORWARD_SLASH = "/".charCodeAt(0);
@@ -665,7 +665,7 @@ class Module {
    * Also injects available Node.js builtin module polyfills.
    *
    * ```ts
-   *     import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.ts";
+   *     import { createRequire } from "https://deno.land/std@$STD_VERSION/node/module.js";
    *     const require = createRequire(import.meta.url);
    *     const fs = require("fs");
    *     const leftPad = require("left-pad");

@@ -14,20 +14,20 @@
  */
 
 import { inspect } from "../internal/util/inspect.mjs";
-import { codes } from "./error_codes.ts";
+import { codes } from "./error_codes.js";
 import {
   codeMap,
   errorMap,
   mapSysErrnoToUvErrno,
-} from "../internal_binding/uv.ts";
-import { assert } from "../../_util/assert.ts";
-import { isWindows } from "../../_util/os.ts";
-import { os as osConstants } from "../internal_binding/constants.ts";
+} from "../internal_binding/uv.js";
+import { assert } from "../../_util/assert.js";
+import { isWindows } from "../../_util/os.js";
+import { os as osConstants } from "../internal_binding/constants.js";
 const {
   errno: { ENOTDIR, ENOENT },
 } = osConstants;
-import { hideStackFrames } from "./hide_stack_frames.ts";
-import { getSystemErrorName } from "../_utils.ts";
+import { hideStackFrames } from "./hide_stack_frames.js";
+import { getSystemErrorName } from "../_utils.js";
 
 export { errorMap };
 

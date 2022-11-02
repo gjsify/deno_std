@@ -20,7 +20,7 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { nextTick } from "./_next_tick.ts";
+import { nextTick } from "./_next_tick.js";
 import { customPromisifyArgs } from "./internal/util.mjs";
 import {
   validateBoolean,
@@ -29,7 +29,7 @@ import {
   validateOneOf,
   validateString,
 } from "./internal/validators.mjs";
-import { isIP } from "./internal/net.ts";
+import { isIP } from "./internal/net.js";
 import {
   emitInvalidHostnameWarning,
   getDefaultResolver,
@@ -42,7 +42,7 @@ import {
   setDefaultResolver,
   setDefaultResultOrder,
   validateHints,
-} from "./internal/dns/utils.ts";
+} from "./internal/dns/utils.js";
 import type {
   AnyAaaaRecord,
   AnyARecord,
@@ -70,27 +70,27 @@ import type {
   ResolveWithTtlOptions,
   SoaRecord,
   SrvRecord,
-} from "./internal/dns/utils.ts";
-import promisesBase from "./internal/dns/promises.ts";
-import type { ErrnoException } from "./internal/errors.ts";
+} from "./internal/dns/utils.js";
+import promisesBase from "./internal/dns/promises.js";
+import type { ErrnoException } from "./internal/errors.js";
 import {
   dnsException,
   ERR_INVALID_ARG_TYPE,
   ERR_INVALID_ARG_VALUE,
-} from "./internal/errors.ts";
+} from "./internal/errors.js";
 import {
   AI_ADDRCONFIG as ADDRCONFIG,
   AI_ALL as ALL,
   AI_V4MAPPED as V4MAPPED,
-} from "./internal_binding/ares.ts";
+} from "./internal_binding/ares.js";
 import {
   ChannelWrapQuery,
   getaddrinfo,
   GetAddrInfoReqWrap,
   QueryReqWrap,
-} from "./internal_binding/cares_wrap.ts";
-import { toASCII } from "./internal/idna.ts";
-import { notImplemented } from "./_utils.ts";
+} from "./internal_binding/cares_wrap.js";
+import { toASCII } from "./internal/idna.js";
+import { notImplemented } from "./_utils.js";
 
 function onlookup(
   this: GetAddrInfoReqWrap,

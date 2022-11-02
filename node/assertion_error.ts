@@ -21,8 +21,8 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { inspect } from "./util.ts";
-import { stripColor as removeColors } from "../fmt/colors.ts";
+import { inspect } from "./util.js";
+import { stripColor as removeColors } from "../fmt/colors.js";
 
 function getConsoleWidth(): number {
   try {
@@ -44,7 +44,7 @@ const {
   keys: ObjectKeys,
 } = Object;
 
-import { ERR_INVALID_ARG_TYPE } from "./internal/errors.ts";
+import { ERR_INVALID_ARG_TYPE } from "./internal/errors.js";
 
 let blue = "";
 let green = "";

@@ -7,18 +7,18 @@ import {
   StringPrototypeReplace,
 } from "./internal/primordials.mjs";
 import assert from "./internal/assert.mjs";
-import * as net from "./net.ts";
-import { createSecureContext } from "./_tls_common.ts";
-import { kStreamBaseField } from "./internal_binding/stream_wrap.ts";
-import { connResetException } from "./internal/errors.ts";
-import { emitWarning } from "./process.ts";
-import { debuglog } from "./internal/util/debuglog.ts";
-import { constants as TCPConstants, TCP } from "./internal_binding/tcp_wrap.ts";
+import * as net from "./net.js";
+import { createSecureContext } from "./_tls_common.js";
+import { kStreamBaseField } from "./internal_binding/stream_wrap.js";
+import { connResetException } from "./internal/errors.js";
+import { emitWarning } from "./process.js";
+import { debuglog } from "./internal/util/debuglog.js";
+import { constants as TCPConstants, TCP } from "./internal_binding/tcp_wrap.js";
 import {
   constants as PipeConstants,
   Pipe,
-} from "./internal_binding/pipe_wrap.ts";
-import { EventEmitter } from "./events.ts";
+} from "./internal_binding/pipe_wrap.js";
+import { EventEmitter } from "./events.js";
 import { kEmptyObject } from "./internal/util.mjs";
 
 const kConnectOptions = Symbol("connect-options");

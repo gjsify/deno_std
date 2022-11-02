@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright 2017 crypto-browserify. All rights reserved. MIT license.
 
-import { assertThrows } from "../../../testing/asserts.ts";
-import { EVP_BytesToKey } from "./evp_bytes_to_key.ts";
-import { Buffer } from "../../buffer.ts";
+import { assertThrows } from "../../../testing/asserts.js";
+import { EVP_BytesToKey } from "./evp_bytes_to_key.js";
+import { Buffer } from "../../buffer.js";
 
 Deno.test("salt buffer length is 7", function () {
   assertThrows(

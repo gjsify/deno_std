@@ -1,14 +1,14 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "../../_utils.ts";
-import randomBytes from "./_randomBytes.ts";
-import randomFill, { randomFillSync } from "./_randomFill.ts";
-import randomInt from "./_randomInt.ts";
+import { notImplemented } from "../../_utils.js";
+import randomBytes from "./_randomBytes.js";
+import randomFill, { randomFillSync } from "./_randomFill.js";
+import randomInt from "./_randomInt.js";
 
-export { default as randomBytes } from "./_randomBytes.ts";
-export { default as randomFill, randomFillSync } from "./_randomFill.ts";
-export { default as randomInt } from "./_randomInt.ts";
+export { default as randomBytes } from "./_randomBytes.js";
+export { default as randomFill, randomFillSync } from "./_randomFill.js";
+export { default as randomInt } from "./_randomInt.js";
 
 export type LargeNumberLike =
   | ArrayBufferView

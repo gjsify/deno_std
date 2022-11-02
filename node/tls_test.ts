@@ -1,13 +1,13 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { assertEquals, assertInstanceOf } from "../testing/asserts.ts";
-import { delay } from "../async/delay.ts";
-import { deferred } from "../async/deferred.ts";
-import { fromFileUrl, join } from "./path.ts";
-import { serveTls } from "../http/server.ts";
-import * as tls from "./tls.ts";
-import * as net from "./net.ts";
-import * as stream from "./stream.ts";
+import { assertEquals, assertInstanceOf } from "../testing/asserts.js";
+import { delay } from "../async/delay.js";
+import { deferred } from "../async/deferred.js";
+import { fromFileUrl, join } from "./path.js";
+import { serveTls } from "../http/server.js";
+import * as tls from "./tls.js";
+import * as net from "./net.js";
+import * as stream from "./stream.js";
 
 const tlsTestdataDir = fromFileUrl(
   new URL("../http/testdata/tls", import.meta.url),

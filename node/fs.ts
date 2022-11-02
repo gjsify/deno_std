@@ -1,64 +1,64 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { access, accessPromise, accessSync } from "./_fs/_fs_access.ts";
+import { access, accessPromise, accessSync } from "./_fs/_fs_access.js";
 import {
   appendFile,
   appendFilePromise,
   appendFileSync,
-} from "./_fs/_fs_appendFile.ts";
-import { chmod, chmodPromise, chmodSync } from "./_fs/_fs_chmod.ts";
-import { chown, chownPromise, chownSync } from "./_fs/_fs_chown.ts";
-import { close, closeSync } from "./_fs/_fs_close.ts";
-import * as constants from "./_fs/_fs_constants.ts";
-import { copyFile, copyFilePromise, copyFileSync } from "./_fs/_fs_copy.ts";
-import Dir from "./_fs/_fs_dir.ts";
-import Dirent from "./_fs/_fs_dirent.ts";
-import { exists, existsSync } from "./_fs/_fs_exists.ts";
-import { fdatasync, fdatasyncSync } from "./_fs/_fs_fdatasync.ts";
-import { fstat, fstatSync } from "./_fs/_fs_fstat.ts";
-import { fsync, fsyncSync } from "./_fs/_fs_fsync.ts";
-import { ftruncate, ftruncateSync } from "./_fs/_fs_ftruncate.ts";
-import { futimes, futimesSync } from "./_fs/_fs_futimes.ts";
-import { link, linkPromise, linkSync } from "./_fs/_fs_link.ts";
-import { lstat, lstatPromise, lstatSync } from "./_fs/_fs_lstat.ts";
-import { mkdir, mkdirPromise, mkdirSync } from "./_fs/_fs_mkdir.ts";
-import { mkdtemp, mkdtempPromise, mkdtempSync } from "./_fs/_fs_mkdtemp.ts";
-import { open, openPromise, openSync } from "./_fs/_fs_open.ts";
-import { opendir, opendirPromise, opendirSync } from "./_fs/_fs_opendir.ts";
-import { read, readSync } from "./_fs/_fs_read.ts";
-import { readdir, readdirPromise, readdirSync } from "./_fs/_fs_readdir.ts";
-import { readFile, readFilePromise, readFileSync } from "./_fs/_fs_readFile.ts";
-import { readlink, readlinkPromise, readlinkSync } from "./_fs/_fs_readlink.ts";
-import { realpath, realpathPromise, realpathSync } from "./_fs/_fs_realpath.ts";
-import { rename, renamePromise, renameSync } from "./_fs/_fs_rename.ts";
-import { rmdir, rmdirPromise, rmdirSync } from "./_fs/_fs_rmdir.ts";
-import { rm, rmPromise, rmSync } from "./_fs/_fs_rm.ts";
-import { stat, statPromise, statSync } from "./_fs/_fs_stat.ts";
-import { symlink, symlinkPromise, symlinkSync } from "./_fs/_fs_symlink.ts";
-import { truncate, truncatePromise, truncateSync } from "./_fs/_fs_truncate.ts";
-import { unlink, unlinkPromise, unlinkSync } from "./_fs/_fs_unlink.ts";
-import { utimes, utimesPromise, utimesSync } from "./_fs/_fs_utimes.ts";
+} from "./_fs/_fs_appendFile.js";
+import { chmod, chmodPromise, chmodSync } from "./_fs/_fs_chmod.js";
+import { chown, chownPromise, chownSync } from "./_fs/_fs_chown.js";
+import { close, closeSync } from "./_fs/_fs_close.js";
+import * as constants from "./_fs/_fs_constants.js";
+import { copyFile, copyFilePromise, copyFileSync } from "./_fs/_fs_copy.js";
+import Dir from "./_fs/_fs_dir.js";
+import Dirent from "./_fs/_fs_dirent.js";
+import { exists, existsSync } from "./_fs/_fs_exists.js";
+import { fdatasync, fdatasyncSync } from "./_fs/_fs_fdatasync.js";
+import { fstat, fstatSync } from "./_fs/_fs_fstat.js";
+import { fsync, fsyncSync } from "./_fs/_fs_fsync.js";
+import { ftruncate, ftruncateSync } from "./_fs/_fs_ftruncate.js";
+import { futimes, futimesSync } from "./_fs/_fs_futimes.js";
+import { link, linkPromise, linkSync } from "./_fs/_fs_link.js";
+import { lstat, lstatPromise, lstatSync } from "./_fs/_fs_lstat.js";
+import { mkdir, mkdirPromise, mkdirSync } from "./_fs/_fs_mkdir.js";
+import { mkdtemp, mkdtempPromise, mkdtempSync } from "./_fs/_fs_mkdtemp.js";
+import { open, openPromise, openSync } from "./_fs/_fs_open.js";
+import { opendir, opendirPromise, opendirSync } from "./_fs/_fs_opendir.js";
+import { read, readSync } from "./_fs/_fs_read.js";
+import { readdir, readdirPromise, readdirSync } from "./_fs/_fs_readdir.js";
+import { readFile, readFilePromise, readFileSync } from "./_fs/_fs_readFile.js";
+import { readlink, readlinkPromise, readlinkSync } from "./_fs/_fs_readlink.js";
+import { realpath, realpathPromise, realpathSync } from "./_fs/_fs_realpath.js";
+import { rename, renamePromise, renameSync } from "./_fs/_fs_rename.js";
+import { rmdir, rmdirPromise, rmdirSync } from "./_fs/_fs_rmdir.js";
+import { rm, rmPromise, rmSync } from "./_fs/_fs_rm.js";
+import { stat, statPromise, statSync } from "./_fs/_fs_stat.js";
+import { symlink, symlinkPromise, symlinkSync } from "./_fs/_fs_symlink.js";
+import { truncate, truncatePromise, truncateSync } from "./_fs/_fs_truncate.js";
+import { unlink, unlinkPromise, unlinkSync } from "./_fs/_fs_unlink.js";
+import { utimes, utimesPromise, utimesSync } from "./_fs/_fs_utimes.js";
 import {
   unwatchFile,
   watch,
   watchFile,
   watchPromise,
-} from "./_fs/_fs_watch.ts";
-// @deno-types="./_fs/_fs_write.d.ts"
+} from "./_fs/_fs_watch.js";
+// @deno-types="./_fs/_fs_write.d.js"
 import { write, writeSync } from "./_fs/_fs_write.mjs";
-// @deno-types="./_fs/_fs_writev.d.ts"
+// @deno-types="./_fs/_fs_writev.d.js"
 import { writev, writevSync } from "./_fs/_fs_writev.mjs";
 import {
   writeFile,
   writeFilePromise,
   writeFileSync,
-} from "./_fs/_fs_writeFile.ts";
+} from "./_fs/_fs_writeFile.js";
 import { Stats } from "./internal/fs/utils.mjs";
 import {
   createReadStream,
   createWriteStream,
   ReadStream,
   WriteStream,
-} from "./internal/fs/streams.ts";
+} from "./internal/fs/streams.js";
 
 const {
   F_OK,

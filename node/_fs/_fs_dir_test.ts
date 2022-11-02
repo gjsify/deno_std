@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals, fail } from "../../testing/asserts.ts";
-import { assertCallbackErrorUncaught } from "../_utils.ts";
-import Dir from "./_fs_dir.ts";
-import type Dirent from "./_fs_dirent.ts";
+import { assert, assertEquals, fail } from "../../testing/asserts.js";
+import { assertCallbackErrorUncaught } from "../_utils.js";
+import Dir from "./_fs_dir.js";
+import type Dirent from "./_fs_dirent.js";
 
 Deno.test({
   name: "Closing current directory with callback is successful",
@@ -169,7 +169,7 @@ Deno.test({
 
 Deno.test("[std/node/fs] Dir.close callback isn't called twice if error is thrown", async () => {
   const tempDir = await Deno.makeTempDir();
-  const importUrl = new URL("./_fs_dir.ts", import.meta.url);
+  const importUrl = new URL("./_fs_dir.js", import.meta.url);
   await assertCallbackErrorUncaught({
     prelude: `
     import Dir from ${JSON.stringify(importUrl)};
@@ -185,7 +185,7 @@ Deno.test("[std/node/fs] Dir.close callback isn't called twice if error is throw
 
 Deno.test("[std/node/fs] Dir.read callback isn't called twice if error is thrown", async () => {
   const tempDir = await Deno.makeTempDir();
-  const importUrl = new URL("./_fs_dir.ts", import.meta.url);
+  const importUrl = new URL("./_fs_dir.js", import.meta.url);
   await assertCallbackErrorUncaught({
     prelude: `
     import Dir from ${JSON.stringify(importUrl)};

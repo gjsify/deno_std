@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert } from "../../testing/asserts.ts";
-import { timingSafeEqual } from "./_timingSafeEqual.ts";
-import { Buffer } from "../buffer.ts";
+import { assert } from "../../testing/asserts.js";
+import { timingSafeEqual } from "./_timingSafeEqual.js";
+import { Buffer } from "../buffer.js";
 
 Deno.test("timingSafeEqual accepts different types of data", () => {
   const buf1 = Buffer.from("bar");

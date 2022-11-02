@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals, assertObjectMatch } from "../testing/asserts.ts";
-import { fromFileUrl, relative } from "../path/mod.ts";
-import { EventEmitter, once } from "./events.ts";
-import * as workerThreads from "./worker_threads.ts";
+import { assert, assertEquals, assertObjectMatch } from "../testing/asserts.js";
+import { fromFileUrl, relative } from "../path/mod.js";
+import { EventEmitter, once } from "./events.js";
+import * as workerThreads from "./worker_threads.js";
 
 Deno.test({
   name: "[worker_threads] isMainThread",
@@ -54,7 +54,7 @@ Deno.test({
   name: "[worker_threads] Worker threadId",
   async fn() {
     const worker = new workerThreads.Worker(
-      new URL("./testdata/worker_threads.ts", import.meta.url),
+      new URL("./testdata/worker_threads.js", import.meta.url),
     );
     worker.postMessage("Hello, how are you my thread?");
     await once(worker, "message");
@@ -62,7 +62,7 @@ Deno.test({
     worker.terminate();
 
     const worker1 = new workerThreads.Worker(
-      new URL("./testdata/worker_threads.ts", import.meta.url),
+      new URL("./testdata/worker_threads.js", import.meta.url),
     );
     worker1.postMessage("Hello, how are you my thread?");
     await once(worker1, "message");
@@ -81,7 +81,7 @@ Deno.test({
     });
     const { port1 } = new MessageChannel();
     const worker = new workerThreads.Worker(
-      new URL("./testdata/worker_threads.ts", import.meta.url),
+      new URL("./testdata/worker_threads.js", import.meta.url),
       {
         workerData: ["hey", true, false, 2, port1],
         transferList: [port1],
@@ -104,7 +104,7 @@ Deno.test({
 });
 
 const workerThreadsURL = JSON.stringify(
-  new URL("./worker_threads.ts", import.meta.url).toString(),
+  new URL("./worker_threads.js", import.meta.url).toString(),
 );
 
 Deno.test({
@@ -128,7 +128,7 @@ Deno.test({
   name: "[worker_threads] inheritences",
   async fn() {
     const eventsURL = JSON.stringify(
-      new URL("./events.ts", import.meta.url).toString(),
+      new URL("./events.js", import.meta.url).toString(),
     );
 
     const worker = new workerThreads.Worker(
@@ -154,7 +154,7 @@ Deno.test({
   name: "[worker_threads] Worker workerData",
   async fn() {
     const worker = new workerThreads.Worker(
-      new URL("./testdata/worker_threads.ts", import.meta.url),
+      new URL("./testdata/worker_threads.js", import.meta.url),
       {
         workerData: null,
       },
@@ -165,7 +165,7 @@ Deno.test({
     worker.terminate();
 
     const worker1 = new workerThreads.Worker(
-      new URL("./testdata/worker_threads.ts", import.meta.url),
+      new URL("./testdata/worker_threads.js", import.meta.url),
     );
     worker1.postMessage("Hello, how are you my thread?");
     await once(worker1, "message");
@@ -179,7 +179,7 @@ Deno.test({
   async fn() {
     const worker = new workerThreads.Worker(relative(
       Deno.cwd(),
-      fromFileUrl(new URL("./testdata/worker_threads.ts", import.meta.url)),
+      fromFileUrl(new URL("./testdata/worker_threads.js", import.meta.url)),
     ));
     worker.postMessage("Hello, how are you my thread?");
     assertEquals((await once(worker, "message"))[0], "I'm fine!");

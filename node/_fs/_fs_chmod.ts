@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import type { CallbackWithError } from "./_fs_common.ts";
+import type { CallbackWithError } from "./_fs_common.js";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
-import * as pathModule from "../../path/mod.ts";
+import * as pathModule from "../../path/mod.js";
 import { parseFileMode } from "../internal/validators.mjs";
-import { Buffer } from "../buffer.ts";
+import { Buffer } from "../buffer.js";
 import { promisify } from "../internal/util.mjs";
 
 export function chmod(

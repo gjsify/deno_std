@@ -4,10 +4,10 @@ import {
   createWriteStream,
   ReadStream,
   WriteStream,
-} from "./streams.ts";
-import { assertEquals } from "../../../testing/asserts.ts";
-import { Buffer } from "../../buffer.ts";
-import * as path from "../../path/mod.ts";
+} from "./streams.js";
+import { assertEquals } from "../../../testing/asserts.js";
+import { Buffer } from "../../buffer.js";
+import * as path from "../../path/mod.js";
 
 const moduleDir = path.dirname(path.fromFileUrl(import.meta.url));
 const testData = path.resolve(moduleDir, "testdata", "hello.txt");

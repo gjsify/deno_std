@@ -1,11 +1,11 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { existsSync } from "../../fs/exists.ts";
-import { getOpenOptions } from "./_fs_common.ts";
+import { existsSync } from "../../fs/exists.js";
+import { getOpenOptions } from "./_fs_common.js";
 import { promisify } from "../internal/util.mjs";
 import { parseFileMode } from "../internal/validators.mjs";
-import { ERR_INVALID_ARG_TYPE } from "../internal/errors.ts";
+import { ERR_INVALID_ARG_TYPE } from "../internal/errors.js";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
-import type { Buffer } from "../buffer.ts";
+import type { Buffer } from "../buffer.js";
 
 export type openFlags =
   | "a"

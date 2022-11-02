@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { assert } from "../testing/asserts.ts";
-import timers from "./timers.ts";
-import timersPromises from "./timers/promises.ts";
+import { assert } from "../testing/asserts.js";
+import timers from "./timers.js";
+import timersPromises from "./timers/promises.js";
 
 Deno.test("[node/timers setTimeout]", () => {
   {

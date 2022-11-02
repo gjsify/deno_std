@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import Context from "./snapshot_preview1.ts";
+import Context from "./snapshot_preview1.js";
 
 const options = JSON.parse(Deno.args[0]);
 const pathname = Deno.args[1];

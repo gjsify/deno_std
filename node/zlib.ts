@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { notImplemented } from "./_utils.ts";
-import { zlib as constants } from "./internal_binding/constants.ts";
+import { notImplemented } from "./_utils.js";
+import { zlib as constants } from "./internal_binding/constants.js";
 import {
   codes,
   createDeflate,

@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 "use strict";
 
-import { Buffer } from "../../buffer.ts";
+import { Buffer } from "../../buffer.js";
 import {
   ERR_FS_EISDIR,
   ERR_FS_INVALID_SYMLINK_TYPE,
@@ -10,16 +10,16 @@ import {
   ERR_OUT_OF_RANGE,
   hideStackFrames,
   uvException,
-} from "../errors.ts";
+} from "../errors.js";
 
 import {
   isArrayBufferView,
   isBigUint64Array,
   isDate,
   isUint8Array,
-} from "../util/types.ts";
+} from "../util/types.js";
 import { deprecate, once } from "../util.mjs";
-import { toPathIfFileURL } from "../url.ts";
+import { toPathIfFileURL } from "../url.js";
 import {
   validateAbortSignal,
   validateBoolean,
@@ -29,19 +29,19 @@ import {
   validateObject,
   validateUint32,
 } from "../validators.mjs";
-import pathModule from "../../path.ts";
+import pathModule from "../../path.js";
 const kType = Symbol("type");
 const kStats = Symbol("stats");
 import assert from "../assert.mjs";
-import { lstat, lstatSync } from "../../_fs/_fs_lstat.ts";
-import { stat, statSync } from "../../_fs/_fs_stat.ts";
-import { isWindows } from "../../../_util/os.ts";
-import process from "../../process.ts";
+import { lstat, lstatSync } from "../../_fs/_fs_lstat.js";
+import { stat, stajsync } from "../../_fs/_fs_stat.js";
+import { isWindows } from "../../../_util/os.js";
+import process from "../../process.js";
 
 import {
   fs as fsConstants,
   os as osConstants,
-} from "../../internal_binding/constants.ts";
+} from "../../internal_binding/constants.js";
 const {
   F_OK = 0,
   W_OK = 0,

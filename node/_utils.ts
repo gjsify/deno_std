@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { deferred } from "../async/mod.ts";
-import { assert, assertStringIncludes, fail } from "../testing/asserts.ts";
-import { readAll } from "../streams/conversion.ts";
-import { errorMap } from "./internal_binding/uv.ts";
-import { codes } from "./internal/error_codes.ts";
+import { deferred } from "../async/mod.js";
+import { assert, assertStringIncludes, fail } from "../testing/asserts.js";
+import { readAll } from "../streams/conversion.js";
+import { errorMap } from "./internal_binding/uv.js";
+import { codes } from "./internal/error_codes.js";
 
 export type BinaryEncodings = "binary";
 

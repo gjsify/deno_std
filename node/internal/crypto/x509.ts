@@ -1,12 +1,12 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { KeyObject } from "./keys.ts";
-import { Buffer } from "../../buffer.ts";
-import { ERR_INVALID_ARG_TYPE } from "../errors.ts";
-import { isArrayBufferView } from "../util/types.ts";
-import { notImplemented } from "../../_utils.ts";
-import { BinaryLike } from "./types.ts";
+import { KeyObject } from "./keys.js";
+import { Buffer } from "../../buffer.js";
+import { ERR_INVALID_ARG_TYPE } from "../errors.js";
+import { isArrayBufferView } from "../util/types.js";
+import { notImplemented } from "../../_utils.js";
+import { BinaryLike } from "./types.js";
 
 // deno-lint-ignore no-explicit-any
 export type PeerCertificate = any;

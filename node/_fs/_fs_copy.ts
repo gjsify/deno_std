@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import type { CallbackWithError } from "./_fs_common.ts";
-import { makeCallback } from "./_fs_common.ts";
-import { Buffer } from "../buffer.ts";
+import type { CallbackWithError } from "./_fs_common.js";
+import { makeCallback } from "./_fs_common.js";
+import { Buffer } from "../buffer.js";
 import { getValidatedPath, getValidMode } from "../internal/fs/utils.mjs";
-import { fs, os } from "../internal_binding/constants.ts";
+import { fs, os } from "../internal_binding/constants.js";
 import { promisify } from "../internal/util.mjs";
 
 export function copyFile(

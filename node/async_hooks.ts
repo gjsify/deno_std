@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { ERR_ASYNC_TYPE, ERR_INVALID_ASYNC_ID } from "./internal/errors.ts";
+import { ERR_ASYNC_TYPE, ERR_INVALID_ASYNC_ID } from "./internal/errors.js";
 import { validateFunction, validateString } from "./internal/validators.mjs";
 import {
   // deno-lint-ignore camelcase
@@ -16,7 +16,7 @@ import {
   registerDestroyHook,
   // deno-lint-ignore camelcase
   trigger_async_id_symbol,
-} from "./internal/async_hooks.ts";
+} from "./internal/async_hooks.js";
 
 const destroyedSymbol = Symbol("destroyed");
 

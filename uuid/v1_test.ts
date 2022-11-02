@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals } from "../testing/asserts.ts";
-import { generate, validate } from "./v1.ts";
+import { assert, assertEquals } from "../testing/asserts.js";
+import { generate, validate } from "./v1.js";
 
 Deno.test("[UUID] is_valid_uuid_v1", () => {
   const u = generate();

@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { fstat, fstatSync } from "./_fs_fstat.ts";
-import { fail } from "../../testing/asserts.ts";
-import { assertStats, assertStatsBigInt } from "./_fs_stat_test.ts";
-import type { BigIntStats, Stats } from "./_fs_stat.ts";
+import { fstat, fstatSync } from "./_fs_fstat.js";
+import { fail } from "../../testing/asserts.js";
+import { assertStats, assertStatsBigInt } from "./_fs_stat_test.js";
+import type { BigIntStats, Stats } from "./_fs_stat.js";
 
 Deno.test({
   name: "ASYNC: get a file Stats",

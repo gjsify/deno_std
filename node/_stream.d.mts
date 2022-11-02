@@ -3,8 +3,8 @@
 
 // Forked from https://github.com/DefinitelyTyped/DefinitelyTyped/blob/4f538975138678878fed5b2555c0672aa578ab7d/types/node/stream.d.ts
 
-import { Buffer } from "./buffer.ts";
-import { Abortable, EventEmitter } from "./_events.d.ts";
+import { Buffer } from "./buffer.js";
+import { Abortable, EventEmitter } from "./_events.mjs";
 import {
   Buffered,
   BufferEncoding,
@@ -12,7 +12,7 @@ import {
   ReadableStream,
   ReadWriteStream,
   WritableStream,
-} from "./_global.d.ts";
+} from "./_global.js";
 
 export class Stream extends EventEmitter {
   pipe<T extends WritableStream>(

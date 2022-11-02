@@ -20,17 +20,17 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { AsyncWrap, providerType } from "./async_wrap.ts";
-import { GetAddrInfoReqWrap } from "./cares_wrap.ts";
-import { HandleWrap } from "./handle_wrap.ts";
-import { ownerSymbol } from "./symbols.ts";
-import { codeMap, errorMap } from "./uv.ts";
-import { notImplemented } from "../_utils.ts";
-import { Buffer } from "../buffer.ts";
-import type { ErrnoException } from "../internal/errors.ts";
-import { isIP } from "../internal/net.ts";
+import { AsyncWrap, providerType } from "./async_wrap.js";
+import { GetAddrInfoReqWrap } from "./cares_wrap.js";
+import { HandleWrap } from "./handle_wrap.js";
+import { ownerSymbol } from "./symbols.js";
+import { codeMap, errorMap } from "./uv.js";
+import { notImplemented } from "../_utils.js";
+import { Buffer } from "../buffer.js";
+import type { ErrnoException } from "../internal/errors.js";
+import { isIP } from "../internal/net.js";
 
-import { isLinux, isWindows } from "../../_util/os.ts";
+import { isLinux, isWindows } from "../../_util/os.js";
 
 type MessageType = string | Uint8Array | Buffer | DataView;
 

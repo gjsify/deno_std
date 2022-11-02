@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Encodings } from "../_utils.ts";
-import { fromFileUrl } from "../path.ts";
-import { Buffer } from "../buffer.ts";
-import { writeAllSync } from "../../streams/conversion.ts";
+import { Encodings } from "../_utils.js";
+import { fromFileUrl } from "../path.js";
+import { Buffer } from "../buffer.js";
+import { writeAllSync } from "../../streams/conversion.js";
 import {
   CallbackWithError,
   checkEncoding,
@@ -10,9 +10,9 @@ import {
   getOpenOptions,
   isFileOptions,
   WriteFileOptions,
-} from "./_fs_common.ts";
-import { isWindows } from "../../_util/os.ts";
-import { AbortError, denoErrorToNodeError } from "../internal/errors.ts";
+} from "./_fs_common.js";
+import { isWindows } from "../../_util/os.js";
+import { AbortError, denoErrorToNodeError } from "../internal/errors.js";
 import {
   showStringCoercionDeprecation,
   validateStringAfterArrayBufferView,

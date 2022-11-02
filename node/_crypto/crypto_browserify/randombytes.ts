@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright 2017 crypto-browserify. All rights reserved. MIT license.
-import { Buffer } from "../../buffer.ts";
-import { nextTick } from "../../_next_tick.ts";
+import { Buffer } from "../../buffer.js";
+import { nextTick } from "../../_next_tick.js";
 
 // limit of Crypto.getRandomValues()
 // https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues

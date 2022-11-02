@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "../_utils.ts";
+import { notImplemented } from "../_utils.js";
 
-export { timingSafeEqual } from "./_timingSafeEqual.ts";
+export { timingSafeEqual } from "./_timingSafeEqual.js";
 
 export function getFipsCrypto(): boolean {
   notImplemented("crypto.getFipsCrypto");

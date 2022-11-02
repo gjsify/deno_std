@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { serveTls } from "../http/server.ts";
-import { dirname, fromFileUrl, join } from "../path/mod.ts";
-import { assertEquals } from "../testing/asserts.ts";
-import { Agent } from "./https.ts";
+import { serveTls } from "../http/server.js";
+import { dirname, fromFileUrl, join } from "../path/mod.js";
+import { assertEquals } from "../testing/asserts.js";
+import { Agent } from "./https.js";
 
 const stdRoot = dirname(dirname(fromFileUrl(import.meta.url)));
 const tlsDataDir = join(stdRoot, "http", "testdata", "tls");
@@ -26,7 +26,7 @@ Deno.test("[node/https] request makes https request", async () => {
       "--unstable",
       "--allow-all",
       "--no-check",
-      "node/testdata/https_request.ts",
+      "node/testdata/https_request.js",
     ],
     env: {
       NODE_EXTRA_CA_CERTS: join(tlsDataDir, "RootCA.pem"),
@@ -53,7 +53,7 @@ Deno.test("[node/https] get makes https GET request", async () => {
       "--unstable",
       "--allow-all",
       "--no-check",
-      "node/testdata/https_get.ts",
+      "node/testdata/https_get.js",
     ],
     stdout: "piped",
     stderr: "piped",

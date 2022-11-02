@@ -26,7 +26,7 @@ import {
   validateOneOf,
   validateString,
 } from "../validators.mjs";
-import { isIP } from "../net.ts";
+import { isIP } from "../net.js";
 import {
   emitInvalidHostnameWarning,
   getDefaultResolver,
@@ -35,7 +35,7 @@ import {
   isLookupOptions,
   Resolver as CallbackResolver,
   validateHints,
-} from "../dns/utils.ts";
+} from "../dns/utils.js";
 import type {
   LookupAddress,
   LookupAllOptions,
@@ -44,19 +44,19 @@ import type {
   Records,
   ResolveOptions,
   ResolveWithTtlOptions,
-} from "../dns/utils.ts";
+} from "../dns/utils.js";
 import {
   dnsException,
   ERR_INVALID_ARG_TYPE,
   ERR_INVALID_ARG_VALUE,
-} from "../errors.ts";
+} from "../errors.js";
 import {
   ChannelWrapQuery,
   getaddrinfo,
   GetAddrInfoReqWrap,
   QueryReqWrap,
-} from "../../internal_binding/cares_wrap.ts";
-import { toASCII } from "../idna.ts";
+} from "../../internal_binding/cares_wrap.js";
+import { toASCII } from "../idna.js";
 
 function onlookup(
   this: GetAddrInfoReqWrap,

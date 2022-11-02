@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Encodings } from "./_node.ts";
+import { Encodings } from "./_node.js";
 
 const encodings = [];
 encodings[Encodings.ASCII] = "ascii";

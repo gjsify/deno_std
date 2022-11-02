@@ -1,17 +1,17 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { kHandle } from "./constants.ts";
-import { ERR_INVALID_ARG_TYPE, ERR_INVALID_ARG_VALUE } from "../errors.ts";
-import { notImplemented } from "../../_utils.ts";
+import { kHandle } from "./constants.js";
+import { ERR_INVALID_ARG_TYPE, ERR_INVALID_ARG_VALUE } from "../errors.js";
+import { notImplemented } from "../../_utils.js";
 import type {
   KeyFormat,
   KeyType,
   PrivateKeyInput,
   PublicKeyInput,
-} from "./types.ts";
-import { Buffer } from "../../buffer.ts";
-import { isCryptoKey, isKeyObject, kKeyType } from "./_keys.ts";
+} from "./types.js";
+import { Buffer } from "../../buffer.js";
+import { isCryptoKey, isKeyObject, kKeyType } from "./_keys.js";
 
 export { isCryptoKey, isKeyObject };
 

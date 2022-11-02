@@ -4,8 +4,8 @@ import {
   NodeSyntaxError,
   NodeTypeError,
   NodeURIError,
-} from "./errors.ts";
-import { assertEquals } from "../../testing/asserts.ts";
+} from "./errors.js";
+import { assertEquals } from "../../testing/asserts.js";
 
 Deno.test("NodeSyntaxError string representation", () => {
   assertEquals(

@@ -20,27 +20,27 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { getOptionValue } from "../options.ts";
-import { emitWarning } from "../../process.ts";
+import { getOptionValue } from "../options.js";
+import { emitWarning } from "../../process.js";
 import {
   AI_ADDRCONFIG,
   AI_ALL,
   AI_V4MAPPED,
-} from "../../internal_binding/ares.ts";
-import { ChannelWrap, strerror } from "../../internal_binding/cares_wrap.ts";
+} from "../../internal_binding/ares.js";
+import { ChannelWrap, strerror } from "../../internal_binding/cares_wrap.js";
 import {
   ERR_DNS_SET_SERVERS_FAILED,
   ERR_INVALID_ARG_VALUE,
   ERR_INVALID_IP_ADDRESS,
-} from "../errors.ts";
-import type { ErrnoException } from "../errors.ts";
+} from "../errors.js";
+import type { ErrnoException } from "../errors.js";
 import {
   validateArray,
   validateInt32,
   validateOneOf,
   validateString,
 } from "../validators.mjs";
-import { isIP } from "../net.ts";
+import { isIP } from "../net.js";
 
 export interface LookupOptions {
   family?: number | undefined;

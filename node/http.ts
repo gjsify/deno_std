@@ -1,22 +1,22 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { type Deferred, deferred } from "../async/deferred.ts";
-import { core } from "./_core.ts";
-import { _normalizeArgs, ListenOptions, Socket } from "./net.ts";
-import { Buffer } from "./buffer.ts";
-import { ERR_SERVER_NOT_RUNNING } from "./internal/errors.ts";
-import { EventEmitter } from "./events.ts";
-import { nextTick } from "./_next_tick.ts";
-import { Status as STATUS_CODES } from "../http/http_status.ts";
+import { type Deferred, deferred } from "../async/deferred.js";
+import { core } from "./_core.js";
+import { _normalizeArgs, ListenOptions, Socket } from "./net.js";
+import { Buffer } from "./buffer.js";
+import { ERR_SERVER_NOT_RUNNING } from "./internal/errors.js";
+import { EventEmitter } from "./events.js";
+import { nextTick } from "./_next_tick.js";
+import { Status as STATUS_CODES } from "../http/http_status.js";
 import { validatePort } from "./internal/validators.mjs";
 import {
   Readable as NodeReadable,
   Writable as NodeWritable,
-} from "./stream.ts";
-import { OutgoingMessage } from "./_http_outgoing.ts";
+} from "./stream.js";
+import { OutgoingMessage } from "./_http_outgoing.js";
 import { Agent } from "./_http_agent.mjs";
-import { urlToHttpOptions } from "./internal/url.ts";
-import { constants, TCP } from "./internal_binding/tcp_wrap.ts";
+import { urlToHttpOptions } from "./internal/url.js";
+import { constants, TCP } from "./internal_binding/tcp_wrap.js";
 
 const METHODS = [
   "ACL",

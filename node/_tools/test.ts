@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { magenta } from "../../fmt/colors.ts";
-import { dirname, fromFileUrl, join } from "../../path/mod.ts";
-import { fail } from "../../testing/asserts.ts";
-import { config, getPathsFromTestSuites } from "./common.ts";
+import { magenta } from "../../fmt/colors.js";
+import { dirname, fromFileUrl, join } from "../../path/mod.js";
+import { fail } from "../../testing/asserts.js";
+import { config, getPathsFromTestSuites } from "./common.js";
 
 // If the test case is invoked like
 // deno test -A node/_tools/test.ts -- <test-names>

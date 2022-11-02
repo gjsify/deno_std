@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "./_utils.ts";
+import { notImplemented } from "./_utils.js";
 
 /** A Worker object contains all public information and method about a worker.
  * In the primary it can be obtained using cluster.workers. In a worker it can

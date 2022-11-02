@@ -1,15 +1,15 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "./_utils.ts";
-import { urlToHttpOptions } from "./internal/url.ts";
+import { notImplemented } from "./_utils.js";
+import { urlToHttpOptions } from "./internal/url.js";
 import {
   Agent as HttpAgent,
   ClientRequest,
   IncomingMessageForClient as IncomingMessage,
   type RequestOptions,
-} from "./http.ts";
-import type { Socket } from "./net.ts";
+} from "./http.js";
+import type { Socket } from "./net.js";
 
 export class Agent extends HttpAgent {
 }

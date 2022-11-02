@@ -4,10 +4,10 @@ import {
   FileOptionsArgument,
   getEncoding,
   TextOptionsArgument,
-} from "./_fs_common.ts";
-import { Buffer } from "../buffer.ts";
-import { fromFileUrl } from "../path.ts";
-import { BinaryEncodings, Encodings, TextEncodings } from "../_utils.ts";
+} from "./_fs_common.js";
+import { Buffer } from "../buffer.js";
+import { fromFileUrl } from "../path.js";
+import { BinaryEncodings, Encodings, TextEncodings } from "../_utils.js";
 import { promisify } from "../internal/util.mjs";
 
 function maybeDecode(data: Uint8Array, encoding: TextEncodings): string;

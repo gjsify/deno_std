@@ -24,21 +24,21 @@
 // - https://github.com/nodejs/node/blob/master/src/tcp_wrap.cc
 // - https://github.com/nodejs/node/blob/master/src/tcp_wrap.h
 
-import { notImplemented } from "../_utils.ts";
-import { unreachable } from "../../testing/asserts.ts";
-import { ConnectionWrap } from "./connection_wrap.ts";
-import { AsyncWrap, providerType } from "./async_wrap.ts";
-import { LibuvStreamWrap } from "./stream_wrap.ts";
-import { ownerSymbol } from "./symbols.ts";
-import { codeMap } from "./uv.ts";
-import { delay } from "../../async/mod.ts";
-import { kStreamBaseField } from "./stream_wrap.ts";
-import { isIP } from "../internal/net.ts";
+import { notImplemented } from "../_utils.js";
+import { unreachable } from "../../testing/asserts.js";
+import { ConnectionWrap } from "./connection_wrap.js";
+import { AsyncWrap, providerType } from "./async_wrap.js";
+import { LibuvStreamWrap } from "./stream_wrap.js";
+import { ownerSymbol } from "./symbols.js";
+import { codeMap } from "./uv.js";
+import { delay } from "../../async/mod.js";
+import { kStreamBaseField } from "./stream_wrap.js";
+import { isIP } from "../internal/net.js";
 import {
   ceilPowOf2,
   INITIAL_ACCEPT_BACKOFF_DELAY,
   MAX_ACCEPT_BACKOFF_DELAY,
-} from "./_listen.ts";
+} from "./_listen.js";
 
 /** The type of TCP socket. */
 enum socketType {

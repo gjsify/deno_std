@@ -1,8 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, assertThrows, fail } from "../../testing/asserts.ts";
-import { appendFile, appendFileSync } from "./_fs_appendFile.ts";
-import { fromFileUrl } from "../path.ts";
-import { assertCallbackErrorUncaught } from "../_utils.ts";
+import { assertEquals, assertThrows, fail } from "../../testing/asserts.js";
+import { appendFile, appendFileSync } from "./_fs_appendFile.js";
+import { fromFileUrl } from "../path.js";
+import { assertCallbackErrorUncaught } from "../_utils.js";
 
 const decoder = new TextDecoder("utf-8");
 
@@ -243,7 +243,7 @@ Deno.test({
 
 Deno.test("[std/node/fs] appendFile callback isn't called twice if error is thrown", async () => {
   const tempFile = await Deno.makeTempFile();
-  const importUrl = new URL("./_fs_appendFile.ts", import.meta.url);
+  const importUrl = new URL("./_fs_appendFile.js", import.meta.url);
   await assertCallbackErrorUncaught({
     prelude: `import { appendFile } from ${JSON.stringify(importUrl)}`,
     invocation: `appendFile(${JSON.stringify(tempFile)}, "hello world", `,

@@ -10,13 +10,13 @@ import {
   ERR_INVALID_ARG_TYPE,
   ERR_OUT_OF_RANGE,
   hideStackFrames,
-} from "../errors.ts";
-import { toBuf, validateByteSource } from "./util.ts";
-import { createSecretKey, isKeyObject, KeyObject } from "./keys.ts";
-import type { BinaryLike } from "./types.ts";
+} from "../errors.js";
+import { toBuf, validateByteSource } from "./util.js";
+import { createSecretKey, isKeyObject, KeyObject } from "./keys.js";
+import type { BinaryLike } from "./types.js";
 import { kMaxLength } from "../buffer.mjs";
-import { isAnyArrayBuffer, isArrayBufferView } from "../util/types.ts";
-import { notImplemented } from "../../_utils.ts";
+import { isAnyArrayBuffer, isArrayBufferView } from "../util/types.js";
+import { notImplemented } from "../../_utils.js";
 
 const validateParameters = hideStackFrames((hash, key, salt, info, length) => {
   key = prepareKey(key);

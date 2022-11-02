@@ -1,19 +1,19 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
-import { notImplemented } from "../../_utils.ts";
-import { isAnyArrayBuffer, isArrayBufferView } from "../util/types.ts";
-import { ERR_INVALID_ARG_TYPE } from "../errors.ts";
+import { notImplemented } from "../../_utils.js";
+import { isAnyArrayBuffer, isArrayBufferView } from "../util/types.js";
+import { ERR_INVALID_ARG_TYPE } from "../errors.js";
 import { validateInt32, validateString } from "../validators.mjs";
-import { Buffer } from "../../buffer.ts";
-import { getDefaultEncoding, toBuf } from "./util.ts";
+import { Buffer } from "../../buffer.js";
+import { getDefaultEncoding, toBuf } from "./util.js";
 import type {
   BinaryLike,
   BinaryToTextEncoding,
   ECDHKeyFormat,
-} from "./types.ts";
-import { KeyObject } from "./keys.ts";
-import type { BufferEncoding } from "../../_global.d.ts";
+} from "./types.js";
+import { KeyObject } from "./keys.js";
+import type { BufferEncoding } from "../../_global.js";
 
 const DH_GENERATOR = 2;
 
