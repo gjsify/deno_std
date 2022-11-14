@@ -5,15 +5,15 @@ import {
   assertRejects,
   assertStringIncludes,
   assertThrows,
-} from "../testing/asserts.ts";
+} from "../testing/asserts.js";
 import {
   config,
   configSync,
   MissingEnvVarsError,
   parse,
   stringify,
-} from "./mod.ts";
-import * as path from "../path/mod.ts";
+} from "./mod.js";
+import * as path from "../path/mod.js";
 
 const moduleDir = path.dirname(path.fromFileUrl(import.meta.url));
 const testdataDir = path.resolve(moduleDir, "testdata");

@@ -27,7 +27,7 @@ import nodeMods from "./module_all.js";
 import upstreamMods from "./upstream_modules.js";
 
 import * as path from "../path/mod.js";
-import { assert } from "../_util/assert.js";
+import { assert } from "../_util/asserts.js";
 import { fileURLToPath, pathToFileURL } from "./url.js";
 import { isWindows } from "../_util/os.js";
 import {

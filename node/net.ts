@@ -87,14 +87,14 @@ import {
   PipeConnectWrap,
 } from "./internal_binding/pipe_wrap.js";
 import { ShutdownWrap } from "./internal_binding/stream_wrap.js";
-import { assert } from "../_util/assert.js";
+import { assert } from "../_util/asserts.js";
 import { isWindows } from "../_util/os.js";
 import { ADDRCONFIG, lookup as dnsLookup } from "./dns.js";
 import { codeMap } from "./internal_binding/uv.js";
 import { guessHandleType } from "./internal_binding/util.js";
 import { debuglog } from "./internal/util/debuglog.js";
 import type { DuplexOptions } from "./_stream.mjs";
-import type { BufferEncoding } from "./_global.d.js";
+import type { BufferEncoding } from "./_global.js";
 import type { Abortable } from "./_events.mjs";
 
 let debug = debuglog("net", (fn) => {

@@ -3,11 +3,11 @@
 // Copyright 2011-2015 by Vitaly Puzrin. All rights reserved. MIT license.
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { parse, parseAll } from "./parse.ts";
-import { assertEquals, assertThrows } from "../../testing/asserts.ts";
-import { DEFAULT_SCHEMA, EXTENDED_SCHEMA } from "./schema/mod.ts";
-import { YAMLError } from "./error.ts";
-import { Type } from "./type.ts";
+import { parse, parseAll } from "./parse.js";
+import { assertEquals, assertThrows } from "../../testing/asserts.js";
+import { DEFAULT_SCHEMA, EXTENDED_SCHEMA } from "./schema/mod.js";
+import { YAMLError } from "./error.js";
+import { Type } from "./type.js";
 
 Deno.test({
   name: "`parse` parses single document yaml string",

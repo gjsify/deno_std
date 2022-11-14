@@ -5,7 +5,7 @@ import {
   pbkdf2Sync,
 } from "./pbkdf2.js";
 import { assert, assertEquals } from "../../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../../_utils.js";
+import { assertCallbackErrorUncaught } from "../../_test_utils.js";
 
 type Pbkdf2Fixture = {
   key: string | Float64Array | Int32Array | Uint8Array;

@@ -1,19 +1,19 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { CsvStream } from "./stream.ts";
-import type { CsvStreamOptions } from "./stream.ts";
-import { ERR_QUOTE, ParseError } from "./_io.ts";
+import { CsvStream } from "./stream.js";
+import type { CsvStreamOptions } from "./stream.js";
+import { ERR_QUOTE, ParseError } from "./_io.js";
 import {
   readableStreamFromIterable,
   readableStreamFromReader,
-} from "../../streams/conversion.ts";
+} from "../../streams/conversion.js";
 import {
   assert,
   assertEquals,
   assertRejects,
   assertStringIncludes,
-} from "../../testing/asserts.ts";
-import { fromFileUrl, join } from "../../path/mod.ts";
-import { StringReader } from "../../io/readers.ts";
+} from "../../testing/asserts.js";
+import { fromFileUrl, join } from "../../path/mod.js";
+import { StringReader } from "../../io/readers.js";
 
 const testdataDir = join(fromFileUrl(import.meta.url), "../../testdata");
 const encoder = new TextEncoder();

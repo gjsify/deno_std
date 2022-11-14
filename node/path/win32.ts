@@ -19,7 +19,7 @@ import {
   isWindowsDeviceRoot,
   normalizeString,
 } from "./_util.js";
-import { assert } from "../../_util/assert.js";
+import { assert } from "../../_util/asserts.js";
 
 export const sep = "\\";
 export const delimiter = ";";

@@ -45,16 +45,16 @@ dgram.createSocket('udp4').bind(0, common.mustCall(function() {
 
 if (!common.hasIPv6) {
   common.printSkipMessage('udp6 part of test, because no IPv6 support');
-  return;
+  // return;
+} else {
+  dgram.createSocket('udp6').bind(0, common.mustCall(function() {
+    assert.strictEqual(typeof this.address().port, 'number');
+    assert.ok(isFinite(this.address().port));
+    assert.ok(this.address().port > 0);
+    let address = this.address().address;
+    if (address === '::ffff:0.0.0.0')
+      address = '::';
+    assert.strictEqual(address, '::');
+    this.close();
+  }));
 }
-
-dgram.createSocket('udp6').bind(0, common.mustCall(function() {
-  assert.strictEqual(typeof this.address().port, 'number');
-  assert.ok(isFinite(this.address().port));
-  assert.ok(this.address().port > 0);
-  let address = this.address().address;
-  if (address === '::ffff:0.0.0.0')
-    address = '::';
-  assert.strictEqual(address, '::');
-  this.close();
-}));

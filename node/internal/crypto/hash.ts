@@ -5,7 +5,7 @@ import {
   DigestAlgorithm,
   DigestContext,
   instantiateWasm,
-} from "../../../crypto/_wasm_crypto/mod.js";
+} from "../../../crypto/_wasm/mod.js";
 import { Buffer } from "../../buffer.js";
 import { Transform } from "../../stream.js";
 import { encode as encodeToHex } from "../../../encoding/hex.js";

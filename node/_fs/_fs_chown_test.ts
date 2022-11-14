@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { assertEquals, fail } from "../../testing/asserts.js";
 import { isWindows } from "../../_util/os.js";
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 import { chown, chownSync } from "./_fs_chown.js";
 
 // chown is difficult to test.  Best we can do is set the existing user id/group

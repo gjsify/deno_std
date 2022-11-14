@@ -6,7 +6,7 @@ import { EventEmitter } from "./events.js";
 import { validateString } from "./internal/validators.mjs";
 import { ERR_INVALID_ARG_TYPE, ERR_UNKNOWN_SIGNAL } from "./internal/errors.js";
 import { getOptionValue } from "./internal/options.js";
-import { assert } from "../_util/assert.js";
+import { assert } from "../_util/asserts.js";
 import { fromFileUrl, join } from "../path/mod.js";
 import {
   arch,

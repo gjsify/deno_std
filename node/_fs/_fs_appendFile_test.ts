@@ -2,7 +2,7 @@
 import { assertEquals, assertThrows, fail } from "../../testing/asserts.js";
 import { appendFile, appendFileSync } from "./_fs_appendFile.js";
 import { fromFileUrl } from "../path.js";
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 
 const decoder = new TextDecoder("utf-8");
 

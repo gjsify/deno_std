@@ -5,7 +5,7 @@
  * @module
  */
 
-import { difference, removeEmptyValues } from "./util.ts";
+import { difference, removeEmptyValues } from "./util.js";
 
 export interface DotenvConfig {
   [key: string]: string;

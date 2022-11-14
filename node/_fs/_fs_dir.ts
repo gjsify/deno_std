@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import Dirent from "./_fs_dirent.js";
-import { assert } from "../../_util/assert.js";
+import { assert } from "../../_util/asserts.js";
 import { ERR_MISSING_ARGS } from "../internal/errors.js";
 
 export default class Dir {

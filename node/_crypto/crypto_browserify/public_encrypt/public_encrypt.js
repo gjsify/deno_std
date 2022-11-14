@@ -6,7 +6,7 @@ import { randomBytes } from "../randombytes.ts";
 import { createHash } from "../../../internal/crypto/hash.ts";
 import mgf from "./mgf.js";
 import { xor } from "./xor.js";
-import { BN } from "../bn.js/bn.js";
+import { BN } from "../bn_js/bn.js";
 import { withPublic } from "./with_public.js";
 import crt from "../browserify_rsa.js";
 import { Buffer } from "../../../buffer.ts";

@@ -8,9 +8,9 @@
  * @module
  */
 
-import { red, stripColor } from "../fmt/colors.ts";
-import { buildMessage, diff, diffstr } from "./_diff.ts";
-import { format } from "./_format.ts";
+import { red, stripColor } from "../fmt/colors.js";
+import { buildMessage, diff, diffstr } from "./_diff.js";
+import { format } from "./_format.js";
 
 const CAN_NOT_DISPLAY = "[Cannot display]";
 

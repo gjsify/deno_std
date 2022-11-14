@@ -9,13 +9,13 @@
  * **to run this test**
  * deno run --allow-read archive/tar_test.ts
  */
-import { assert, assertEquals, assertExists } from "../testing/asserts.ts";
+import { assert, assertEquals, assertExists } from "../testing/asserts.js";
 
-import { dirname, fromFileUrl, resolve } from "../path/mod.ts";
-import { Tar, TarEntry, Untar } from "./tar.ts";
-import type { TarEntry as TarEntryType, TarHeader, TarMeta } from "./tar.ts";
-import { Buffer } from "../io/buffer.ts";
-import { copy, readAll } from "../streams/conversion.ts";
+import { dirname, fromFileUrl, resolve } from "../path/mod.js";
+import { Tar, TarEntry, Untar } from "./tar.js";
+import type { TarEntry as TarEntryType, TarHeader, TarMeta } from "./tar.js";
+import { Buffer } from "../io/buffer.js";
+import { copy, readAll } from "../streams/conversion.js";
 
 const moduleDir = dirname(fromFileUrl(import.meta.url));
 const testdataDir = resolve(moduleDir, "testdata");

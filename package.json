@@ -14,7 +14,9 @@
         "build:test": "yarn run build:test:gjs",
         "build:test:gjs": "gjsify build src/test.mts --app gjs --outfile test.gjs.mjs",
         "test": "yarn run print:name && yarn run build && yarn run build:test && yarn run test:gjs",
-        "test:gjs": "gjs -m test.gjs.mjs"
+        "test:gjs": "gjs -m test.gjs.mjs",
+        "git:upstream:init": "git remote add upstream https://github.com/denoland/deno_std.git || exit 0",
+        "git:upstream:merge": "yarn git:upstream:init && git fetch upstream && git merge upstream/main"
     },
     "keywords": [
         "gjs",

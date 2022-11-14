@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import * as path from "../../path/mod.js";
 import { assert, assertEquals, fail } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 import { link, linkSync } from "./_fs_link.js";
 
 Deno.test({

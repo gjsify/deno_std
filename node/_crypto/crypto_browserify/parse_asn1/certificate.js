@@ -2,7 +2,7 @@
 // Copyright 2017 crypto-browserify. All rights reserved. MIT license.
 // from https://github.com/crypto-browserify/parse-asn1/blob/fbd70dca8670d17955893e083ca69118908570be/certificate.js
 
-import * as asn from "../asn1.js/mod.js";
+import * as asn from "../asn1-js/mod.js";
 
 const Time = asn.define("Time", function () {
   this.choice({

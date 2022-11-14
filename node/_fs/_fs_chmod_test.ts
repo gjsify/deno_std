@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { assert, fail } from "../../testing/asserts.js";
 import { isWindows } from "../../_util/os.js";
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 import { chmod, chmodSync } from "./_fs_chmod.js";
 
 Deno.test({

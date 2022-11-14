@@ -25,7 +25,7 @@
 // - https://github.com/nodejs/node/blob/master/src/pipe_wrap.h
 
 import { notImplemented } from "../_utils.js";
-import { unreachable } from "../../testing/asserts.js";
+import { unreachable } from "../../_util/asserts.js";
 import { ConnectionWrap } from "./connection_wrap.js";
 import { AsyncWrap, providerType } from "./async_wrap.js";
 import { LibuvStreamWrap } from "./stream_wrap.js";

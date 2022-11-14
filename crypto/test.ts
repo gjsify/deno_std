@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals } from "../testing/asserts.ts";
-import { crypto as stdCrypto } from "./mod.ts";
-import * as bytes from "../bytes/mod.ts";
-import { dirname, fromFileUrl } from "../path/mod.ts";
-import { DigestAlgorithm, digestAlgorithms } from "./_wasm_crypto/mod.ts";
+import { assert, assertEquals } from "../testing/asserts.js";
+import { crypto as stdCrypto } from "./mod.js";
+import * as bytes from "../bytes/mod.js";
+import { dirname, fromFileUrl } from "../path/mod.js";
+import { DigestAlgorithm, digestAlgorithms } from "./_wasm/mod.js";
 const moduleDir = dirname(fromFileUrl(import.meta.url));
 
 const webCrypto = globalThis.crypto;
@@ -186,7 +186,7 @@ Deno.test("[crypto/digest] Memory use should remain reasonable even with large i
   await writer.write(
     new TextEncoder().encode(`
       import { crypto as stdCrypto } from "./mod.ts";
-      import { instantiateWithInstance } from "./_wasm_crypto/lib/deno_std_wasm_crypto.generated.mjs";
+      import { instantiateWithInstance } from "./_wasm/lib/deno_std_wasm_crypto.generated.mjs";
 
       const { memory } = instantiateWithInstance().instance.exports;
 
@@ -282,7 +282,7 @@ Deno.test("[crypto/digest] Memory use should remain reasonable even with many ca
   await writer.write(
     new TextEncoder().encode(`
       import { crypto as stdCrypto } from "./mod.ts";
-      import { instantiateWithInstance } from "./_wasm_crypto/lib/deno_std_wasm_crypto.generated.mjs";
+      import { instantiateWithInstance } from "./_wasm/lib/deno_std_wasm_crypto.generated.mjs";
 
       const { memory } = instantiateWithInstance().instance.exports;
 

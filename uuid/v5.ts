@@ -3,7 +3,7 @@
 
 import { bytesToUuid, uuidToBytes } from "./_common.js";
 import { concat } from "../bytes/mod.js";
-import { assert } from "../_util/assert.js";
+import { assert } from "../_util/asserts.js";
 
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

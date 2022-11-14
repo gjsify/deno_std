@@ -1,5 +1,5 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 import { readFile, readFileSync } from "./_fs_readFile.js";
 import * as path from "../../path/mod.js";
 import { assert, assertEquals } from "../../testing/asserts.js";

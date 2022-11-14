@@ -3,11 +3,14 @@
     "compilerOptions": {
         "module": "ESNext",
         "target": "ESNext",
+        "lib": ["ESNext"],
         "outDir": "lib",
         "declarationDir": "lib",
         "rootDir": ".",
         "composite": true,
-        "resolveJsonModule": false
+        "resolveJsonModule": false,
+        "moduleResolution": "node",
+        "allowJs": true
     },
-    "exclude": ["testing", "lib"]
+    "exclude": ["lib"]
 }

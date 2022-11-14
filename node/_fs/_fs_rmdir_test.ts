@@ -4,7 +4,7 @@ import { rmdir, rmdirSync } from "./_fs_rmdir.js";
 import { closeSync } from "./_fs_close.js";
 import { existsSync } from "../../fs/exists.js";
 import { join } from "../../path/mod.js";
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 import { isWindows } from "../../_util/os.js";
 
 Deno.test({

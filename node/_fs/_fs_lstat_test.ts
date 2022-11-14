@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { lstat, lstatSync } from "./_fs_lstat.js";
 import { fail } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 import { assertStats, assertStatsBigInt } from "./_fs_stat_test.js";
 import type { BigIntStats, Stats } from "./_fs_stat.js";
 

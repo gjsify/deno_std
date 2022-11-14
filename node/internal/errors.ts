@@ -20,7 +20,7 @@ import {
   errorMap,
   mapSysErrnoToUvErrno,
 } from "../internal_binding/uv.js";
-import { assert } from "../../_util/assert.js";
+import { assert } from "../../_util/asserts.js";
 import { isWindows } from "../../_util/os.js";
 import { os as osConstants } from "../internal_binding/constants.js";
 const {

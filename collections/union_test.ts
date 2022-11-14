@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
-import { assertEquals } from "../testing/asserts.ts";
-import { union } from "./union.ts";
+import { assertEquals } from "../testing/asserts.js";
+import { union } from "./union.js";
 
 function unionTest<I>(
   input: Array<Array<I>>,

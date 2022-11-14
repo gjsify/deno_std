@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { assertEquals, fail } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_utils.js";
+import { assertCallbackErrorUncaught } from "../_test_utils.js";
 import { rename, renameSync } from "./_fs_rename.js";
 import { existsSync } from "../../fs/exists.js";
 import { join, parse } from "../../path/mod.js";

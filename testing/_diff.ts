@@ -9,7 +9,7 @@ import {
   green,
   red,
   white,
-} from "../fmt/colors.ts";
+} from "../fmt/colors.js";
 
 interface FarthestPoint {
   y: number;

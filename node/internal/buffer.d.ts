@@ -2044,21 +2044,21 @@ export class Buffer extends Uint8Array {
   values(): IterableIterator<number>;
 }
 
-export const SlowBuffer: {
+export declare const SlowBuffer: {
   /** @deprecated since v6.0.0, use `Buffer.allocUnsafeSlow()` */
   new (size: number): Buffer;
   prototype: Buffer;
 };
 
-export const atob: typeof globalThis.atob;
-export const Blob: Blob;
-export const btoa: typeof globalThis.btoa;
-export const constants: {
+export declare const atob: typeof globalThis.atob;
+export declare const Blob: Blob;
+export declare const btoa: typeof globalThis.btoa;
+export declare const constants: {
   MAX_LENGTH: number;
   MAX_STRING_LENGTH: number;
 };
-export const kMaxLength: number;
-export const kStringMaxLength: number;
+export declare const kMaxLength: number;
+export declare const kStringMaxLength: number;
 
 declare const exports: {
   atob: typeof atob;
