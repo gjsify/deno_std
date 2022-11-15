@@ -8,7 +8,7 @@
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const common = require('./index.js');
+const common = require('./_index.js');
 
 const {
   isMainThread,

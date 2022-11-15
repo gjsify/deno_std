@@ -3,9 +3,9 @@
 
 // Forked from https://github.com/DefinitelyTyped/DefinitelyTyped/blob/9b9cd671114a2a5178809798d8e7f4d8ca6c2671/types/node/events.d.ts
 
-export const captureRejectionSymbol: unique symbol;
-export const defaultMaxListeners: number;
-export const errorMonitor: unique symbol;
+export declare const captureRejectionSymbol: unique symbol;
+export declare const defaultMaxListeners: number;
+export declare const errorMonitor: unique symbol;
 
 export interface Abortable {
   /**

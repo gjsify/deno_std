@@ -1,7 +1,7 @@
 // import type { Stats } from '../../_fs/_fs_stat';
 import type { ERR_INVALID_ARG_VALUE } from '../errors.js'
 
-export const kMaxUserId: number;
+export declare const kMaxUserId: number;
 
 export function assertEncoding(encoding: string): void;
 
@@ -33,7 +33,7 @@ export function getOptions(options: any, defaultOptions: any): any; // TODO
 
 export function handleErrorFromBinding(ctx: any): any; // TODO
 
-export const nullCheck: ERR_INVALID_ARG_VALUE | undefined;
+export declare const nullCheck: ERR_INVALID_ARG_VALUE | undefined;
 
 export function preprocessSymlinkDestination(path: string, type: string, linkPath: string): string;
 
@@ -109,43 +109,43 @@ export function getStatsFromBinding(stats: Float64Array | BigUint64Array, offset
 
 export function stringToFlags(flags: any, name: "flags"): any;
 
-export const stringToSymlinkType: (type: any) => any; // TODO
+export declare const stringToSymlinkType: (type: any) => any; // TODO
 
 export function toUnixTimestamp(time: number, name: "time"): number;
 
-export const validateOffsetLengthRead: any; // TODO
+export declare const validateOffsetLengthRead: any; // TODO
 
-export const validateOffsetLengthWrite: any; // TODO
+export declare const validateOffsetLengthWrite: any; // TODO
 
-export const validatePath: any; // TODO
+export declare const validatePath: any; // TODO
 
-export const getValidatedPath: any; // TODO
+export declare const getValidatedPath: any; // TODO
 
-export const getValidatedFd: any; // TODO
+export declare const getValidatedFd: any; // TODO
 
-export const validateBufferArray: any; // TODO
+export declare const validateBufferArray: any; // TODO
 
 export function warnOnNonPortableTemplate(template: string): any // TODO
 
-export const validateCpOptions: any; // TODO
+export declare const validateCpOptions: any; // TODO
 
-export const validateRmOptions: any; // TODO
+export declare const validateRmOptions: any; // TODO
 
-export const validateRmOptionsSync: any; // TODO
+export declare const validateRmOptionsSync: any; // TODO
 
 export function emitRecursiveRmdirWarning(): void;
 
-export const validateRmdirOptions: any; // TODO
+export declare const validateRmdirOptions: any; // TODO
 
-export const getValidMode: any;
+export declare const getValidMode: any;
 
-export const validateStringAfterArrayBufferView: any;
+export declare const validateStringAfterArrayBufferView: any;
 
-export const validatePosition: any;
+export declare const validatePosition: any;
 
-export const realpathCacheKey: Symbol;
+export declare const realpathCacheKey: Symbol;
 
-export const constants: {
+export declare const constants: {
     kIoMaxLength: number;
     kMaxUserId: number;
     kReadFileBufferLength: number;
@@ -153,7 +153,7 @@ export const constants: {
     kWriteFileMaxChunkSize: number;
 }
 
-export const showStringCoercionDeprecation: any; // TODO
+export declare const showStringCoercionDeprecation: any; // TODO
 
 interface Default {
     constants: typeof constants;

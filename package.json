@@ -8,12 +8,12 @@
     "scripts": {
         "clear": "rm -rf lib",
         "print:name": "echo '@gjsify/deno_std'",
-        "build": "yarn run build:gjsify && yarn run build:types",
-        "build:gjsify": "gjsify build --library node/**/*.{ts,js}",
+        "build": "yarn clear && yarn build:gjsify && yarn build:types",
+        "build:gjsify": "gjsify build --library **/*.{ts,js,mjs,mts} --log-level error",
         "build:types": "tsc --emitDeclarationOnly || exit 0",
-        "build:test": "yarn run build:test:gjs",
+        "build:test": "yarn build:test:gjs",
         "build:test:gjs": "gjsify build src/test.mts --app gjs --outfile test.gjs.mjs",
-        "test": "yarn run print:name && yarn run build && yarn run build:test && yarn run test:gjs",
+        "test": "yarn print:name && yarn build && yarn build:test && yarn test:gjs",
         "test:gjs": "gjs -m test.gjs.mjs",
         "git:upstream:init": "git remote add upstream https://github.com/denoland/deno_std.git || exit 0",
         "git:upstream:merge": "yarn git:upstream:init && git fetch upstream && git merge upstream/main"
@@ -26,7 +26,7 @@
         "@gjsify/cli": "workspace:^",
         "@gjsify/unit": "workspace:^",
         "@tsconfig/deno": "^1.0.6",
-        "@types/node": "^18.7.18",
-        "typescript": "^4.8.3"
+        "@types/node": "^18.11.9",
+        "typescript": "^4.8.4"
     }
 }

@@ -5,12 +5,14 @@
         "target": "ESNext",
         "lib": ["ESNext"],
         "outDir": "lib",
+        "declaration": true,
         "declarationDir": "lib",
         "rootDir": ".",
         "composite": true,
         "resolveJsonModule": false,
         "moduleResolution": "node",
-        "allowJs": true
+        "allowJs": true,
     },
+    "include": ["node/**/*.ts", "node/**/*.mts"],
     "exclude": ["lib"]
 }
