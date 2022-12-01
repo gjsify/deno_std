@@ -11,7 +11,7 @@
         "composite": true,
         "resolveJsonModule": false,
         "moduleResolution": "node",
-        "allowJs": true,
+        "allowJs": true
     },
     "include": ["node/**/*.ts", "node/**/*.mts"],
     "exclude": ["lib"]

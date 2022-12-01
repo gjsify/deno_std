@@ -8,7 +8,7 @@
     "scripts": {
         "clear": "rm -rf lib",
         "print:name": "echo '@gjsify/deno_std'",
-        "build": "yarn clear && yarn build:gjsify && yarn build:types",
+        "build": "yarn print:name && yarn clear && yarn build:gjsify && yarn build:types",
         "build:gjsify": "gjsify build --library **/*.{ts,js,mjs,mts} --log-level error",
         "build:types": "tsc --emitDeclarationOnly || exit 0",
         "build:test": "yarn build:test:gjs",
