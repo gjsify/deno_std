@@ -13,6 +13,6 @@
         "moduleResolution": "node",
         "allowJs": true
     },
-    "include": ["node/**/*.ts", "node/**/*.mts"],
+    "include": ["**/*.ts", "**/*.mts", "**/*.mjs", "**/*.js"],
     "exclude": ["lib"]
 }

@@ -2,7 +2,7 @@
 import { Encodings } from "../_utils.js";
 import { fromFileUrl } from "../path.js";
 import { Buffer } from "../buffer.js";
-import { writeAllSync } from "../../streams/conversion.js";
+import { writeAllSync } from "../../streams/write_all.js";
 import {
   CallbackWithError,
   checkEncoding,

@@ -2,10 +2,8 @@
 import { CsvStream } from "./stream.js";
 import type { CsvStreamOptions } from "./stream.js";
 import { ERR_QUOTE, ParseError } from "./_io.js";
-import {
-  readableStreamFromIterable,
-  readableStreamFromReader,
-} from "../../streams/conversion.js";
+import { readableStreamFromIterable } from "../../streams/readable_stream_from_iterable.js";
+import { readableStreamFromReader } from "../../streams/readable_stream_from_reader.js";
 import {
   assert,
   assertEquals,

@@ -32,7 +32,7 @@ import { notImplemented } from "../_utils.js";
 import { HandleWrap } from "./handle_wrap.js";
 import { AsyncWrap, providerType } from "./async_wrap.js";
 import { codeMap } from "./uv.js";
-import { writeAll } from "../../streams/conversion.js";
+import { writeAll } from "../../streams/write_all.js";
 
 enum StreamBaseStateFields {
   kReadBytesOrError,

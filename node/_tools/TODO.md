@@ -1,6 +1,6 @@
 # Remaining Node Tests
 
-Total: 2827
+Total: 2825
 
 - [abort/test-abort-backtrace.js](https://github.com/nodejs/node/tree/v18.12.0/test/abort/test-abort-backtrace.js)
 - [abort/test-abort-fatal-error.js](https://github.com/nodejs/node/tree/v18.12.0/test/abort/test-abort-fatal-error.js)
@@ -483,7 +483,6 @@ Total: 2827
 - [parallel/test-crypto-hash-stream-pipe.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-crypto-hash-stream-pipe.js)
 - [parallel/test-crypto-hash.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-crypto-hash.js)
 - [parallel/test-crypto-hkdf.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-crypto-hkdf.js)
-- [parallel/test-crypto-hmac.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-crypto-hmac.js)
 - [parallel/test-crypto-key-objects-messageport.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-crypto-key-objects-messageport.js)
 - [parallel/test-crypto-key-objects.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-crypto-key-objects.js)
 - [parallel/test-crypto-keygen-deprecation.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-crypto-keygen-deprecation.js)
@@ -1718,6 +1717,7 @@ Total: 2827
 - [parallel/test-process-env.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-env.js)
 - [parallel/test-process-euid-egid.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-euid-egid.js)
 - [parallel/test-process-exception-capture-errors.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-exception-capture-errors.js)
+- [parallel/test-process-exception-capture-should-abort-on-uncaught-setflagsfromstring.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-exception-capture-should-abort-on-uncaught-setflagsfromstring.js)
 - [parallel/test-process-exception-capture-should-abort-on-uncaught.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-exception-capture-should-abort-on-uncaught.js)
 - [parallel/test-process-exception-capture.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-exception-capture.js)
 - [parallel/test-process-exec-argv.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-exec-argv.js)
@@ -1739,7 +1739,6 @@ Total: 2827
 - [parallel/test-process-hrtime.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-hrtime.js)
 - [parallel/test-process-initgroups.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-initgroups.js)
 - [parallel/test-process-kill-null.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-kill-null.js)
-- [parallel/test-process-kill-pid.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-kill-pid.js)
 - [parallel/test-process-next-tick.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-next-tick.js)
 - [parallel/test-process-no-deprecation.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-no-deprecation.js)
 - [parallel/test-process-ppid.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-process-ppid.js)
@@ -2033,7 +2032,6 @@ Total: 2827
 - [parallel/test-timers-ordering.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-timers-ordering.js)
 - [parallel/test-timers-promises-scheduler.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-timers-promises-scheduler.js)
 - [parallel/test-timers-refresh-in-callback.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-timers-refresh-in-callback.js)
-- [parallel/test-timers-refresh.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-timers-refresh.js)
 - [parallel/test-timers-reset-process-domain-on-throw.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-timers-reset-process-domain-on-throw.js)
 - [parallel/test-timers-setimmediate-infinite-loop.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-timers-setimmediate-infinite-loop.js)
 - [parallel/test-timers-socket-timeout-removes-other-socket-unref-timer.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-timers-socket-timeout-removes-other-socket-unref-timer.js)
@@ -2104,7 +2102,6 @@ Total: 2827
 - [parallel/test-tls-connect-no-host.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-tls-connect-no-host.js)
 - [parallel/test-tls-connect-pipe.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-tls-connect-pipe.js)
 - [parallel/test-tls-connect-secure-context.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-tls-connect-secure-context.js)
-- [parallel/test-tls-connect-simple.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-tls-connect-simple.js)
 - [parallel/test-tls-connect-stream-writes.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-tls-connect-stream-writes.js)
 - [parallel/test-tls-connect-timeout-option.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-tls-connect-timeout-option.js)
 - [parallel/test-tls-delayed-attach-error.js](https://github.com/nodejs/node/tree/v18.12.0/test/parallel/test-tls-delayed-attach-error.js)

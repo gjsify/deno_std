@@ -26,13 +26,9 @@
 //
 // See also: http://docs.libuv.org/en/v1.x/errors.html#error-constants
 
-import { unreachable } from "../../testing/asserts.js";
+import { unreachable } from "../../_util/asserts.js";
 import { osType } from "../../_util/os.js";
 import { uvTranslateSysError } from "./_libuv_winerror.js";
-import { os } from "./constants.js";
-
-export const UV_EEXIST = os.errno.EEXIST;
-export const UV_ENOENT = os.errno.ENOENT;
 
 // In Node these values are coming from libuv:
 // Ref: https://github.com/libuv/libuv/blob/v1.x/include/uv/errno.h
@@ -433,7 +429,9 @@ export function mapSysErrnoToUvErrno(sysErrno: number): number {
 }
 
 export const UV_EAI_MEMORY = codeMap.get("EAI_MEMORY")!;
-export const UV_UNKNOWN = codeMap.get("UNKNOWN")!;
 export const UV_EBADF = codeMap.get("EBADF")!;
+export const UV_EEXIST = codeMap.get("EEXIST");
 export const UV_EINVAL = codeMap.get("EINVAL")!;
+export const UV_ENOENT = codeMap.get("ENOENT");
 export const UV_ENOTSOCK = codeMap.get("ENOTSOCK")!;
+export const UV_UNKNOWN = codeMap.get("UNKNOWN")!;

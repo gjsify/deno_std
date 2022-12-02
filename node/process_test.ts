@@ -14,7 +14,7 @@ import { stripColor } from "../fmt/colors.js";
 import { deferred } from "../async/deferred.js";
 import * as path from "../path/mod.js";
 import { delay } from "../async/delay.js";
-import { env } from "./process.js";
+import { argv, env } from "./process.js";
 
 Deno.test({
   name: "process.cwd and process.chdir success",
@@ -219,6 +219,7 @@ Deno.test({
 Deno.test({
   name: "process.argv",
   fn() {
+    assert(Array.isArray(argv));
     assert(Array.isArray(process.argv));
     assert(
       process.argv[0].match(/[^/\\]*deno[^/\\]*$/),

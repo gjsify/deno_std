@@ -3,7 +3,7 @@ import Context from "./snapshot_preview1.js";
 import { assertEquals, assertThrows } from "../testing/asserts.js";
 import { copy } from "../fs/copy.js";
 import * as path from "../path/mod.js";
-import { writeAll } from "../streams/conversion.js";
+import { writeAll } from "../streams/write_all.js";
 import { isWindows } from "../_util/os.js";
 
 const tests = [
@@ -84,7 +84,7 @@ for (const pathname of tests) {
       );
 
       try {
-        const process = await Deno.spawnChild(Deno.execPath(), {
+        const process = new Deno.Command(Deno.execPath(), {
           cwd: workdir,
           args: [
             "run",
@@ -98,16 +98,17 @@ for (const pathname of tests) {
           ],
           stdin: "piped",
         });
+        const child = process.spawn();
 
         if (options.stdin) {
-          const writer = process.stdin.getWriter();
+          const writer = child.stdin.getWriter();
           await writer.write(new TextEncoder().encode(options.stdin));
           writer.releaseLock();
         }
 
-        process.stdin.close();
+        child.stdin.close();
 
-        const { code, stdout, stderr } = await process.output();
+        const { code, stdout, stderr } = await child.output();
 
         if (options.stdout) {
           assertEquals(new TextDecoder().decode(stdout), options.stdout);

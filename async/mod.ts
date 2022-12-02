@@ -15,3 +15,4 @@ export * from "./delay.js";
 export * from "./mux_async_iterator.js";
 export * from "./pool.js";
 export * from "./tee.js";
+export * from "./retry.js";

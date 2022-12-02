@@ -1,6 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { Encodings } from "./_node.js";
-import { indexOfNeedle } from "../../bytes/mod.js";
+import { indexOfNeedle } from "../../bytes/index_of_needle.js";
 
 export function numberToBytes(n: number): Uint8Array {
   if (n === 0) return new Uint8Array([0]);

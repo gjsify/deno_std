@@ -15,7 +15,8 @@ import { dirname, fromFileUrl, resolve } from "../path/mod.js";
 import { Tar, TarEntry, Untar } from "./tar.js";
 import type { TarEntry as TarEntryType, TarHeader, TarMeta } from "./tar.js";
 import { Buffer } from "../io/buffer.js";
-import { copy, readAll } from "../streams/conversion.js";
+import { copy } from "../streams/copy.js";
+import { readAll } from "../streams/read_all.js";
 
 const moduleDir = dirname(fromFileUrl(import.meta.url));
 const testdataDir = resolve(moduleDir, "testdata");
