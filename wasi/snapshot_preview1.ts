@@ -1,6 +1,8 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // deno-lint-ignore-file no-unused-vars
 
+import { Deno, files, fs, core, io, os } from '@gjsify/deno-runtime/index';
+
 /**
  * Provides an implementation of the
  * [WebAssembly System Interface](https://wasi.dev/).
@@ -425,17 +427,17 @@ export default class Context {
 
     this.#fds = [
       {
-        rid: options.stdin ?? Deno.stdin.rid,
+        rid: options.stdin ?? files.stdin.rid,
         type: FILETYPE_CHARACTER_DEVICE,
         flags: FDFLAGS_APPEND,
       },
       {
-        rid: options.stdout ?? Deno.stdout.rid,
+        rid: options.stdout ?? files.stdout.rid,
         type: FILETYPE_CHARACTER_DEVICE,
         flags: FDFLAGS_APPEND,
       },
       {
-        rid: options.stderr ?? Deno.stderr.rid,
+        rid: options.stderr ?? files.stderr.rid,
         type: FILETYPE_CHARACTER_DEVICE,
         flags: FDFLAGS_APPEND,
       },
@@ -444,7 +446,7 @@ export default class Context {
     if (options.preopens) {
       for (const [vpath, path] of Object.entries(options.preopens)) {
         const type = FILETYPE_DIRECTORY;
-        const entries = Array.from(Deno.readDirSync(path));
+        const entries = Array.from(fs.readDirSync(path));
 
         const entry = {
           type,
@@ -633,7 +635,7 @@ export default class Context {
         }
 
         if (entry.rid) {
-          Deno.close(entry.rid);
+          core.close(entry.rid);
         }
 
         delete this.#fds[fd];
@@ -649,7 +651,7 @@ export default class Context {
           return ERRNO_BADF;
         }
 
-        Deno.fdatasyncSync(entry.rid!);
+        fs.fdatasyncSync(entry.rid!);
 
         return ERRNO_SUCCESS;
       }),
@@ -700,7 +702,7 @@ export default class Context {
 
         const memoryView = new DataView(this.#memory.buffer);
 
-        const info = Deno.fstatSync(entry.rid!);
+        const info = fs.fstatSync(entry.rid!);
 
         if (entry.type === undefined) {
           switch (true) {
@@ -770,7 +772,7 @@ export default class Context {
           return ERRNO_BADF;
         }
 
-        Deno.ftruncateSync(entry.rid!, Number(size));
+        fs.ftruncateSync(entry.rid!, Number(size));
 
         return ERRNO_SUCCESS;
       }),
@@ -798,7 +800,7 @@ export default class Context {
           mtim = BigInt(Date.now() * 1e6);
         }
 
-        Deno.utimeSync(entry.path!, Number(atim), Number(mtim));
+        fs.utimeSync(entry.path!, Number(atim), Number(mtim));
 
         return ERRNO_SUCCESS;
       }),
@@ -815,7 +817,7 @@ export default class Context {
           return ERRNO_BADF;
         }
 
-        const seek = Deno.seekSync(entry.rid!, 0, Deno.SeekMode.Current);
+        const seek = files.seekSync(entry.rid!, 0, io.SeekMode.Current);
         const memoryView = new DataView(this.#memory.buffer);
 
         let nread = 0;
@@ -831,10 +833,10 @@ export default class Context {
             dataOffset,
             dataLength,
           );
-          nread += Deno.readSync(entry.rid!, data) as number;
+          nread += io.readSync(entry.rid!, data) as number;
         }
 
-        Deno.seekSync(entry.rid!, seek, Deno.SeekMode.Start);
+        files.seekSync(entry.rid!, seek, io.SeekMode.Start);
         memoryView.setUint32(nreadOffset, nread, true);
 
         return ERRNO_SUCCESS;
@@ -900,7 +902,7 @@ export default class Context {
           return ERRNO_BADF;
         }
 
-        const seek = Deno.seekSync(entry.rid!, 0, Deno.SeekMode.Current);
+        const seek = files.seekSync(entry.rid!, 0, io.SeekMode.Current);
         const memoryView = new DataView(this.#memory.buffer);
 
         let nwritten = 0;
@@ -916,10 +918,10 @@ export default class Context {
             dataOffset,
             dataLength,
           );
-          nwritten += Deno.writeSync(entry.rid!, data) as number;
+          nwritten += io.writeSync(entry.rid!, data) as number;
         }
 
-        Deno.seekSync(entry.rid!, seek, Deno.SeekMode.Start);
+        files.seekSync(entry.rid!, seek, io.SeekMode.Start);
         memoryView.setUint32(nwrittenOffset, nwritten, true);
 
         return ERRNO_SUCCESS;
@@ -951,7 +953,7 @@ export default class Context {
             dataOffset,
             dataLength,
           );
-          nread += Deno.readSync(entry.rid!, data) as number;
+          nread += io.readSync(entry.rid!, data) as number;
         }
 
         memoryView.setUint32(nreadOffset, nread, true);
@@ -976,11 +978,11 @@ export default class Context {
 
         let bufferUsed = 0;
 
-        const entries = Array.from(Deno.readDirSync(entry.path!));
+        const entries = Array.from(fs.readDirSync(entry.path!));
         for (let i = Number(cookie); i < entries.length; i++) {
           const nameData = new TextEncoder().encode(entries[i].name);
 
-          const entryInfo = Deno.statSync(
+          const entryInfo = fs.statSync(
             resolve(entry.path!, entries[i].name),
           );
           const entryData = new Uint8Array(24 + nameData.byteLength);
@@ -1042,7 +1044,7 @@ export default class Context {
         }
 
         if (this.#fds[to].rid) {
-          Deno.close(this.#fds[to].rid!);
+          core.close(this.#fds[to].rid!);
         }
 
         this.#fds[to] = this.#fds[fd];
@@ -1065,7 +1067,7 @@ export default class Context {
         const memoryView = new DataView(this.#memory.buffer);
 
         // FIXME Deno does not support seeking with big integers
-        const newOffset = Deno.seekSync(entry.rid!, Number(offset), whence);
+        const newOffset = files.seekSync(entry.rid!, Number(offset), whence);
         memoryView.setBigUint64(newOffsetOffset, BigInt(newOffset), true);
 
         return ERRNO_SUCCESS;
@@ -1079,7 +1081,7 @@ export default class Context {
           return ERRNO_BADF;
         }
 
-        Deno.fsyncSync(entry.rid!);
+        fs.fsyncSync(entry.rid!);
 
         return ERRNO_SUCCESS;
       }),
@@ -1095,7 +1097,7 @@ export default class Context {
 
         const memoryView = new DataView(this.#memory.buffer);
 
-        const offset = Deno.seekSync(entry.rid!, 0, Deno.SeekMode.Current);
+        const offset = files.seekSync(entry.rid!, 0, io.SeekMode.Current);
         memoryView.setBigUint64(offsetOffset, BigInt(offset), true);
 
         return ERRNO_SUCCESS;
@@ -1127,7 +1129,7 @@ export default class Context {
             dataOffset,
             dataLength,
           );
-          nwritten += Deno.writeSync(entry.rid!, data) as number;
+          nwritten += io.writeSync(entry.rid!, data) as number;
         }
 
         memoryView.setUint32(nwrittenOffset, nwritten, true);
@@ -1157,7 +1159,7 @@ export default class Context {
         );
         const path = resolve(entry.path!, textDecoder.decode(data));
 
-        Deno.mkdirSync(path);
+        fs.mkdirSync(path);
 
         return ERRNO_SUCCESS;
       }),
@@ -1189,8 +1191,8 @@ export default class Context {
         const memoryView = new DataView(this.#memory.buffer);
 
         const info = (flags & LOOKUPFLAGS_SYMLINK_FOLLOW) != 0
-          ? Deno.statSync(path)
-          : Deno.lstatSync(path);
+          ? fs.statSync(path)
+          : fs.lstatSync(path);
 
         memoryView.setBigUint64(
           bufferOffset,
@@ -1292,7 +1294,7 @@ export default class Context {
           mtim = BigInt(Date.now()) * BigInt(1e6);
         }
 
-        Deno.utimeSync(path, Number(atim), Number(mtim));
+        fs.utimeSync(path, Number(atim), Number(mtim));
 
         return ERRNO_SUCCESS;
       }),
@@ -1330,7 +1332,7 @@ export default class Context {
         );
         const newPath = resolve(newEntry.path!, textDecoder.decode(newData));
 
-        Deno.linkSync(oldPath, newPath);
+        fs.linkSync(oldPath, newPath);
 
         return ERRNO_SUCCESS;
       }),
@@ -1372,7 +1374,7 @@ export default class Context {
           (dirflags & LOOKUPFLAGS_SYMLINK_FOLLOW) == LOOKUPFLAGS_SYMLINK_FOLLOW
         ) {
           try {
-            path = Deno.realPathSync(resolvedPath);
+            path = fs.realPathSync(resolvedPath);
             if (relative(entry.path, path).startsWith("..")) {
               return ERRNO_NOTCAPABLE;
             }
@@ -1388,7 +1390,7 @@ export default class Context {
           // directory this way so there's no native fstat but Deno.open
           // doesn't work with directories on windows so we'll have to work
           // around it for now.
-          const entries = Array.from(Deno.readDirSync(path));
+          const entries = Array.from(fs.readDirSync(path));
           const openedFd = this.#fds.push({
             flags: fdflags,
             path,
@@ -1468,7 +1470,7 @@ export default class Context {
           options.read = true;
         }
 
-        const { rid } = Deno.openSync(path, options);
+        const { rid } = files.openSync(path, options);
         const openedFd = this.#fds.push({
           rid,
           flags: fdflags,
@@ -1508,7 +1510,7 @@ export default class Context {
         );
         const path = resolve(entry.path!, new TextDecoder().decode(pathData));
 
-        const link = Deno.readLinkSync(path);
+        const link = fs.readLinkSync(path);
         const linkData = new TextEncoder().encode(link);
         memoryData.set(new Uint8Array(linkData, 0, bufferLength), bufferOffset);
 
@@ -1540,11 +1542,11 @@ export default class Context {
         );
         const path = resolve(entry.path!, textDecoder.decode(data));
 
-        if (!Deno.statSync(path).isDirectory) {
+        if (!fs.statSync(path).isDirectory) {
           return ERRNO_NOTDIR;
         }
 
-        Deno.removeSync(path);
+        fs.removeSync(path);
 
         return ERRNO_SUCCESS;
       }),
@@ -1581,7 +1583,7 @@ export default class Context {
         );
         const newPath = resolve(newEntry.path!, textDecoder.decode(newData));
 
-        Deno.renameSync(oldPath, newPath);
+        fs.renameSync(oldPath, newPath);
 
         return ERRNO_SUCCESS;
       }),
@@ -1616,7 +1618,7 @@ export default class Context {
         );
         const newPath = resolve(entry.path!, textDecoder.decode(newData));
 
-        Deno.symlinkSync(oldPath, newPath);
+        fs.symlinkSync(oldPath, newPath);
 
         return ERRNO_SUCCESS;
       }),
@@ -1643,7 +1645,7 @@ export default class Context {
         );
         const path = resolve(entry.path!, textDecoder.decode(data));
 
-        Deno.removeSync(path);
+        fs.removeSync(path);
 
         return ERRNO_SUCCESS;
       }),
@@ -1661,7 +1663,7 @@ export default class Context {
         rval: number,
       ): never => {
         if (this.#exitOnReturn) {
-          Deno.exit(rval);
+          os.exit(rval);
         }
 
         throw new ExitStatus(rval);
@@ -1809,6 +1811,7 @@ export default class Context {
         "WebAssembly.Instance export _initialize must be a function or not be defined",
       );
     }
+    // @ts-ignore
     _initialize?.();
   }
 }

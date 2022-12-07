@@ -36,10 +36,10 @@
  * @module
  */
 
-import { MultiReader } from "../io/readers.ts";
-import { Buffer, PartialReadError } from "../io/buffer.ts";
-import { assert } from "../_util/asserts.ts";
-import { readAll } from "../streams/read_all.ts";
+import { MultiReader } from "../io/readers.js";
+import { Buffer, PartialReadError } from "../io/buffer.js";
+import { assert } from "../_util/asserts.js";
+import { readAll } from "../streams/read_all.js";
 
 type Reader = Deno.Reader;
 type Seeker = Deno.Seeker;

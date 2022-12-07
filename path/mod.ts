@@ -21,9 +21,9 @@
  * @module
  */
 
-import { isWindows } from "../_util/os.ts";
-import * as _win32 from "./win32.ts";
-import * as _posix from "./posix.ts";
+import { isWindows } from "../_util/os.js";
+import * as _win32 from "./win32.js";
+import * as _posix from "./posix.js";
 
 const path = isWindows ? _win32 : _posix;
 
@@ -47,7 +47,7 @@ export const {
   toNamespacedPath,
 } = path;
 
-export * from "./common.ts";
-export { SEP, SEP_PATTERN } from "./separator.ts";
-export * from "./_interface.ts";
-export * from "./glob.ts";
+export * from "./common.js";
+export { SEP, SEP_PATTERN } from "./separator.js";
+export * from "./_interface.js";
+export * from "./glob.js";
