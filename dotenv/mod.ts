@@ -311,10 +311,10 @@ export function loadSync(
     restrictEnvAccessTo = [],
   }: LoadOptions = {},
 ): Record<string, string> {
-  const conf = parseFile(envPath, restrictEnvAccessTo);
+  const conf = parseFileSync(envPath, restrictEnvAccessTo);
 
   if (defaultsPath) {
-    const confDefaults = parseFile(defaultsPath, restrictEnvAccessTo);
+    const confDefaults = parseFileSync(defaultsPath, restrictEnvAccessTo);
     for (const key in confDefaults) {
       if (!(key in conf)) {
         conf[key] = confDefaults[key];
@@ -323,7 +323,7 @@ export function loadSync(
   }
 
   if (examplePath) {
-    const confExample = parseFile(examplePath, restrictEnvAccessTo);
+    const confExample = parseFileSync(examplePath, restrictEnvAccessTo);
     assertSafe(conf, confExample, allowEmptyValues, restrictEnvAccessTo);
   }
 
@@ -379,10 +379,10 @@ export async function load(
     restrictEnvAccessTo = [],
   }: LoadOptions = {},
 ): Promise<Record<string, string>> {
-  const conf = await parseFileAsync(envPath, restrictEnvAccessTo);
+  const conf = await parseFile(envPath, restrictEnvAccessTo);
 
   if (defaultsPath) {
-    const confDefaults = await parseFileAsync(
+    const confDefaults = await parseFile(
       defaultsPath,
       restrictEnvAccessTo,
     );
@@ -394,7 +394,7 @@ export async function load(
   }
 
   if (examplePath) {
-    const confExample = await parseFileAsync(
+    const confExample = await parseFile(
       examplePath,
       restrictEnvAccessTo,
     );
@@ -411,27 +411,24 @@ export async function load(
   return conf;
 }
 
-function parseFile(filepath: string, restrictEnvAccessTo: StringList = []) {
+function parseFileSync(
+  filepath: string,
+  restrictEnvAccessTo: StringList = [],
+): Record<string, string> {
   try {
-    return parse(
-      new TextDecoder("utf-8").decode(readFile.readFileSync(filepath)),
-      restrictEnvAccessTo,
-    );
+    return parse(readFile.readTextFileSync(filepath), restrictEnvAccessTo);
   } catch (e) {
-    if (e instanceof Deno.errors.NotFound) return {};
+    if (e instanceof errors.NotFound) return {};
     throw e;
   }
 }
 
-async function parseFileAsync(
+async function parseFile(
   filepath: string,
   restrictEnvAccessTo: StringList = [],
-) {
+): Promise<Record<string, string>> {
   try {
-    return parse(
-      new TextDecoder("utf-8").decode(await readFile.readFile(filepath)),
-      restrictEnvAccessTo,
-    );
+    return parse(await readFile.readTextFile(filepath), restrictEnvAccessTo);
   } catch (e) {
     if (e instanceof errors.NotFound) return {};
     throw e;
