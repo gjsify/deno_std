@@ -12,8 +12,9 @@
         "rootDir": ".",
         "composite": true,
         "resolveJsonModule": false,
-        "moduleResolution": "NodeNext",
-        "allowJs": true
+        "moduleResolution": "Bundler",
+        "allowJs": true,
+        "allowImportingTsExtensions": true
     },
     "include": ["**/*.ts", "**/*.mts", "**/*.mjs", "**/*.js"],
     "exclude": ["lib"]

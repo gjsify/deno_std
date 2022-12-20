@@ -2,7 +2,5 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "emitDeclarationOnly": true
-    },
-    "include": ["node/**/*.ts", "node/**/*.mts", "node/**/*.mjs", "node/**/*.js"],
-    "exclude": ["lib"]
+    }
 }
