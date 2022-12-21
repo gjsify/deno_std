@@ -2,11 +2,11 @@
 // Copyright DefinitelyTyped contributors. All rights reserved. MIT license.
 // deno-lint-ignore-file no-explicit-any
 
-import * as stream from "../../_stream.d.ts";
+import * as stream from "../../_stream.d.mts";
 import * as promises from "../../fs/promises.ts";
 
 import { Buffer } from "../../buffer.ts";
-import { BufferEncoding, ErrnoException } from "../../_global.d.ts";
+import type { BufferEncoding, ErrnoException } from "../../_global.d.ts";
 
 type PathLike = string | Buffer | URL;
 
@@ -208,7 +208,6 @@ export class WriteStream extends stream.Writable {
 interface StreamOptions {
   flags?: string | undefined;
   encoding?: BufferEncoding | undefined;
-  // @ts-ignore promises.FileHandle is not implemented
   fd?: number | promises.FileHandle | undefined;
   mode?: number | undefined;
   autoClose?: boolean | undefined;
