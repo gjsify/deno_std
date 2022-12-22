@@ -22,7 +22,7 @@
 
 "use strict";
 
-import { ERR_INVALID_ARG_VALUE, ERR_INVALID_CURSOR_POS } from "../errors.ts";
+import { ERR_INVALID_ARG_VALUE, ERR_INVALID_CURSOR_POS } from "../errors.js";
 
 import { validateFunction } from "../validators.mjs";
 

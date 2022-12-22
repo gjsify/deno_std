@@ -8,7 +8,7 @@ import {
   ERR_INCOMPATIBLE_OPTION_PAIR,
   ERR_INVALID_ARG_VALUE,
   isStackOverflowError,
-} from "../errors.ts";
+} from "../errors.js";
 import {
   validateArray,
   validateInteger,
@@ -25,7 +25,7 @@ const previewEntries = (iter, isKeyValue) => {
     return [...iter];
   }
 };
-import { Buffer } from "../../buffer.ts";
+import { Buffer } from "../../buffer.js";
 const { isBuffer } = Buffer;
 import { formatWithOptions, inspect } from "../util/inspect.mjs";
 import {
@@ -34,15 +34,15 @@ import {
   isSet,
   isSetIterator,
   isTypedArray,
-} from "../util/types.ts";
+} from "../util/types.js";
 import {
   CHAR_LOWERCASE_B as kTraceBegin,
   CHAR_LOWERCASE_E as kTraceEnd,
   CHAR_LOWERCASE_N as kTraceInstant,
   CHAR_UPPERCASE_C as kTraceCount,
-} from "../constants.ts";
+} from "../constants.js";
 import { clearScreenDown, cursorTo } from "../readline/callbacks.mjs";
-import cliTable from "../cli_table.ts";
+import cliTable from "../cli_table.js";
 const kCounts = Symbol("counts");
 
 const kTraceConsoleCategory = "node,node.console";

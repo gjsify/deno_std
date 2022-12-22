@@ -21,7 +21,7 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { core } from "../_core.ts";
+import { core } from "../_core.js";
 
 const _toString = Object.prototype.toString;
 

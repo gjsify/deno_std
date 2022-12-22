@@ -3,8 +3,8 @@ import { validateFunction, validateString } from "./validators.mjs";
 import { normalizeEncoding, slowCases } from "./normalize_encoding.mjs";
 export { normalizeEncoding, slowCases };
 import { ObjectCreate, StringPrototypeToUpperCase } from "./primordials.mjs";
-import { ERR_UNKNOWN_SIGNAL } from "./errors.ts";
-import { os } from "../internal_binding/constants.ts";
+import { ERR_UNKNOWN_SIGNAL } from "./errors.js";
+import { os } from "../internal_binding/constants.js";
 
 const { signals } = os;
 

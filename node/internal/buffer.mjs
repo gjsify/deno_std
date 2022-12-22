@@ -2,9 +2,9 @@
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 // Copyright Feross Aboukhadijeh, and other contributors. All rights reserved. MIT license.
 
-import { codes } from "./error_codes.ts";
-import { encodings } from "../internal_binding/string_decoder.ts";
-import { indexOfBuffer, indexOfNumber } from "../internal_binding/buffer.ts";
+import { codes } from "./error_codes.js";
+import { encodings } from "../internal_binding/string_decoder.js";
+import { indexOfBuffer, indexOfNumber } from "../internal_binding/buffer.js";
 import {
   asciiToBytes,
   base64ToBytes,
@@ -13,13 +13,13 @@ import {
   bytesToUtf16le,
   hexToBytes,
   utf16leToBytes,
-} from "../internal_binding/_utils.ts";
-import { isAnyArrayBuffer, isArrayBufferView } from "./util/types.ts";
+} from "../internal_binding/_utils.js";
+import { isAnyArrayBuffer, isArrayBufferView } from "./util/types.js";
 import { normalizeEncoding } from "./util.mjs";
 import { validateBuffer } from "./validators.mjs";
-import { isUint8Array } from "./util/types.ts";
-import * as base64 from "../../encoding/base64.ts";
-import * as base64url from "../../encoding/base64url.ts";
+import { isUint8Array } from "./util/types.js";
+import * as base64 from "../../encoding/base64.js";
+import * as base64url from "../../encoding/base64url.js";
 
 const utf8Encoder = new TextEncoder();
 

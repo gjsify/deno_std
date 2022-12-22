@@ -1,37 +1,55 @@
 {
-    "name": "@gjsify/deno_std",
-    "version": "0.0.1",
-    "description": "Gjsify fork of Deno standard library to make use of the node compatibility layer",
-    "main": "lib/index.js",
-    "module": "lib/index.js",
-    "type": "module",
-    "scripts": {
-        "clear": "rm -rf lib",
-        "print:name": "echo '@gjsify/deno_std'",
-        "build": "yarn print:name && yarn clear && yarn build:gjsify && yarn build:types",
-        "build:gjsify": "gjsify build --library **/*.{ts,js,mjs,mts} --exclude **/*.d.ts --log-level error",
-        "build:types": "tsc --project tsconfig_types.json || exit 0",
-        "build:test": "yarn build:test:gjs",
-        "build:test:gjs": "gjsify build src/test.mts --app gjs --outfile test.gjs.mjs",
-        "test": "yarn print:name && yarn build && yarn build:test && yarn test:gjs",
-        "test:gjs": "gjs -m test.gjs.mjs",
-        "git:upstream:init": "git remote add upstream https://github.com/denoland/deno_std.git || exit 0",
-        "git:upstream:diff": "open-cli https://github.com/gjsify/deno_std/compare/main...denoland:deno_std:main",
-        "git:upstream:_merge": "git fetch upstream && git merge upstream/main",
-        "git:upstream:merge": "yarn git:upstream:init && yarn git:upstream:diff && yarn git:upstream:_merge"
+  "name": "@gjsify/deno_std",
+  "version": "0.0.1",
+  "description": "Gjsify fork of Deno standard library to make use of the node compatibility layer",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
     },
-    "keywords": [
-        "gjs",
-        "node"
-    ],
-    "devDependencies": {
-        "@gjsify/cli": "workspace:^",
-        "@gjsify/unit": "workspace:^",
-        "@types/node": "^18.11.17",
-        "open-cli": "^7.1.0",
-        "typescript": "^5.0.0-dev.20221222"
-    },
-    "dependencies": {
-        "@gjsify/deno-runtime": "workspace:^"
+    "./*": {
+      "import": "./lib/*.js",
+      "default": "./lib/*.js"
     }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/*.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clear": "rm -rf lib",
+    "print:name": "echo '@gjsify/deno_std'",
+    "rename:js": "node rename.mjs",
+    "build": "yarn print:name && yarn clear && yarn build:gjsify && yarn build:types && yarn rename:js",
+    "build:gjsify": "gjsify build --library **/*.{ts,js,mjs,mts} --exclude **/*.d.ts --log-level error",
+    "build:types": "tsc --project tsconfig_types.json || exit 0",
+    "build:test": "yarn build:test:gjs",
+    "build:test:gjs": "gjsify build src/test.mts --app gjs --outfile test.gjs.mjs",
+    "test": "yarn print:name && yarn build && yarn build:test && yarn test:gjs",
+    "test:gjs": "gjs -m test.gjs.mjs",
+    "git:upstream:init": "git remote add upstream https://github.com/denoland/deno_std.git || exit 0",
+    "git:upstream:diff": "open-cli https://github.com/gjsify/deno_std/compare/main...denoland:deno_std:main",
+    "git:upstream:_merge": "git fetch upstream && git merge upstream/main",
+    "git:upstream:merge": "yarn git:upstream:init && yarn git:upstream:diff && yarn git:upstream:_merge"
+  },
+  "keywords": [
+    "gjs",
+    "node"
+  ],
+  "devDependencies": {
+    "@gjsify/cli": "workspace:^",
+    "@gjsify/unit": "workspace:^",
+    "@types/node": "^18.11.17",
+    "open-cli": "^7.1.0",
+    "typescript": "^5.0.0-dev.20221222"
+  },
+  "dependencies": {
+    "@gjsify/deno-runtime": "workspace:^"
+  }
 }

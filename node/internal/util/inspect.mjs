@@ -20,15 +20,15 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import * as types from "./types.ts";
+import * as types from "./types.js";
 import { validateObject, validateString } from "../validators.mjs";
-import { codes } from "../error_codes.ts";
+import { codes } from "../error_codes.js";
 
 import {
   ALL_PROPERTIES,
   getOwnNonIndexProperties,
   ONLY_ENUMERABLE,
-} from "../../internal_binding/util.ts";
+} from "../../internal_binding/util.js";
 
 const kObjectType = 0;
 const kArrayType = 1;

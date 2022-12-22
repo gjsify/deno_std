@@ -1,9 +1,9 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-import { codes } from "./error_codes.ts";
-import { hideStackFrames } from "./hide_stack_frames.ts";
-import { isArrayBufferView } from "./util/types.ts";
+import { codes } from "./error_codes.js";
+import { hideStackFrames } from "./hide_stack_frames.js";
+import { isArrayBufferView } from "./util/types.js";
 import { normalizeEncoding } from "./normalize_encoding.mjs";
 
 /**
