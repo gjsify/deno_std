@@ -528,8 +528,8 @@ export class AssertionError extends Error {
       this.operator = operator;
     }
 
-    // @ts-ignore this function is not available in lib.dom.d.ts
-    Error.captureStackTrace(this, stackStartFn || stackStartFunction);
+    // TODO: Gjsify: Gjs do not have the method captureStackTrace
+    // Error.captureStackTrace(this, stackStartFn || stackStartFunction);
     // Create error message including the error code in the name.
     this.stack;
     // Reset the name.
