@@ -411,9 +411,9 @@ export function parse<
 >(
   args: string[],
   {
-    "--": doubleDash = false,
+    "--": doubleDash = false as DD,
     alias = {} as NonNullable<A>,
-    boolean = false,
+    boolean = false as B,
     default: defaults = {} as D & Defaults<B, S>,
     stopEarly = false,
     string = [],
@@ -441,7 +441,8 @@ export function parse<
         aliases[key] = val as Array<string>;
       }
       for (const alias of getForce(aliases, key)) {
-        aliases[alias] = [key].concat(aliases[key].filter((y) => alias !== y));
+        // @ts-ignore
+        aliases[alias] = [key].concat((aliases)[key].filter((y) => alias !== y));
       }
     }
   }

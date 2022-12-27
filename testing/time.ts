@@ -185,9 +185,13 @@ function setTimer(
 
 function overrideGlobals() {
   globalThis.Date = FakeDate as DateConstructor;
+  // @ts-ignore
   globalThis.setTimeout = fakeSetTimeout;
+  // @ts-ignore
   globalThis.clearTimeout = fakeClearTimeout;
+  // @ts-ignore
   globalThis.setInterval = fakeSetInterval;
+  // @ts-ignore
   globalThis.clearInterval = fakeClearInterval;
 }
 
@@ -384,6 +388,7 @@ export class FakeTime {
         resolve();
       };
       FakeTime.restoreFor(() => setTimeout(done, ms))
+        // @ts-ignore
         .then((id) => timer = id);
       signal?.addEventListener("abort", abort, { once: true });
     });

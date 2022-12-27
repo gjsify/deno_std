@@ -1,16 +1,14 @@
 import fg from 'fast-glob';
-import { mkdirSync, renameSync, existsSync } from 'fs';
+import { mkdirSync, renameSync } from 'fs';
 import path from 'path';
 
-const dtsFiles = fg.sync('lib/**/*.d.mts');
-for (const dtsFile of dtsFiles) {
-    const jsFile = dtsFile.replace(/\.d\.mts$/, ".js");
-    if(!existsSync(jsFile)) {
-        console.warn(`${jsFile} not exists`)
-        continue
-    }
-    const mjsFile = jsFile.replace(/\.js$/, ".mjs");
-    console.info(`${jsFile} -> ${mjsFile}`);
-    mkdirSync(path.dirname(mjsFile), { recursive: true });
-    renameSync(jsFile, mjsFile);
+/**
+ * Rename .d.mts files to .d.ts
+ */
+const mdtsFiles = fg.sync('lib/**/*.d.mts');
+for (const mdtsFile of mdtsFiles) {
+    const dtsFile = mdtsFile.replace(/\.d\.mts$/, "d.ts");
+    console.info(`${mdtsFile} -> ${dtsFile}`);
+    mkdirSync(path.dirname(dtsFile), { recursive: true });
+    renameSync(mdtsFile, dtsFile);
 }

@@ -27,11 +27,11 @@
     "print:name": "echo '@gjsify/deno_std'",
     "rename:js": "node rename.mjs",
     "build": "yarn print:name && yarn clear && yarn build:gjsify && yarn build:types && yarn rename:js",
-    "build:gjsify": "gjsify build --library **/*.{ts,js,mjs,mts} --exclude **/*.d.ts --log-level error",
+    "build:gjsify": "gjsify build --library '**/*.{ts,js,mjs,mts}' --exclude 'lib/**' '**/*.d.ts' --log-level error",
     "build:types": "tsc --project tsconfig_types.json || exit 0",
     "build:test": "yarn build:test:gjs",
-    "build:test:gjs": "gjsify build src/test.mts --app gjs --outfile test.gjs.mjs",
-    "test": "yarn print:name && yarn build && yarn build:test && yarn test:gjs",
+    "build:test:gjs": "gjsify build test.mts --app gjs --outfile test.gjs.mjs",
+    "test": "yarn build && yarn build:test && yarn test:gjs",
     "test:gjs": "gjs -m test.gjs.mjs",
     "git:upstream:init": "git remote add upstream https://github.com/denoland/deno_std.git || exit 0",
     "git:upstream:diff": "open-cli https://github.com/gjsify/deno_std/compare/main...denoland:deno_std:main",
@@ -45,9 +45,9 @@
   "devDependencies": {
     "@gjsify/cli": "workspace:^",
     "@gjsify/unit": "workspace:^",
-    "@types/node": "^18.11.17",
+    "@types/node": "^18.11.18",
     "open-cli": "^7.1.0",
-    "typescript": "^5.0.0-dev.20221222"
+    "typescript": "^5.0.0-dev.20221227"
   },
   "dependencies": {
     "@gjsify/deno-runtime": "workspace:^"

@@ -1,7 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // deno-lint-ignore-file no-unused-vars
 
-import { Deno, files, fs, core, io, os } from '@gjsify/deno-runtime/index';
+import { files, fs, core, io, os } from '@gjsify/deno-runtime/index';
 
 /**
  * Provides an implementation of the

@@ -17,7 +17,7 @@
  * assertType<IsNullable<string>>(true); // error: string is not nullable
  * ```
  */
-export function assertType<T extends true | false>(_expectTrue: T) {
+export function assertType<T extends boolean>(_expectTrue: T) {
 }
 
 /**
