@@ -4,17 +4,20 @@
 // The following are all the process APIs that don't depend on the stream module
 // They have to be split this way to prevent a circular dependency
 
+import { build, fs, os, version as denoVersion } from "@gjsify/deno-runtime/index";
+import { getPid } from "@gjsify/utils";
 import { isWindows } from "../../_util/os.js";
 import { nextTick as _nextTick } from "../_next_tick.js";
 import { _exiting } from "./exiting.js";
 
 /** Returns the operating system CPU architecture for which the Deno binary was compiled */
 function _arch(): string {
-  if (Deno.build.arch == "x86_64") {
+  if (build.build.arch == "x86_64") {
     return "x64";
-  } else if (Deno.build.arch == "aarch64") {
+  } else if (build.build.arch == "aarch64") {
     return "arm64";
   } else {
+    console.error("Unknown arch: " + build.build.arch);
     throw Error("unreachable");
   }
 }
@@ -23,19 +26,19 @@ function _arch(): string {
 export const arch = _arch();
 
 /** https://nodejs.org/api/process.html#process_process_chdir_directory */
-export const chdir = Deno.chdir;
+export const chdir = fs.chdir;
 
 /** https://nodejs.org/api/process.html#process_process_cwd */
-export const cwd = Deno.cwd;
+export const cwd = fs.cwd;
 
 /** https://nodejs.org/api/process.html#process_process_nexttick_callback_args */
 export const nextTick = _nextTick;
 
-/** Wrapper of Deno.env.get, which doesn't throw type error when
+/** Wrapper of os.env.get, which doesn't throw type error when
  * the env name has "=" or "\0" in it. */
 function denoEnvGet(name: string) {
   try {
-    return Deno.env.get(name);
+    return os.env.get(name);
   } catch (e) {
     if (e instanceof TypeError) {
       return undefined;
@@ -68,7 +71,7 @@ export const env: InstanceType<ObjectConstructor> & Record<string, string> =
 
       return envValue;
     },
-    ownKeys: () => Reflect.ownKeys(Deno.env.toObject()),
+    ownKeys: () => Reflect.ownKeys(os.env.toObject()),
     getOwnPropertyDescriptor: (_target, name) => {
       const value = denoEnvGet(String(name));
       if (value) {
@@ -80,17 +83,17 @@ export const env: InstanceType<ObjectConstructor> & Record<string, string> =
       }
     },
     set(_target, prop, value) {
-      Deno.env.set(String(prop), String(value));
+      os.env.set(String(prop), String(value));
       return true; // success
     },
     has: (_target, prop) => typeof denoEnvGet(String(prop)) === "string",
   });
 
 /** https://nodejs.org/api/process.html#process_process_pid */
-export const pid = Deno.pid;
+export const pid = getPid();
 
 /** https://nodejs.org/api/process.html#process_process_platform */
-export const platform = isWindows ? "win32" : Deno.build.os;
+export const platform = isWindows ? "win32" : build.build.os;
 
 /**
  * https://nodejs.org/api/process.html#process_process_version
@@ -125,5 +128,5 @@ export const versions = {
   icu: "71.1",
   tz: "2022a",
   unicode: "14.0",
-  ...Deno.version,
+  ...denoVersion,
 };
