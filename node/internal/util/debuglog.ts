@@ -1,5 +1,10 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
+
+import { getPid } from '@gjsify/utils';
+import { os, errors } from '@gjsify/deno-runtime/index';
+
+
 import { sprintf } from "../../../fmt/printf.js";
 import { inspect } from "./inspect.mjs";
 
@@ -47,7 +52,7 @@ function debuglogImpl(
       emitWarningIfNeeded(set);
       debugImpls[set] = function debug(...args: unknown[]) {
         const msg = args.map((arg) => inspect(arg)).join(" ");
-        console.error(sprintf("%s %s: %s", set, String(Deno.pid), msg));
+        console.error(sprintf("%s %s: %s", set, String(getPid()), msg));
       };
     } else {
       debugImpls[set] = noop;
@@ -105,9 +110,9 @@ export function debuglog(
 
 let debugEnv;
 try {
-  debugEnv = Deno.env.get("NODE_DEBUG") ?? "";
+  debugEnv = os.env.get("NODE_DEBUG") ?? "";
 } catch (error) {
-  if (error instanceof Deno.errors.PermissionDenied) {
+  if (error instanceof errors.PermissionDenied) {
     debugEnv = "";
   } else {
     throw error;

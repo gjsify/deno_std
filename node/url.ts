@@ -151,6 +151,7 @@ const forbiddenHostChars = /[\0\t\n\r #%/:<>?@[\\\]^|]/;
 // For IPv6, permit '[', ']', and ':'.
 const forbiddenHostCharsIpv6 = /[\0\t\n\r #%/<>?@\\^|]/;
 
+import { URL } from '@gjsify/deno-runtime/ext/url/00_url'
 const _url = URL;
 export { _url as URL };
 

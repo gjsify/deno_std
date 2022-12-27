@@ -44,6 +44,7 @@
   ],
   "devDependencies": {
     "@gjsify/cli": "workspace:^",
+    "@gjsify/esbuild-plugin-transform-ext": "workspace:^",
     "@gjsify/unit": "workspace:^",
     "@types/node": "^18.11.18",
     "open-cli": "^7.1.0",

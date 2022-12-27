@@ -202,5 +202,11 @@ export function getSystemErrorName(code: number): string | undefined {
   if (code >= 0 || !NumberIsSafeInteger(code)) {
     throw new codes.ERR_OUT_OF_RANGE("err", "a negative integer", code);
   }
-  return errorMap.get(code)?.[0];
+  const error = errorMap.get(code)?.[0];
+
+  if(error) {
+    return error;
+  }
+  // Gjsify
+  return `Unknown system error ${code}`;
 }
