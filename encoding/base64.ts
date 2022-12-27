@@ -1,5 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
+import { atob } from '@gjsify/deno-runtime/ext/web/05_base64'
+
 /**
  * {@linkcode encode} and {@linkcode decode} for
  * [base64](https://en.wikipedia.org/wiki/Base64) encoding.
