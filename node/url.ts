@@ -152,8 +152,7 @@ const forbiddenHostChars = /[\0\t\n\r #%/:<>?@[\\\]^|]/;
 const forbiddenHostCharsIpv6 = /[\0\t\n\r #%/<>?@\\^|]/;
 
 import { URL } from '@gjsify/deno-runtime/ext/url/00_url'
-const _url = URL;
-export { _url as URL };
+export { URL };
 
 // Legacy URL API
 export class Url {
@@ -710,7 +709,7 @@ export class Url {
 
     if (
       !hostlessProtocol.has(lowerProto) &&
-      (slashes || (proto && !slashedProtocol.has(proto)))
+      (slashes || (proto && !slashedProtocol.has(proto as string)))
     ) {
       // there's a hostname.
       // the first instance of /, ?, ;, or # ends the host.

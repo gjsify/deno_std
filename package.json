@@ -27,7 +27,7 @@
     "print:name": "echo '@gjsify/deno_std'",
     "rename:js": "node rename.mjs",
     "build": "yarn print:name && yarn clear && yarn build:gjsify && yarn build:types && yarn rename:js",
-    "build:gjsify": "gjsify build --library '**/*.{ts,js,mjs,mts}' --exclude 'lib/**' '**/*.d.ts' --log-level error",
+    "build:gjsify": "gjsify build --library '**/*.{ts,js,mjs,mts}' --exclude 'lib/**' '**/*.d.ts' 'node/integrationtest/*' '**/*_{test,example}.{ts,js,mjs,mts}' --log-level error",
     "build:types": "tsc --project tsconfig_types.json || exit 0",
     "build:test": "yarn build:test:gjs",
     "build:test:gjs": "gjsify build test.mts --app gjs --outfile test.gjs.mjs",

@@ -26,7 +26,7 @@
  * Unfortunately we have no way to call ESM resolution in Rust from TypeScript code.
  */
 
-import { fileURLToPath, pathToFileURL } from "./url.js";
+import { fileURLToPath, pathToFileURL, URL } from "./url.js";
 import {
   ERR_INVALID_MODULE_SPECIFIER,
   ERR_INVALID_PACKAGE_CONFIG,
@@ -119,7 +119,7 @@ function patternKeyCompare(a: string, b: string): number {
 
 function fileExists(url: string | URL): boolean {
   try {
-    const info = Deno.statSync(url);
+    const info = Deno.statSync(url as any); // TODO fix type
     return info.isFile;
   } catch {
     return false;

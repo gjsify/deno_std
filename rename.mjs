@@ -8,7 +8,7 @@ import { transformImports } from '@gjsify/esbuild-plugin-transform-ext'
  */
 const mdtsFiles = fg.sync('lib/**/*.d.mts');
 for (const mdtsFile of mdtsFiles) {
-    const dtsFile = mdtsFile.replace(/\.d\.mts$/, "d.ts");
+    const dtsFile = mdtsFile.replace(/\.d\.mts$/, ".d.ts");
     console.info(`${mdtsFile} -> ${dtsFile}`);
     await mkdir(path.dirname(dtsFile), { recursive: true });
     await rename(mdtsFile, dtsFile);

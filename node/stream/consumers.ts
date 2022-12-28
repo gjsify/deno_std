@@ -3,17 +3,14 @@
 
 import { Buffer } from "../buffer.ts";
 
-/**
- * @typedef {import('../_global.d.ts').ReadableStream
- * } ReadableStream
- * @typedef {import('../_stream.d.ts')} Readable
- */
+import type { ReadableStream } from "../_global.d.ts"
+import type { Readable } from "../_stream.d.mts"
 
 /**
  * @param {AsyncIterable|ReadableStream|Readable} stream
  * @returns {Promise<Blob>}
  */
-async function blob(stream) {
+async function blob(stream: AsyncIterable<any>|ReadableStream|Readable): Promise<Blob> {
   const chunks = [];
   for await (const chunk of stream) {
     chunks.push(chunk);
@@ -22,27 +19,27 @@ async function blob(stream) {
 }
 
 /**
- * @param {AsyncIterable|ReadableStream|Readable} stream
+ * @param {AsyncIterable<any>|ReadableStream|Readable} stream
  * @returns {Promise<ArrayBuffer>}
  */
-async function arrayBuffer(stream) {
+async function arrayBuffer(stream: AsyncIterable<any>|ReadableStream|Readable): Promise<ArrayBuffer> {
   const ret = await blob(stream);
   return ret.arrayBuffer();
 }
 
 /**
- * @param {AsyncIterable|ReadableStream|Readable} stream
+ * @param {AsyncIterable<any>|ReadableStream|Readable} stream
  * @returns {Promise<Buffer>}
  */
-async function buffer(stream) {
+async function buffer(stream: AsyncIterable<any>|ReadableStream|Readable): Promise<Buffer> {
   return Buffer.from(await arrayBuffer(stream));
 }
 
 /**
- * @param {AsyncIterable|ReadableStream|Readable} stream
+ * @param {AsyncIterable<any>|ReadableStream|Readable} stream
  * @returns {Promise<string>}
  */
-async function text(stream) {
+async function text(stream: AsyncIterable<any>|ReadableStream|Readable): Promise<string> {
   const dec = new TextDecoder();
   let str = "";
   for await (const chunk of stream) {
@@ -59,10 +56,10 @@ async function text(stream) {
 }
 
 /**
- * @param {AsyncIterable|ReadableStream|Readable} stream
+ * @param {AsyncIterable<any>|ReadableStream|Readable} stream
  * @returns {Promise<any>}
  */
-async function json(stream) {
+async function json(stream: AsyncIterable<any>|ReadableStream|Readable): Promise<any> {
   const str = await text(stream);
   return JSON.parse(str);
 }

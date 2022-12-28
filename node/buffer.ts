@@ -10,4 +10,4 @@ export {
   kMaxLength,
   kStringMaxLength,
   SlowBuffer,
-} from "./internal/buffer.mjs";
+} from "./internal/buffer.mts";

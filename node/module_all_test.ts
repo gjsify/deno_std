@@ -72,8 +72,8 @@ import * as readlinePromises from "./readline/promises.js";
 import * as repl from "./repl.js";
 // TODO(kt3k): enable this
 // import * as stream from "./stream.js";
-import * as streamConsumers from "./stream/consumers.mjs";
-import * as streamPromises from "./stream/promises.mjs";
+import * as streamConsumers from "./stream/consumers.js";
+import * as streamPromises from "./stream/promises.js";
 import * as streamWeb from "./stream/web.js";
 import * as stringDecoder from "./string_decoder.js";
 import * as sys from "./sys.js";
