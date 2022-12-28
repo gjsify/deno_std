@@ -19,7 +19,7 @@ import {
 import { mapValues } from "../../collections/map_values.js";
 import { Buffer } from "../buffer.js";
 import { errnoException } from "./errors.js";
-import { ErrnoException } from "../_global.d.js";
+import { ErrnoException } from "../_global.js";
 import { codeMap } from "../internal_binding/uv.js";
 import {
   isInt32,

@@ -11,6 +11,9 @@ import {
 import { Readable, Writable } from "../stream.ts";
 import { stdio } from "./stdio.mjs";
 
+import { stderr as denoStderr, stdin as denoStdin, stdout as denoStdout } from '@gjsify/deno-runtime/runtime/js/40_files';
+import { isatty, consoleSize } from '@gjsify/deno-runtime/runtime/js/40_tty';
+
 // https://github.com/nodejs/node/blob/00738314828074243c9a52a228ab4c68b04259ef/lib/internal/bootstrap/switches/is_main_thread.js#L41
 function createWritableStdioStream(writer, name) {
   const stream = new Writable({
@@ -41,30 +44,30 @@ function createWritableStdioStream(writer, name) {
       enumerable: true,
       configurable: true,
       get: () =>
-        Deno.isatty?.(writer?.rid) ? Deno.consoleSize?.().columns : undefined,
+        isatty?.(writer?.rid) ? consoleSize?.().columns : undefined,
     },
     rows: {
       enumerable: true,
       configurable: true,
       get: () =>
-        Deno.isatty?.(writer?.rid) ? Deno.consoleSize?.().rows : undefined,
+        isatty?.(writer?.rid) ? consoleSize?.().rows : undefined,
     },
     isTTY: {
       enumerable: true,
       configurable: true,
-      get: () => Deno.isatty?.(writer?.rid),
+      get: () => isatty?.(writer?.rid),
     },
     getWindowSize: {
       enumerable: true,
       configurable: true,
       value: () =>
-        Deno.isatty?.(writer?.rid)
-          ? Object.values(Deno.consoleSize?.())
+        isatty?.(writer?.rid)
+          ? Object.values(consoleSize?.())
           : undefined,
     },
   });
 
-  if (Deno.isatty?.(writer?.rid)) {
+  if (isatty?.(writer?.rid)) {
     // These belong on tty.WriteStream(), but the TTY streams currently have
     // following problems:
     // 1. Using them here introduces a circular dependency.
@@ -91,13 +94,13 @@ function createWritableStdioStream(writer, name) {
 
 /** https://nodejs.org/api/process.html#process_process_stderr */
 export const stderr = stdio.stderr = createWritableStdioStream(
-  Deno.stderr,
+  denoStderr,
   "stderr",
 );
 
 /** https://nodejs.org/api/process.html#process_process_stdout */
 export const stdout = stdio.stdout = createWritableStdioStream(
-  Deno.stdout,
+  denoStdout,
   "stdout",
 );
 
@@ -108,32 +111,32 @@ export const stdin = stdio.stdin = new Readable({
   read(size) {
     const p = Buffer.alloc(size || 16 * 1024);
 
-    if (!Deno.stdin) {
+    if (!denoStdin) {
       this.destroy(
-        new Error("Deno.stdin is not available in this environment"),
+        new Error("denoStdin is not available in this environment"),
       );
       return;
     }
 
-    Deno.stdin.read(p).then((length) => {
+    denoStdin.read(p).then((length) => {
       this.push(length === null ? null : p.slice(0, length));
     }, (error) => {
       this.destroy(error);
     });
   },
 });
-stdin.on("close", () => Deno.stdin?.close());
-stdin.fd = Deno.stdin?.rid ?? -1;
+stdin.on("close", () => denoStdin?.close());
+stdin.fd = denoStdin?.rid ?? -1;
 Object.defineProperty(stdin, "isTTY", {
   enumerable: true,
   configurable: true,
   get() {
-    return Deno.isatty?.(Deno.stdin.rid);
+    return isatty?.(denoStdin.rid);
   },
 });
 stdin._isRawMode = false;
 stdin.setRawMode = (enable) => {
-  Deno.stdin?.setRaw?.(enable);
+  denoStdin?.setRaw?.(enable);
   stdin._isRawMode = enable;
   return stdin;
 };

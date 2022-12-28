@@ -17,9 +17,10 @@ import {
   isBigUint64Array,
   isDate,
   isUint8Array,
-} from "../util/types.js";
-import { deprecate, once } from "../util.mjs";
-import { toPathIfFileURL } from "../url.js";
+} from "../util/types.ts";
+import { once } from "../util.mjs";
+import { deprecate } from "../../util.ts";
+import { toPathIfFileURL } from "../url.ts";
 import {
   validateAbortSignal,
   validateBoolean,

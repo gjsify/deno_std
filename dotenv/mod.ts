@@ -97,7 +97,7 @@ import { filterValues } from "../collections/filter_values.js";
 import { withoutAll } from "../collections/without_all.js";
 
 /**
- * @deprecated (will be removed after 0.170.0). Use `Record<string, string>` instead
+ * @deprecated (will be removed after 0.172.0). Use `Record<string, string>` instead
  */
 export interface DotenvConfig {
   [key: string]: string;
@@ -116,7 +116,7 @@ type StrictEnvVarList<T extends string> =
 type StringList = Array<string> | ReadonlyArray<string> | undefined;
 
 /**
- * @deprecated (will be removed after 0.170.0). Use `LoadOptions` instead
+ * @deprecated (will be removed after 0.172.0). Use `LoadOptions` instead
  */
 export interface ConfigOptions {
   /** Optional path to `.env` file.
@@ -271,7 +271,7 @@ export function parse(
 }
 
 /**
- * @deprecated (will be removed after 0.170.0). Use `loadSync` instead
+ * @deprecated (will be removed after 0.172.0). Use `loadSync` instead
  */
 export function configSync(
   options?: Omit<ConfigOptions, "restrictEnvAccessTo">,
@@ -338,7 +338,7 @@ export function loadSync(
 }
 
 /**
- * @deprecated (will be removed after 0.170.0). Use `load` instead
+ * @deprecated (will be removed after 0.172.0). Use `load` instead
  */
 export function config(
   options?: Omit<ConfigOptions, "restrictEnvAccessTo">,

@@ -31,10 +31,13 @@ import type { ErrnoException } from "../internal/errors.js";
 import { isIP } from "../internal/net.js";
 
 import { isLinux, isWindows } from "../../_util/os.js";
+import { listenDatagram } from "@gjsify/deno-runtime/ext/net/01_net"
+
+const Deno = globalThis.Deno as (typeof globalThis.Deno) | undefined;
 
 // @ts-ignore Deno[Deno.internal] is used on purpose here
-const DenoListenDatagram = Deno[Deno.internal]?.nodeUnstable?.listenDatagram ||
-  Deno.listenDatagram;
+const DenoListenDatagram = Deno?.[Deno?.internal]?.nodeUnstable?.listenDatagram ||
+Deno?.listenDatagram || listenDatagram;
 
 type MessageType = string | Uint8Array | Buffer | DataView;
 

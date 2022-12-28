@@ -85,17 +85,18 @@ import {
   constants as PipeConstants,
   Pipe,
   PipeConnectWrap,
-} from "./internal_binding/pipe_wrap.js";
-import { ShutdownWrap } from "./internal_binding/stream_wrap.js";
-import { assert } from "../_util/asserts.js";
-import { isWindows } from "../_util/os.js";
-import { ADDRCONFIG, lookup as dnsLookup } from "./dns.js";
-import { codeMap } from "./internal_binding/uv.js";
-import { guessHandleType } from "./internal_binding/util.js";
-import { debuglog } from "./internal/util/debuglog.js";
+} from "./internal_binding/pipe_wrap.ts";
+import { ShutdownWrap } from "./internal_binding/stream_wrap.ts";
+import { assert } from "../_util/asserts.ts";
+import { isWindows } from "../_util/os.ts";
+import { ADDRCONFIG, lookup as dnsLookup } from "./dns.ts";
+import { codeMap } from "./internal_binding/uv.ts";
+import { guessHandleType } from "./internal_binding/util.ts";
+import { debuglog } from "./internal/util/debuglog.ts";
 import type { DuplexOptions } from "./_stream.mjs";
-import type { BufferEncoding } from "./_global.js";
+import type { BufferEncoding } from "./_global.ts";
 import type { Abortable } from "./_events.mjs";
+import { channel } from "./diagnostics_channel.ts";
 
 let debug = debuglog("net", (fn) => {
   debug = fn;
@@ -226,6 +227,9 @@ interface NormalizedArgs {
 const _noop = (_arrayBuffer: Uint8Array, _nread: number): undefined => {
   return;
 };
+
+const netClientSocketChannel = channel("net.client.socket");
+const netServerSocketChannel = channel("net.server.socket");
 
 function _toNumber(x: unknown): number | false {
   return (x = Number(x)) >= 0 ? (x as number) : false;
@@ -1579,6 +1583,12 @@ export function connect(...args: unknown[]) {
   debug("createConnection", normalized);
   const socket = new Socket(options);
 
+  if (netClientSocketChannel.hasSubscribers) {
+    netClientSocketChannel.publish({
+      socket,
+    });
+  }
+
   if (options.timeout) {
     socket.setTimeout(options.timeout);
   }
@@ -1849,6 +1859,12 @@ function _onconnection(this: any, err: number, clientHandle?: Handle) {
 
   DTRACE_NET_SERVER_CONNECTION(socket);
   self.emit("connection", socket);
+
+  if (netServerSocketChannel.hasSubscribers) {
+    netServerSocketChannel.publish({
+      socket,
+    });
+  }
 }
 
 function _setupListenHandle(

@@ -5,13 +5,12 @@ import { io } from '@gjsify/deno-runtime/index';
 import {
   FileTypes,
   readBlock,
-  type Reader,
   recordSize,
-  type Seeker,
   type TarMeta,
   ustarStructure,
-} from "./_common.js";
-import { readAll } from "../streams/read_all.js";
+} from "./_common.ts";
+import { readAll } from "../streams/read_all.ts";
+import type { Reader } from "../types.d.ts";
 
 /*!
  * Ported and modified from: https://github.com/beatgammit/tar-js and
@@ -80,7 +79,7 @@ export interface TarEntry extends TarMeta {}
 
 export class TarEntry implements Reader {
   #header: TarHeader;
-  #reader: Reader | (Reader & Seeker);
+  #reader: Reader | (Reader & Deno.Seeker);
   #size: number;
   #read = 0;
   #consumed = false;
@@ -88,7 +87,7 @@ export class TarEntry implements Reader {
   constructor(
     meta: TarMeta,
     header: TarHeader,
-    reader: Reader | (Reader & Seeker),
+    reader: Reader | (Reader & Deno.Seeker),
   ) {
     Object.assign(this, meta);
     this.#header = header;
@@ -141,8 +140,8 @@ export class TarEntry implements Reader {
     if (this.#consumed) return;
     this.#consumed = true;
 
-    if (typeof (this.#reader as Seeker).seek === "function") {
-      await (this.#reader as Seeker).seek(
+    if (typeof (this.#reader as Deno.Seeker).seek === "function") {
+      await (this.#reader as Deno.Seeker).seek(
         this.#entrySize - this.#read,
         io.SeekMode.Current,
       );

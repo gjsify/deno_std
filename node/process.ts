@@ -58,9 +58,15 @@ import * as uv from "./internal_binding/uv.js";
 import type { BindingName } from "./internal_binding/mod.js";
 import { buildAllowedFlags } from "./internal/process/per_thread.mjs";
 
+import { getArgs } from "@gjsify/utils";
+import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
+import { execPath as denoExecPath, exit as denoExit, memoryUsage as denoMemoryUsage } from "@gjsify/deno-runtime/runtime/js/30_os";
+import { kill as denoKill } from "@gjsify/deno-runtime/runtime/js/40_process";
+import { Command as DenoCommand } from "@gjsify/deno-runtime/runtime/js/40_spawn";
+
 // @ts-ignore Deno[Deno.internal] is used on purpose here
-const DenoCommand = Deno[Deno.internal]?.nodeUnstable?.Command ||
-  Deno.Command;
+// const DenoCommand = Deno[Deno?.internal]?.nodeUnstable?.Command ||
+//   Deno?.Command;
 
 const notImplementedEvents = [
   "disconnect",
@@ -72,9 +78,9 @@ const notImplementedEvents = [
 
 // The first 2 items are placeholders.
 // They will be overwritten by the below Object.defineProperty calls.
-const argv = ["", "", ...Deno.args];
+const argv = ["", "", ...getArgs()];
 // Overwrites the 1st item with getter.
-Object.defineProperty(argv, "0", { get: Deno.execPath });
+Object.defineProperty(argv, "0", { get: denoExecPath });
 // Overwrites the 2st item with getter.
 Object.defineProperty(argv, "1", {
   get: () => {
@@ -105,7 +111,7 @@ export const exit = (code?: number | string) => {
     process.emit("exit", process.exitCode || 0);
   }
 
-  Deno.exit(process.exitCode || 0);
+  denoExit(process.exitCode || 0);
 };
 
 function addReadOnlyProcessAlias(
@@ -245,7 +251,7 @@ export function memoryUsage(): {
   arrayBuffers: number;
 } {
   return {
-    ...Deno.memoryUsage(),
+    ...denoMemoryUsage(),
     arrayBuffers: 0,
   };
 }
@@ -260,7 +266,7 @@ function _kill(pid: number, sig: number): number {
 
   if (sig === 0) {
     let status;
-    if (Deno.build.os === "windows") {
+    if (build.os === "windows") {
       status = (new DenoCommand("powershell.exe", {
         args: ["Get-Process", "-pid", pid],
       })).outputSync();
@@ -283,7 +289,7 @@ function _kill(pid: number, sig: number): number {
       errCode = uv.codeMap.get("EINVAL");
     } else {
       try {
-        Deno.kill(pid, maybeSignal[0] as Deno.Signal);
+        denoKill(pid, maybeSignal[0] as Deno.Signal);
       } catch (e) {
         if (e instanceof TypeError) {
           throw notImplemented(maybeSignal[0]);
@@ -444,9 +450,9 @@ class Process extends EventEmitter {
       warnNotImplemented(`process.on("${event}")`);
       super.on(event, listener);
     } else if (event.startsWith("SIG")) {
-      if (event === "SIGBREAK" && Deno.build.os !== "windows") {
+      if (event === "SIGBREAK" && build.os !== "windows") {
         // Ignores SIGBREAK if the platform is not windows.
-      } else if (event === "SIGTERM" && Deno.build.os === "windows") {
+      } else if (event === "SIGTERM" && build.os === "windows") {
         // Ignores SIGTERM on windows.
       } else {
         Deno.addSignalListener(event as Deno.Signal, listener);
@@ -470,9 +476,9 @@ class Process extends EventEmitter {
       warnNotImplemented(`process.off("${event}")`);
       super.off(event, listener);
     } else if (event.startsWith("SIG")) {
-      if (event === "SIGBREAK" && Deno.build.os !== "windows") {
+      if (event === "SIGBREAK" && build.os !== "windows") {
         // Ignores SIGBREAK if the platform is not windows.
-      } else if (event === "SIGTERM" && Deno.build.os === "windows") {
+      } else if (event === "SIGTERM" && build.os === "windows") {
         // Ignores SIGTERM on windows.
       } else {
         Deno.removeSignalListener(event as Deno.Signal, listener);
@@ -487,10 +493,10 @@ class Process extends EventEmitter {
   // deno-lint-ignore no-explicit-any
   override emit(event: string, ...args: any[]): boolean {
     if (event.startsWith("SIG")) {
-      if (event === "SIGBREAK" && Deno.build.os !== "windows") {
+      if (event === "SIGBREAK" && build.os !== "windows") {
         // Ignores SIGBREAK if the platform is not windows.
       } else {
-        Deno.kill(Deno.pid, event as Deno.Signal);
+        denoKill(Deno.pid, event as Deno.Signal);
       }
     } else {
       return super.emit(event, ...args);
@@ -517,7 +523,7 @@ class Process extends EventEmitter {
       warnNotImplemented(`process.prependListener("${event}")`);
       super.prependListener(event, listener);
     } else if (event.startsWith("SIG")) {
-      if (event === "SIGBREAK" && Deno.build.os !== "windows") {
+      if (event === "SIGBREAK" && build.os !== "windows") {
         // Ignores SIGBREAK if the platform is not windows.
       } else {
         Deno.addSignalListener(event as Deno.Signal, listener);
@@ -671,9 +677,12 @@ class Process extends EventEmitter {
   }
 
   features = { inspector: false };
+
+  // TODO(kt3k): Get the value from --no-deprecation flag.
+  noDeprecation = false;
 }
 
-if (Deno.build.os === "windows") {
+if (build.os === "windows") {
   delete Process.prototype.getgid;
   delete Process.prototype.getuid;
 }

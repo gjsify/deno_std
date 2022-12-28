@@ -6,7 +6,7 @@ import * as stream from "../../_stream.d.mts";
 import * as promises from "../../fs/promises.ts";
 
 import { Buffer } from "../../buffer.ts";
-import type { BufferEncoding, ErrnoException } from "../../_global.d.ts";
+import type { BufferEncoding, ErrnoException } from "../../_global.ts";
 
 type PathLike = string | Buffer | URL;
 

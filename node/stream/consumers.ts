@@ -3,8 +3,8 @@
 
 import { Buffer } from "../buffer.ts";
 
-import type { ReadableStream } from "../_global.d.ts"
-import type { Readable } from "../_stream.d.mts"
+import type { ReadableStream } from "../_global.ts"
+import type { Readable } from "../_stream.mjs"
 
 /**
  * @param {AsyncIterable|ReadableStream|Readable} stream

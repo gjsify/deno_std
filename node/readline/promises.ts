@@ -19,7 +19,7 @@ import type {
   ReadLineOptions,
 } from "../_readline_shared_types.d.js";
 
-import type { ReadableStream, WritableStream } from "../_global.d.js";
+import type { ReadableStream, WritableStream } from "../_global.js";
 
 /**
  * The `readline/promise` module provides an API for reading lines of input from a Readable stream one line at a time.

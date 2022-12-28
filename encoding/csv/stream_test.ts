@@ -9,9 +9,9 @@ import {
   assertEquals,
   assertRejects,
   assertStringIncludes,
-} from "../../testing/asserts.js";
-import { fromFileUrl, join } from "../../path/mod.js";
-import { StringReader } from "../../io/readers.js";
+} from "../../testing/asserts.ts";
+import { fromFileUrl, join } from "../../path/mod.ts";
+import { StringReader } from "../../io/string_reader.ts";
 
 const testdataDir = join(fromFileUrl(import.meta.url), "../../testdata");
 const encoder = new TextEncoder();

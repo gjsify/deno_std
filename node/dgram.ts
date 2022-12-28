@@ -54,12 +54,15 @@ import {
   validatePort,
   validateString,
 } from "./internal/validators.mjs";
-import { guessHandleType } from "./internal_binding/util.js";
-import { os } from "./internal_binding/constants.js";
-import { nextTick } from "./process.js";
-import { isArrayBufferView } from "./internal/util/types.js";
+import { guessHandleType } from "./internal_binding/util.ts";
+import { os } from "./internal_binding/constants.ts";
+import { nextTick } from "./process.ts";
+import { channel } from "./diagnostics_channel.ts";
+import { isArrayBufferView } from "./internal/util/types.ts";
 
 const { UV_UDP_REUSEADDR, UV_UDP_IPV6ONLY } = os;
+
+const udpSocketChannel = channel("udp.socket");
 
 const BIND_STATE_UNBOUND = 0;
 const BIND_STATE_BINDING = 1;
@@ -210,6 +213,12 @@ export class Socket extends EventEmitter {
           () => signal.removeEventListener("abort", onAborted),
         );
       }
+    }
+
+    if (udpSocketChannel.hasSubscribers) {
+      udpSocketChannel.publish({
+        socket: this,
+      });
     }
   }
 
