@@ -154,11 +154,11 @@ export function inherits<T, U>(
 import { _TextDecoder, _TextEncoder, getSystemErrorName } from "./_utils.js";
 
 /** The global TextDecoder */
-export type TextDecoder = import("./_utils.js")._TextDecoder;
+// export type TextDecoder = typeof _TextDecoder;
 export const TextDecoder = _TextDecoder;
 
 /** The global TextEncoder */
-export type TextEncoder = import("./_utils.js")._TextEncoder;
+// export type TextEncoder = typeof _TextEncoder;
 export const TextEncoder = _TextEncoder;
 
 function pad(n: number) {

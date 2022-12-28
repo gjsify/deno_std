@@ -350,46 +350,48 @@ class Process extends EventEmitter {
   constructor() {
     super();
 
-    globalThis.addEventListener("unhandledrejection", (event) => {
-      if (process.listenerCount("unhandledRejection") === 0) {
-        // The Node.js default behavior is to raise an uncaught exception if
-        // an unhandled rejection occurs and there are no unhandledRejection
-        // listeners.
-        if (process.listenerCount("uncaughtException") === 0) {
-          throw event.reason;
+    if(typeof globalThis.addEventListener === 'function') {
+      globalThis.addEventListener("unhandledrejection", (event) => {
+        if (process.listenerCount("unhandledRejection") === 0) {
+          // The Node.js default behavior is to raise an uncaught exception if
+          // an unhandled rejection occurs and there are no unhandledRejection
+          // listeners.
+          if (process.listenerCount("uncaughtException") === 0) {
+            throw event.reason;
+          }
+
+          event.preventDefault();
+          uncaughtExceptionHandler(event.reason, "unhandledRejection");
+          return;
         }
 
         event.preventDefault();
-        uncaughtExceptionHandler(event.reason, "unhandledRejection");
-        return;
-      }
+        process.emit("unhandledRejection", event.reason, event.promise);
+      });
 
-      event.preventDefault();
-      process.emit("unhandledRejection", event.reason, event.promise);
-    });
+      globalThis.addEventListener("error", (event) => {
+        if (process.listenerCount("uncaughtException") > 0) {
+          event.preventDefault();
+        }
 
-    globalThis.addEventListener("error", (event) => {
-      if (process.listenerCount("uncaughtException") > 0) {
-        event.preventDefault();
-      }
+        uncaughtExceptionHandler(event.error, "uncaughtException");
+      });
 
-      uncaughtExceptionHandler(event.error, "uncaughtException");
-    });
+      globalThis.addEventListener("beforeunload", (e) => {
+        super.emit("beforeExit", process.exitCode || 0);
+        processTicksAndRejections();
+        if (core.eventLoopHasMoreWork()) {
+          e.preventDefault();
+        }
+      });
 
-    globalThis.addEventListener("beforeunload", (e) => {
-      super.emit("beforeExit", process.exitCode || 0);
-      processTicksAndRejections();
-      if (core.eventLoopHasMoreWork()) {
-        e.preventDefault();
-      }
-    });
-
-    globalThis.addEventListener("unload", () => {
-      if (!process._exiting) {
-        process._exiting = true;
-        super.emit("exit", process.exitCode || 0);
-      }
-    });
+      globalThis.addEventListener("unload", () => {
+        if (!process._exiting) {
+          process._exiting = true;
+          super.emit("exit", process.exitCode || 0);
+        }
+      });
+    }
   }
 
   /** https://nodejs.org/api/process.html#process_process_arch */
