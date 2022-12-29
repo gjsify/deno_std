@@ -13,6 +13,7 @@ import {
   isPosixPathSeparator,
   normalizeString,
 } from "./_util.js";
+import { URL } from '../url.js';
 
 export const sep = "/";
 export const delimiter = ":";

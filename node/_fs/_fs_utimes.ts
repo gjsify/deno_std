@@ -3,6 +3,7 @@
 import type { CallbackWithError } from "./_fs_common.js";
 import { fromFileUrl } from "../path.js";
 import { promisify } from "../internal/util.mjs";
+import { URL } from '../url.js';
 
 function getValidTime(
   time: number | string | Date,

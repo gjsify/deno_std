@@ -1,5 +1,6 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 import { fromFileUrl } from "../path.js";
+import { URL } from '../url.js';
 
 type ExistsCallback = (exists: boolean) => void;
 

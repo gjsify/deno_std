@@ -10,6 +10,7 @@ import {
   type RequestOptions,
 } from "./http.js";
 import type { Socket } from "./net.js";
+import { URL } from './url.js';
 
 export class Agent extends HttpAgent {
 }

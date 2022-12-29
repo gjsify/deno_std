@@ -18,6 +18,8 @@ import {
   validateStringAfterArrayBufferView,
 } from "../internal/fs/utils.mjs";
 import { promisify } from "../internal/util.mjs";
+import { URL } from '../url.js';
+
 import type { Writer } from "../../types.d.ts";
 
 export function writeFile(

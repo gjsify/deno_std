@@ -9,6 +9,7 @@ import { Buffer } from "../buffer.js";
 import { fromFileUrl } from "../path.js";
 import { BinaryEncodings, Encodings, TextEncodings } from "../_utils.js";
 import { promisify } from "../internal/util.mjs";
+import { URL } from '../url.js';
 
 function maybeDecode(data: Uint8Array, encoding: TextEncodings): string;
 function maybeDecode(

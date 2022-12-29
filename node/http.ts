@@ -17,6 +17,7 @@ import { Agent } from "./_http_agent.mjs";
 import { chunkExpression as RE_TE_CHUNKED } from "./_http_common.js";
 import { urlToHttpOptions } from "./internal/url.js";
 import { constants, TCP } from "./internal_binding/tcp_wrap.js";
+import { URL } from './url.js';
 
 const METHODS = [
   "ACL",
@@ -176,7 +177,7 @@ class ClientRequest extends NodeWritable {
       !Number.isNaN(Number.parseInt(headers["content-length"], 10))
     ) {
       const bufferList: Buffer[] = [];
-      for await (const chunk of body) {
+      for await (const chunk of body as any) {
         bufferList.push(chunk);
       }
       return Buffer.concat(bufferList);

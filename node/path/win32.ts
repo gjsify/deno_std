@@ -20,6 +20,7 @@ import {
   normalizeString,
 } from "./_util.js";
 import { assert } from "../../_util/asserts.js";
+import { URL } from '../url.js';
 
 export const sep = "\\";
 export const delimiter = ";";

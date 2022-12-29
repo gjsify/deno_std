@@ -6,6 +6,7 @@ import {
 } from "../_utils.js";
 import { fromFileUrl } from "../path.js";
 import { promisify } from "../internal/util.mjs";
+import { URL } from '../url.js';
 
 type ReadlinkCallback = (
   err: MaybeEmpty<Error>,
