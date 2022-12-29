@@ -28,7 +28,7 @@ import upstreamMods from "./upstream_modules.js";
 
 import * as path from "../path/mod.js";
 import { assert } from "../_util/asserts.js";
-import { fileURLToPath, pathToFileURL } from "./url.js";
+import { fileURLToPath, pathToFileURL, URL } from "./url.js";
 import { isWindows } from "../_util/os.js";
 import {
   ERR_INVALID_MODULE_SPECIFIER,
@@ -543,7 +543,7 @@ class Module {
     const module = new Module(filename, parent);
 
     if (isMain) {
-      process.mainModule = module;
+      (process as any).mainModule = module;
       module.id = ".";
     }
 
@@ -1312,7 +1312,7 @@ function wrapSafe(
   const wrapper = Module.wrap(content);
   const [f, err] = core.evalContext(wrapper, filename);
   if (err) {
-    if (process.mainModule === cjsModuleInstance) {
+    if ((process as any).mainModule === cjsModuleInstance) {
       enrichCJSError(err.thrown);
     }
     throw err.thrown;
