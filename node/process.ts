@@ -63,7 +63,7 @@ import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
 import { execPath as denoExecPath, exit as denoExit, memoryUsage as denoMemoryUsage } from "@gjsify/deno-runtime/runtime/js/30_os";
 import { kill as denoKill } from "@gjsify/deno-runtime/runtime/js/40_process";
 import { Command as DenoCommand } from "@gjsify/deno-runtime/runtime/js/40_spawn";
-import GLib from '@gjsify/types/GLib-2.0';
+import { logSignals } from '@gjsify/utils';
 
 // @ts-ignore Deno[Deno.internal] is used on purpose here
 // const DenoCommand = Deno[Deno?.internal]?.nodeUnstable?.Command ||
@@ -351,9 +351,30 @@ class Process extends EventEmitter {
   constructor() {
     super();
 
-    // Gjsify: We only support the events if globalThis.addEventListener is defined
+    // Gjsify: In Gjsify we allow to import only some parts of the Deno Runtime, so `globalThis.addEventListener` can be undefined
     if(!globalThis.addEventListener) {
-      console.debug('[Process] globalThis.addEventListener is not defined, this means that events like "unhandledRejection", "beforeExit" and "exit" are not triggered');
+      console.log('[Process] globalThis.addEventListener is not defined, this means that events like "unhandledRejection", "beforeExit" and "exit" are not triggered');
+
+      logSignals.connect("unhandledRejection", (self, data, promiseData) => {
+        // The Node.js default behavior is to raise an uncaught exception if
+        // an unhandled rejection occurs and there are no unhandledRejection
+        // listeners.
+        if (process.listenerCount("uncaughtException") === 0) {
+          throw promiseData.reason
+        }
+        uncaughtExceptionHandler(promiseData.reason, "unhandledRejection");
+        return;
+      });
+
+      logSignals.connect("uncaughtException", (self, data, error) => {
+        uncaughtExceptionHandler(error, "uncaughtException");
+        return;
+      });
+
+      // TODO add replacements for
+      // globalThis.addEventListener("beforeunload", ...
+      // globalThis.addEventListener("unload", ...
+
       return this;
     }
     
