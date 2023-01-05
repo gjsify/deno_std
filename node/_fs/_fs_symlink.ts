@@ -3,6 +3,7 @@ import { CallbackWithError } from "./_fs_common.js";
 import { fromFileUrl } from "../path.js";
 import { promisify } from "../internal/util.mjs";
 import { URL } from '../url.js';
+import { symlink as denoSymlink, symlinkSync as denoSymlinkSync, stat, statSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
 
 type SymlinkType = "file" | "dir";
 
@@ -15,9 +16,9 @@ export function symlink(
   target = target instanceof URL ? fromFileUrl(target) : target;
   path = path instanceof URL ? fromFileUrl(path) : path;
 
-  const type: SymlinkType = typeof typeOrCallback === "string"
+  let type: SymlinkType = typeof typeOrCallback === "string"
     ? typeOrCallback
-    : "file";
+    : undefined;
 
   const callback: CallbackWithError = typeof typeOrCallback === "function"
     ? typeOrCallback
@@ -25,7 +26,21 @@ export function symlink(
 
   if (!callback) throw new Error("No callback function supplied");
 
-  Deno.symlink(target, path, { type }).then(() => callback(null), callback);
+  // Gjsify: TODO contribute this to Deno: The type is auto detected in Node.js
+  if(!type) {
+    stat(target).then((fileInfo) => {
+      if(fileInfo.isDirectory) {
+        type = 'dir';
+      } else {
+        type = 'file';
+      }
+      denoSymlink(target as string, path as string, { type }).then(() => callback(null), callback);
+      return;
+    })
+  }
+
+
+  denoSymlink(target, path, { type }).then(() => callback(null), callback);
 }
 
 export const symlinkPromise = promisify(symlink) as (
@@ -41,7 +56,16 @@ export function symlinkSync(
 ) {
   target = target instanceof URL ? fromFileUrl(target) : target;
   path = path instanceof URL ? fromFileUrl(path) : path;
-  type = type || "file";
+  // type = type || "file";
 
-  Deno.symlinkSync(target, path, { type });
+  // Gjsify: TODO contribute this to Deno: The type is auto detected in Node.js
+  if(!type) {
+    if(statSync(target).isDirectory) {
+      type = 'dir';
+    } else {
+      type = 'file';
+    }
+  }
+
+  denoSymlinkSync(target, path, { type });
 }

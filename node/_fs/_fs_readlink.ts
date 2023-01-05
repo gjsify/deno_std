@@ -13,7 +13,7 @@ type ReadlinkCallback = (
   linkString: MaybeEmpty<string | Uint8Array>,
 ) => void;
 
-interface ReadlinkOptions {
+export interface ReadlinkOptions {
   encoding?: string | null;
 }
 
