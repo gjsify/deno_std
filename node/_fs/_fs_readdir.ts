@@ -5,6 +5,7 @@ import { denoErrorToNodeError } from "../internal/errors.js";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
 import { Buffer } from "../buffer.js";
 import { promisify } from "../internal/util.mjs";
+import { readDirSync as denoReadDirSync, readDir as denoReadDir } from "@gjsify/deno-runtime/runtime/js/30_fs";
 
 function toDirent(val: Deno.DirEntry): Dirent {
   return new Dirent(val);
@@ -62,7 +63,7 @@ export function readdir(
   }
 
   try {
-    asyncIterableToCallback(Deno.readDir(path.toString()), (val, done) => {
+    asyncIterableToCallback(denoReadDir(path.toString()), (val, done) => {
       if (typeof path !== "string") return;
       if (done) {
         callback(null, result);
@@ -125,7 +126,7 @@ export function readdirSync(
   }
 
   try {
-    for (const file of Deno.readDirSync(path.toString())) {
+    for (const file of denoReadDirSync(path.toString())) {
       if (options?.withFileTypes) {
         result.push(toDirent(file));
       } else result.push(decode(file.name));
