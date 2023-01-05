@@ -7,3 +7,4 @@
 /crypto/_wasm/target
 /encoding/varint/_wasm/target
 deno.lock
+test.gjs.mjs
