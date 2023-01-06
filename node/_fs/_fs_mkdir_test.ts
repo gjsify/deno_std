@@ -1,9 +1,9 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import * as path from "../../path/mod.js";
-import { assert } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_test_utils.js";
-import { mkdir, mkdirSync } from "./_fs_mkdir.js";
-import { existsSync } from "./_fs_exists.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import * as path from "../../path/mod.ts";
+import { assert } from "../../testing/asserts.ts";
+import { assertCallbackErrorUncaught } from "../_test_utils.ts";
+import { mkdir, mkdirSync } from "./_fs_mkdir.ts";
+import { existsSync } from "./_fs_exists.ts";
 
 const tmpDir = "./tmpdir";
 

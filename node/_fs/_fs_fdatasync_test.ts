@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, fail } from "../../testing/asserts.js";
-import { fdatasync, fdatasyncSync } from "./_fs_fdatasync.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assertEquals, fail } from "../../testing/asserts.ts";
+import { fdatasync, fdatasyncSync } from "./_fs_fdatasync.ts";
 
 Deno.test({
   name:

@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { fileURLToPath, URL } from "../url.js";
-import { Buffer } from "../buffer.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { fileURLToPath, URL } from "../url.ts";
+import { Buffer } from "../buffer.ts";
 
 const searchParams = Symbol("query");
 

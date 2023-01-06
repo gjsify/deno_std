@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals, assertObjectMatch } from "../testing/asserts.js";
-import { fromFileUrl, relative } from "../path/mod.js";
-import { EventEmitter, once } from "./events.js";
-import * as workerThreads from "./worker_threads.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assert, assertEquals, assertObjectMatch } from "../testing/asserts.ts";
+import { fromFileUrl, relative } from "../path/mod.ts";
+import { EventEmitter, once } from "./events.ts";
+import * as workerThreads from "./worker_threads.ts";
 
 Deno.test({
   name: "[worker_threads] isMainThread",

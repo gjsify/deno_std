@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { promisify } from "../util.js";
-import timers from "../timers.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { promisify } from "../util.ts";
+import timers from "../timers.ts";
 
 export const setTimeout = promisify(timers.setTimeout),
   setImmediate = promisify(timers.setImmediate),

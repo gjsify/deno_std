@@ -1,5 +1,5 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { promises as fsPromises } from "../fs.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { promises as fsPromises } from "../fs.ts";
 
 export const access = fsPromises.access;
 export const copyFile = fsPromises.copyFile;

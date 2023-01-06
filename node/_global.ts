@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import type { EventEmitter } from "./_events.mjs";
-import type { Buffer } from "./buffer.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { EventEmitter } from "./_events.mjs";
+import { Buffer } from "./buffer.ts";
 
 /** One of:
  * | "ascii"

@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals, fail } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_test_utils.js";
-import Dir from "./_fs_dir.js";
-import type Dirent from "./_fs_dirent.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assert, assertEquals, fail } from "../../testing/asserts.ts";
+import { assertCallbackErrorUncaught } from "../_test_utils.ts";
+import Dir from "./_fs_dir.ts";
+import type Dirent from "./_fs_dirent.ts";
 
 Deno.test({
   name: "Closing current directory with callback is successful",

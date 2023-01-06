@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, assertThrows, fail } from "../../testing/asserts.js";
-import { appendFile, appendFileSync } from "./_fs_appendFile.js";
-import { fromFileUrl } from "../path.js";
-import { assertCallbackErrorUncaught } from "../_test_utils.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assertEquals, assertThrows, fail } from "../../testing/asserts.ts";
+import { appendFile, appendFileSync } from "./_fs_appendFile.ts";
+import { fromFileUrl } from "../path.ts";
+import { assertCallbackErrorUncaught } from "../_test_utils.ts";
 
 const decoder = new TextDecoder("utf-8");
 

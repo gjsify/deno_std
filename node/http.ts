@@ -1,4 +1,4 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
 import { type Deferred, deferred } from "../async/deferred.js";
 import { _normalizeArgs, ListenOptions, Socket } from "./net.js";
@@ -300,6 +300,12 @@ export class ServerResponse extends NodeWritable {
     }
   }
 
+  /** Returns true if the response body should be null with the given
+   * http status code */
+  static #bodyShouldBeNull(status: number) {
+    return status === 101 || status === 204 || status === 205 || status === 304;
+  }
+
   constructor(
     reqEvent: undefined | Deno.RequestEvent,
     resolve: undefined | ((value: Response | PromiseLike<Response>) => void),
@@ -393,7 +399,10 @@ export class ServerResponse extends NodeWritable {
   respond(final: boolean, singleChunk?: Chunk) {
     this.headersSent = true;
     this.#ensureHeaders(singleChunk);
-    const body = singleChunk ?? (final ? null : this.#readable);
+    let body = singleChunk ?? (final ? null : this.#readable);
+    if (ServerResponse.#bodyShouldBeNull(this.statusCode!)) {
+      body = null;
+    }
     if (this.#isFlashRequest) {
       this.#resolve!(
         new Response(body, {

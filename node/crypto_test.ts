@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals } from "../testing/asserts.js";
-import { Buffer } from "./buffer.js";
-import { createHash, getHashes, randomUUID } from "./crypto.js";
-import { Readable } from "./stream.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assert, assertEquals } from "../testing/asserts.ts";
+import { Buffer } from "./buffer.ts";
+import { createHash, getHashes, randomUUID } from "./crypto.ts";
+import { Readable } from "./stream.ts";
 
 Deno.test("[node/crypto.Hash] basic usage - buffer output", () => {
   const d = createHash("sha1").update("abc").update("def").digest();

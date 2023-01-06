@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, fail } from "../../testing/asserts.js";
-import { existsSync } from "../../fs/exists.js";
-import { assertCallbackErrorUncaught } from "../_test_utils.js";
-import { unlink, unlinkSync } from "./_fs_unlink.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assertEquals, fail } from "../../testing/asserts.ts";
+import { existsSync } from "../../fs/exists.ts";
+import { assertCallbackErrorUncaught } from "../_test_utils.ts";
+import { unlink, unlinkSync } from "./_fs_unlink.ts";
 
 Deno.test({
   name: "ASYNC: deleting a file",

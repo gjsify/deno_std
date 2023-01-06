@@ -1,9 +1,9 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, fail } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_test_utils.js";
-import { rename, renameSync } from "./_fs_rename.js";
-import { existsSync } from "../../fs/exists.js";
-import { join, parse } from "../../path/mod.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assertEquals, fail } from "../../testing/asserts.ts";
+import { assertCallbackErrorUncaught } from "../_test_utils.ts";
+import { rename, renameSync } from "./_fs_rename.ts";
+import { existsSync } from "../../fs/exists.ts";
+import { join, parse } from "../../path/mod.ts";
 
 Deno.test({
   name: "ASYNC: renaming a file",

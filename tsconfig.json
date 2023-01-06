@@ -17,5 +17,5 @@
         "allowImportingTsExtensions": true
     },
     "include": ["**/*.ts", "**/*.mts", "**/*.mjs", "**/*.js"],
-    "exclude": ["lib", "**/*_test.js", "**/*_test.ts", "**/*_example.js", "**/*_example.ts"]
+    "exclude": ["lib"]
 }

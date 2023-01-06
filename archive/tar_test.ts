@@ -1,8 +1,7 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-
 import {files, fs } from '@gjsify/deno-runtime/index';
 import { test } from '@gjsify/deno-runtime/cli';
 
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 /**
  * Tar test
  *

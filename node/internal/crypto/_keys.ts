@@ -1,5 +1,5 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { kKeyObject } from "./constants.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { kKeyObject } from "./constants.ts";
 
 export const kKeyType = Symbol("kKeyType");
 

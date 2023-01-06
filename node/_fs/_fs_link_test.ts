@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import * as path from "../../path/mod.js";
-import { assert, assertEquals, fail } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_test_utils.js";
-import { link, linkSync } from "./_fs_link.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import * as path from "../../path/mod.ts";
+import { assert, assertEquals, fail } from "../../testing/asserts.ts";
+import { assertCallbackErrorUncaught } from "../_test_utils.ts";
+import { link, linkSync } from "./_fs_link.ts";
 
 Deno.test({
   name: "ASYNC: hard linking files works as expected",

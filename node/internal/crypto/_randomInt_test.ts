@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import randomInt from "./_randomInt.js";
-import { assert, assertThrows } from "../../../testing/asserts.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import randomInt from "./_randomInt.ts";
+import { assert, assertThrows } from "../../../testing/asserts.ts";
 
 const between = (x: number, min: number, max: number) => x >= min && x < max;
 

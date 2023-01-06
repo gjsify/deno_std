@@ -17,22 +17,22 @@ import {
   TextEncoderStream,
 } from '@gjsify/deno-runtime/ext/web/08_text_encoding';
 
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
 export {
-  ByteLengthQueuingStrategy,
-  CountQueuingStrategy,
-  ReadableByteStreamController,
   ReadableStream,
-  ReadableStreamDefaultController,
   ReadableStreamDefaultReader,
-  TextDecoderStream,
-  TextEncoderStream,
+  ReadableByteStreamController,
+  ReadableStreamDefaultController,
   TransformStream,
   TransformStreamDefaultController,
   WritableStream,
-  WritableStreamDefaultController,
   WritableStreamDefaultWriter,
+  WritableStreamDefaultController,
+  ByteLengthQueuingStrategy,
+  CountQueuingStrategy,
+  TextEncoderStream,
+  TextDecoderStream,
 };
 
 export default {

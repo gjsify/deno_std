@@ -1,5 +1,5 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { fromFileUrl } from "../path.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { fromFileUrl } from "../path.ts";
 import { promisify } from "../internal/util.mjs";
 import { URL } from '../url.js';
 

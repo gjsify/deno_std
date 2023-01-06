@@ -1,9 +1,9 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals } from "../testing/asserts.js";
-import { crypto as stdCrypto } from "./mod.js";
-import { repeat } from "../bytes/repeat.js";
-import { dirname, fromFileUrl } from "../path/mod.js";
-import { DigestAlgorithm, digestAlgorithms } from "./_wasm/mod.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assert, assertEquals } from "../testing/asserts.ts";
+import { crypto as stdCrypto } from "./mod.ts";
+import { repeat } from "../bytes/repeat.ts";
+import { dirname, fromFileUrl } from "../path/mod.ts";
+import { DigestAlgorithm, digestAlgorithms } from "./_wasm/mod.ts";
 const moduleDir = dirname(fromFileUrl(import.meta.url));
 
 const webCrypto = globalThis.crypto;

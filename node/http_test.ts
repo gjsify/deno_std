@@ -1,4 +1,4 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
 import EventEmitter from "./events.js";
 import http, { type RequestOptions } from "./http.js";
@@ -148,6 +148,23 @@ Deno.test("[node/http] empty chunk in the middle of response", async () => {
   });
 
   await promise;
+});
+
+Deno.test("[node/http] server can respond with 101, 204, 205, 304 status", async () => {
+  for (const status of [101, 204, 205, 304]) {
+    const promise = deferred<void>();
+    const server = http.createServer((_req, res) => {
+      res.statusCode = status;
+      res.end("");
+    });
+    server.listen(async () => {
+      const res = await fetch(`http://127.0.0.1:${server.address().port}/`);
+      await res.arrayBuffer();
+      assertEquals(res.status, status);
+      server.close(() => promise.resolve());
+    });
+    await promise;
+  }
 });
 
 Deno.test("[node/http] request default protocol", async () => {

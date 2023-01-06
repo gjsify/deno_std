@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import * as perfHooks from "./perf_hooks.js";
-import { performance } from "./perf_hooks.js";
-import { assertEquals } from "../testing/asserts.js";
-import { assertSpyCall, assertSpyCalls, spy } from "../testing/mock.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import * as perfHooks from "./perf_hooks.ts";
+import { performance } from "./perf_hooks.ts";
+import { assertEquals } from "../testing/asserts.ts";
+import { assertSpyCall, assertSpyCalls, spy } from "../testing/mock.ts";
 
 Deno.test({
   name: "[perf_hooks] performance",

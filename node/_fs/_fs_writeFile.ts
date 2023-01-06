@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Encodings } from "../_utils.js";
-import { fromFileUrl } from "../path.js";
-import { Buffer } from "../buffer.js";
-import { writeAllSync } from "../../streams/write_all.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { Encodings } from "../_utils.ts";
+import { fromFileUrl } from "../path.ts";
+import { Buffer } from "../buffer.ts";
+import { writeAllSync } from "../../streams/write_all.ts";
 import {
   CallbackWithError,
   checkEncoding,

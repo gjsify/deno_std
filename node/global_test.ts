@@ -1,5 +1,5 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import "./global.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import "./global.ts";
 import {
   assert,
   assertEquals,

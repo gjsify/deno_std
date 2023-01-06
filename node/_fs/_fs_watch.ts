@@ -1,8 +1,8 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { basename } from "../path.js";
-import { EventEmitter } from "../events.js";
-import { notImplemented } from "../_utils.js";
-import { promisify } from "../util.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { basename } from "../path.ts";
+import { EventEmitter } from "../events.ts";
+import { notImplemented } from "../_utils.ts";
+import { promisify } from "../util.ts";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
 import { validateFunction } from "../internal/validators.mjs";
 import { stat, Stats } from "./_fs_stat.js";

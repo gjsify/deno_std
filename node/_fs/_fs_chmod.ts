@@ -1,5 +1,5 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import type { CallbackWithError } from "./_fs_common.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import type { CallbackWithError } from "./_fs_common.ts";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
 import * as pathModule from "../../path/mod.js";
 import { parseFileMode } from "../internal/validators.mjs";

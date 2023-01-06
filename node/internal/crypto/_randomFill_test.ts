@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { Buffer } from "../../buffer.js";
-import randomFill, { randomFillSync } from "./_randomFill.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { Buffer } from "../../buffer.ts";
+import randomFill, { randomFillSync } from "./_randomFill.ts";
 import {
   assertEquals,
   assertNotEquals,

@@ -1,7 +1,7 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import type { CallbackWithError } from "./_fs_common.js";
-import { makeCallback } from "./_fs_common.js";
-import { Buffer } from "../buffer.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import type { CallbackWithError } from "./_fs_common.ts";
+import { makeCallback } from "./_fs_common.ts";
+import { Buffer } from "../buffer.ts";
 import { getValidatedPath, getValidMode } from "../internal/fs/utils.mjs";
 import { fs } from "../internal_binding/constants.js";
 import { codeMap } from "../internal_binding/uv.js";

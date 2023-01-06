@@ -1,7 +1,7 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { readFile } from "./promises.js";
-import * as path from "../../path/mod.js";
-import { assert, assertEquals } from "../../testing/asserts.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { readFile } from "./promises.ts";
+import * as path from "../../path/mod.ts";
+import { assert, assertEquals } from "../../testing/asserts.ts";
 
 const moduleDir = path.dirname(path.fromFileUrl(import.meta.url));
 const testData = path.resolve(moduleDir, "..", "_fs", "testdata", "hello.txt");

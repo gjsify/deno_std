@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertThrows, fail } from "../../testing/asserts.js";
-import { symlink, symlinkSync } from "./_fs_symlink.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assert, assertThrows, fail } from "../../testing/asserts.ts";
+import { symlink, symlinkSync } from "./_fs_symlink.ts";
 
 Deno.test({
   name: "ASYNC: no callback function results in Error",

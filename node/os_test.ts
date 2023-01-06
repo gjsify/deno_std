@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals, assertThrows } from "../testing/asserts.js";
-import * as os from "./os.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assert, assertEquals, assertThrows } from "../testing/asserts.ts";
+import * as os from "./os.ts";
 
 Deno.test({
   name: "build architecture is a string",
@@ -222,6 +222,13 @@ Deno.test({
 });
 
 Deno.test({
+  name: "Uptime should be greater than 0",
+  fn() {
+    assert(os.uptime() > 0);
+  },
+});
+
+Deno.test({
   name: "os.cpus()",
   fn() {
     assertEquals(os.cpus().length, navigator.hardwareConcurrency);
@@ -251,13 +258,6 @@ Deno.test({
     assertThrows(
       () => {
         os.setPriority(0);
-      },
-      Error,
-      "Not implemented",
-    );
-    assertThrows(
-      () => {
-        os.uptime();
       },
       Error,
       "Not implemented",

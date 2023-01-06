@@ -1,7 +1,7 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { withoutAll } from "../../collections/without_all.js";
-import { walk } from "../../fs/walk.js";
-import { relative } from "../path/posix.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { withoutAll } from "../../collections/without_all.ts";
+import { walk } from "../../fs/walk.ts";
+import { relative } from "../path/posix.ts";
 import config from "./config.json" assert { type: "json" };
 
 const encoder = new TextEncoder();

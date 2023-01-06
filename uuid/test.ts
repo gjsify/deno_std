@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assert, assertEquals, assertThrows } from "../testing/asserts.js";
-import { isNil, NIL_UUID, validate, version } from "./mod.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assert, assertEquals, assertThrows } from "../testing/asserts.ts";
+import { isNil, NIL_UUID, validate, version } from "./mod.ts";
 
 Deno.test("[UUID] isNil", () => {
   const nil = NIL_UUID;

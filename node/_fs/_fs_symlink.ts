@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { CallbackWithError } from "./_fs_common.js";
-import { fromFileUrl } from "../path.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { CallbackWithError } from "./_fs_common.ts";
+import { fromFileUrl } from "../path.ts";
 import { promisify } from "../internal/util.mjs";
 import { URL } from '../url.js';
 import { symlink as denoSymlink, symlinkSync as denoSymlinkSync, stat, statSync } from "@gjsify/deno-runtime/runtime/js/30_fs";

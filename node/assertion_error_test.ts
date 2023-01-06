@@ -1,5 +1,5 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { stripColor } from "../fmt/colors.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { stripColor } from "../fmt/colors.ts";
 import {
   assert,
   assertEquals,

@@ -1,7 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+import { os, readFile, errors } from '@gjsify/deno-runtime/index';
 
-import {files, fs, os, readFile, errors } from '@gjsify/deno-runtime/index';
-
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 /**
  * Load environment variables from `.env` files.
  * Inspired by the node module [`dotenv`](https://github.com/motdotla/dotenv) and

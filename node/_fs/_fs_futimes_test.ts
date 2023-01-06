@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { assertEquals, assertThrows, fail } from "../../testing/asserts.js";
-import { futimes, futimesSync } from "./_fs_futimes.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { assertEquals, assertThrows, fail } from "../../testing/asserts.ts";
+import { futimes, futimesSync } from "./_fs_futimes.ts";
 
 const randomDate = new Date(Date.now() + 1000);
 

@@ -1,9 +1,9 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
-import { lstat, lstatSync } from "./_fs_lstat.js";
-import { fail } from "../../testing/asserts.js";
-import { assertCallbackErrorUncaught } from "../_test_utils.js";
-import { assertStats, assertStatsBigInt } from "./_fs_stat_test.js";
-import type { BigIntStats, Stats } from "./_fs_stat.js";
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+import { lstat, lstatSync } from "./_fs_lstat.ts";
+import { fail } from "../../testing/asserts.ts";
+import { assertCallbackErrorUncaught } from "../_test_utils.ts";
+import { assertStats, assertStatsBigInt } from "./_fs_stat_test.ts";
+import type { BigIntStats, Stats } from "./_fs_stat.ts";
 
 Deno.test({
   name: "ASYNC: get a file Stats (lstat)",
