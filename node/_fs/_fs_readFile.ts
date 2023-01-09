@@ -69,7 +69,7 @@ export function readFile(
         const text = maybeDecode(data, encoding);
         return (cb as TextCallback)(null, text);
       }
-      const buffer = maybeDecode(data, encoding);
+      const buffer = maybeDecode(data, encoding as "binary");
       (cb as BinaryCallback)(null, buffer);
     }, (err) => cb && cb(err));
   }
@@ -100,6 +100,6 @@ export function readFileSync(
     const text = maybeDecode(data, encoding);
     return text;
   }
-  const buffer = maybeDecode(data, encoding);
+  const buffer = maybeDecode(data, encoding as "binary");
   return buffer;
 }

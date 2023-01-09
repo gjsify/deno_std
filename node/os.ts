@@ -26,14 +26,27 @@ import { EOL as fsEOL } from "../fs/eol.js";
 import process from "./process.js";
 import { isWindows, osType } from "../_util/os.js";
 import { os } from "./internal_binding/constants.js";
+import GLib from '@gjsify/types/GLib-2.0';
+
+import {
+  nodeOsUptime,
+  osUptime,
+  systemMemoryInfo,
+  env,
+  hostname as denoHostname,
+  loadavg as denoLoadavg,
+  osRelease,
+} from "@gjsify/deno-runtime/runtime/js/30_os";
+
+import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
+import { cli, os as getOs, getUserInfo } from '@gjsify/utils';
 
 export const constants = os;
 
 const SEE_GITHUB_ISSUE = "See https://github.com/denoland/deno_std/issues/1436";
 
 // @ts-ignore Deno[Deno.internal] is used on purpose here
-const DenoOsUptime = Deno[Deno.internal]?.nodeUnstable?.osUptime ||
-  Deno.osUptime;
+const DenoOsUptime = nodeOsUptime || osUptime;
 
 interface CPUTimes {
   /** The number of milliseconds the CPU has spent in user mode */
@@ -126,20 +139,68 @@ export function arch(): string {
 // deno-lint-ignore no-explicit-any
 (uptime as any)[Symbol.toPrimitive] = (): number => uptime();
 
-export function cpus(): CPUCoreInfo[] {
-  return Array.from(Array(navigator.hardwareConcurrency)).map(() => {
-    return {
-      model: "",
-      speed: 0,
-      times: {
-        user: 0,
-        nice: 0,
-        sys: 0,
-        idle: 0,
-        irq: 0,
-      },
-    };
+// Gjsify:
+function cpus_darwin(): CPUCoreInfo[] {
+  let cores = parseFloat(cli('sysctl -n hw.ncpu'));
+  const cpus = [];
+  while (cores--) {
+    cpus.push({
+      model: cli('sysctl -n machdep.cpu.brand_string').replace(/\s+/g, ' '),
+      speed: parseFloat(cli('sysctl -n hw.cpufrequency')) / 1000 / 1000,
+      get times() {
+        console.warn('cpus.times is not supported');
+        return {};
+      }
+    });
+  }
+  return cpus;
+}
+
+// Gjsify:
+function cpus_linux(): CPUCoreInfo[] {
+  const PROCESSOR = /^processor\s*:\s*(\d+)/i;
+  const NAME = /^model[\s_]+name\s*:([^\r\n]+)/i;
+  const FREQ = /^cpu[\s_]+MHz\s*:\s*(\d+)/i;
+  const cpus = [];
+  let cpu: { model: string, speed: number, times: {} };
+  cli('cat /proc/cpuinfo').split(EOL).forEach(line => {
+    switch (true) {
+      case PROCESSOR.test(line):
+        cpus[RegExp.$1.trim()] = (cpu = {
+          model: '',
+          speed: 0,
+          get times() { return {}; }
+        });
+        break;
+      case NAME.test(line):
+        cpu.model = RegExp.$1.trim();
+        break;
+      case FREQ.test(line):
+        cpu.speed = parseFloat(RegExp.$1.trim());
+        break;
+    }
   });
+  return cpus;
+}
+
+export function cpus(): CPUCoreInfo[] {
+  // return Array.from(Array(navigator.hardwareConcurrency)).map(() => {
+  //   return {
+  //     model: "",
+  //     speed: 0,
+  //     times: {
+  //       user: 0,
+  //       nice: 0,
+  //       sys: 0,
+  //       idle: 0,
+  //       irq: 0,
+  //     },
+  //   };
+  // });
+
+  // Gjsify:
+  if(getOs() === 'darwin') return cpus_darwin();
+  return cpus_linux();
 }
 
 /**
@@ -157,7 +218,7 @@ export function endianness(): "BE" | "LE" {
 
 /** Return free memory amount */
 export function freemem(): number {
-  return Deno.systemMemoryInfo().free;
+  return systemMemoryInfo().free;
 }
 
 /** Not yet implemented */
@@ -168,24 +229,28 @@ export function getPriority(pid = 0): number {
 
 /** Returns the string path of the current user's home directory. */
 export function homedir(): string | null {
+
+  // Gjsify:
+  return GLib.get_home_dir() || null;
+
   // Note: Node/libuv calls getpwuid() / GetUserProfileDirectory() when the
   // environment variable isn't set but that's the (very uncommon) fallback
   // path. IMO, it's okay to punt on that for now.
-  switch (osType) {
-    case "windows":
-      return Deno.env.get("USERPROFILE") || null;
-    case "linux":
-    case "darwin":
-    case "freebsd":
-      return Deno.env.get("HOME") || null;
-    default:
-      throw Error("unreachable");
-  }
+  // switch (osType) {
+  //   case "windows":
+  //     return env.get("USERPROFILE") || null;
+  //   case "linux":
+  //   case "darwin":
+  //   case "freebsd":
+  //     return env.get("HOME") || null;
+  //   default:
+  //     throw Error("unreachable");
+  // }
 }
 
 /** Returns the host name of the operating system as a string. */
 export function hostname(): string {
-  return Deno.hostname();
+  return denoHostname();
 }
 
 /** Returns an array containing the 1, 5, and 15 minute load averages */
@@ -193,7 +258,7 @@ export function loadavg(): number[] {
   if (isWindows) {
     return [0, 0, 0];
   }
-  return Deno.loadavg();
+  return denoLoadavg();
 }
 
 /** Returns an object containing network interfaces that have been assigned a network address.
@@ -237,14 +302,14 @@ export function platform(): string {
 
 /** Returns the operating system as a string */
 export function release(): string {
-  return Deno.osRelease();
+  return osRelease();
 }
 
 /** Returns a string identifying the kernel version */
 export function version(): string {
   // TODO(kt3k): Temporarily uses Deno.osRelease().
   // Revisit this if this implementation is insufficient for any npm module
-  return Deno.osRelease();
+  return osRelease();
 }
 
 /** Not yet implemented */
@@ -263,39 +328,42 @@ export function setPriority(pid: number, priority?: number) {
 
 /** Returns the operating system's default directory for temporary files as a string. */
 export function tmpdir(): string | null {
+  // Gjsify:
+  return GLib.get_tmp_dir() || null;
+
   /* This follows the node js implementation, but has a few
      differences:
      * On windows, if none of the environment variables are defined,
        we return null.
-     * On unix we use a plain Deno.env.get, instead of safeGetenv,
+     * On unix we use a plain env.get, instead of safeGetenv,
        which special cases setuid binaries.
      * Node removes a single trailing / or \, we remove all.
   */
-  if (isWindows) {
-    const temp = Deno.env.get("TEMP") || Deno.env.get("TMP");
-    if (temp) {
-      return temp.replace(/(?<!:)[/\\]*$/, "");
-    }
-    const base = Deno.env.get("SYSTEMROOT") || Deno.env.get("WINDIR");
-    if (base) {
-      return base + "\\temp";
-    }
-    return null;
-  } else { // !isWindows
-    const temp = Deno.env.get("TMPDIR") || Deno.env.get("TMP") ||
-      Deno.env.get("TEMP") || "/tmp";
-    return temp.replace(/(?<!^)\/*$/, "");
-  }
+  // if (isWindows) {
+  //   const temp = env.get("TEMP") || env.get("TMP");
+  //   if (temp) {
+  //     return temp.replace(/(?<!:)[/\\]*$/, "");
+  //   }
+  //   const base = env.get("SYSTEMROOT") || env.get("WINDIR");
+  //   if (base) {
+  //     return base + "\\temp";
+  //   }
+  //   return null;
+  // } else { // !isWindows
+  //   const temp = env.get("TMPDIR") || env.get("TMP") ||
+  //     env.get("TEMP") || "/tmp";
+  //   return temp.replace(/(?<!^)\/*$/, "");
+  // }
 }
 
 /** Return total physical memory amount */
 export function totalmem(): number {
-  return Deno.systemMemoryInfo().total;
+  return systemMemoryInfo().total;
 }
 
 /** Returns operating system type (i.e. 'Windows_NT', 'Linux', 'Darwin') */
 export function type(): string {
-  switch (Deno.build.os as string) {
+  switch (build.os as string) {
     case "windows":
       return "Windows_NT";
     case "linux":
@@ -319,7 +387,19 @@ export function userInfo(
   // deno-lint-ignore no-unused-vars
   options: UserInfoOptions = { encoding: "utf-8" },
 ): UserInfo {
-  notImplemented(SEE_GITHUB_ISSUE);
+  // notImplemented(SEE_GITHUB_ISSUE);
+
+  const username = GLib.get_user_name();
+
+  const userInfo = getUserInfo(username);
+
+  return {
+    uid: userInfo.userId,
+    gid: userInfo.groupId,
+    username: GLib.get_user_name(),
+    homedir: GLib.get_home_dir(),
+    shell: userInfo.shell || env.get("SHELL") || "/bin/bash",
+  }
 }
 
 export const EOL = isWindows ? fsEOL.CRLF : fsEOL.LF;
