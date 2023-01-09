@@ -353,9 +353,10 @@ class Process extends EventEmitter {
 
     // Gjsify: In Gjsify we allow to import only some parts of the Deno Runtime, so `globalThis.addEventListener` can be undefined
     if(!globalThis.addEventListener) {
-      // console.log('[Process] globalThis.addEventListener is not defined, this means that events like "beforeExit" and "exit" are not triggered');
+      console.log('[Process] globalThis.addEventListener is not defined, this means that events like "beforeExit" and "exit" are not triggered');
 
       logSignals.connect("unhandledRejection", (self, data, promiseData) => {
+        console.log("unhandledRejection", promiseData);
         // The Node.js default behavior is to raise an uncaught exception if
         // an unhandled rejection occurs and there are no unhandledRejection
         // listeners.

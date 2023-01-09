@@ -34,8 +34,9 @@ declare global {
   var process: typeof processModule;
   var Buffer: typeof bufferModule;
   type Buffer = bufferModule;
-  var setImmediate: typeof timers.setImmediate;
-  var clearImmediate: typeof timers.clearImmediate;
+  // Gjsify: Conflicts with @types/node
+  // var setImmediate: typeof timers.setImmediate;
+  // var clearImmediate: typeof timers.clearImmediate;
 }
 
 Object.defineProperty(globalThis, "global", {
