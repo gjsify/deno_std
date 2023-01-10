@@ -8,7 +8,7 @@ import { version as denoVersion } from "@gjsify/deno-runtime/runtime/js/01_versi
 import { chdir as denoChdir, cwd as denoCwd } from "@gjsify/deno-runtime/runtime/js/30_fs"
 import { env as denoEnv } from "@gjsify/deno-runtime/runtime/js/30_os";
 import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
-import { getPid } from "@gjsify/utils";
+import { getPid, getGjsVersion } from "@gjsify/utils";
 import { isWindows } from "../../_util/os.js";
 import { nextTick as _nextTick } from "../_next_tick.js";
 import { _exiting } from "./exiting.js";
