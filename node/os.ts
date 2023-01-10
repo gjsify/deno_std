@@ -39,7 +39,7 @@ import {
 } from "@gjsify/deno-runtime/runtime/js/30_os";
 
 import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
-import { cli, os as getOs, getUserInfo } from '@gjsify/utils';
+import { cli, getOs, getUserInfo } from '@gjsify/utils';
 
 export const constants = os;
 
@@ -387,17 +387,13 @@ export function userInfo(
   // deno-lint-ignore no-unused-vars
   options: UserInfoOptions = { encoding: "utf-8" },
 ): UserInfo {
-  // notImplemented(SEE_GITHUB_ISSUE);
-
-  const username = GLib.get_user_name();
-
-  const userInfo = getUserInfo(username);
+  const userInfo = getUserInfo();
 
   return {
     uid: userInfo.userId,
     gid: userInfo.groupId,
-    username: GLib.get_user_name(),
-    homedir: GLib.get_home_dir(),
+    username: userInfo.username,
+    homedir: userInfo.homeDirectory || GLib.get_home_dir(),
     shell: userInfo.shell || env.get("SHELL") || "/bin/bash",
   }
 }
