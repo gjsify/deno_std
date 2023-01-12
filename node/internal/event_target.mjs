@@ -1,6 +1,7 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 // Copyright Node.js contributors. All rights reserved. MIT License.
 
+import { EventTarget as DenoEventTarget, Event as DenoEvent } from "@gjsify/deno-runtime/ext/web/02_event";
 import {
   ERR_EVENT_RECURSION,
   ERR_INVALID_ARG_TYPE,
@@ -17,6 +18,7 @@ import {
   kEnumerableProperty,
 } from "./util.mjs";
 import { inspect } from "../util.ts";
+import { performance } from "../performance.ts";
 
 const kIsEventTarget = Symbol.for("nodejs.event_target");
 const kIsNodeEventTarget = Symbol("kIsNodeEventTarget");
@@ -54,7 +56,7 @@ function isEvent(value) {
   return typeof value?.[kType] === "string";
 }
 
-class Event extends globalThis.Event {
+class Event extends DenoEvent {
   /**
    * @param {string} type
    * @param {{
@@ -450,7 +452,7 @@ function initEventTarget(self) {
   self[kMaxEventTargetListenersWarned] = false;
 }
 
-class EventTarget extends globalThis.EventTarget {
+class EventTarget extends DenoEventTarget {
   // Used in checking whether an object is an EventTarget. This is a well-known
   // symbol as EventTarget may be used cross-realm.
   // Ref: https://github.com/nodejs/node/pull/33661
@@ -649,7 +651,7 @@ class EventTarget extends globalThis.EventTarget {
       throw new ERR_INVALID_THIS("EventTarget");
     }
 
-    if (!(event instanceof globalThis.Event)) {
+    if (!(event instanceof DenoEvent)) {
       throw new ERR_INVALID_ARG_TYPE("event", "Event", event);
     }
 
@@ -989,7 +991,7 @@ function validateEventListenerOptions(options) {
 }
 
 function isEventTarget(obj) {
-  return obj instanceof globalThis.EventTarget;
+  return obj instanceof DenoEventTarget;
 }
 
 function isNodeEventTarget(obj) {

@@ -24,6 +24,7 @@
 
 const kRejection = Symbol.for("nodejs.rejection");
 
+import { EventTarget } from "@gjsify/deno-runtime/ext/web/02_event";
 import { inspect } from "./internal/util/inspect.mjs";
 import {
   AbortError,
