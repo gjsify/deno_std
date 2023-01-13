@@ -1,12 +1,12 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
+import { sprintf } from "../../../fmt/printf.js";
+import { inspect } from "./inspect.mjs";
+
 import { getPid } from '@gjsify/utils';
 import { PermissionDenied } from '@gjsify/deno-runtime/runtime/js/01_errors';
 import { env } from '@gjsify/deno-runtime/runtime/js/30_os';
-
-import { sprintf } from "../../../fmt/printf.js";
-import { inspect } from "./inspect.mjs";
 
 // `debugImpls` and `testEnabled` are deliberately not initialized so any call
 // to `debuglog()` before `initializeDebugEnv()` is called will throw.

@@ -1,7 +1,6 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 // Copyright Node.js contributors. All rights reserved. MIT License.
 
-import { EventTarget as DenoEventTarget, Event as DenoEvent } from "@gjsify/deno-runtime/ext/web/02_event";
 import {
   ERR_EVENT_RECURSION,
   ERR_INVALID_ARG_TYPE,
@@ -19,6 +18,8 @@ import {
 } from "./util.mjs";
 import { inspect } from "../util.ts";
 import { performance } from "../performance.ts";
+
+import { EventTarget as DenoEventTarget, Event as DenoEvent } from "@gjsify/deno-runtime/ext/web/02_event";
 
 const kIsEventTarget = Symbol.for("nodejs.event_target");
 const kIsNodeEventTarget = Symbol("kIsNodeEventTarget");

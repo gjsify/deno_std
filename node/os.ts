@@ -28,6 +28,7 @@ import { isWindows, osType } from "../_util/os.js";
 import { os } from "./internal_binding/constants.js";
 import GLib from '@gjsify/types/GLib-2.0';
 
+import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
 import {
   nodeOsUptime,
   osUptime,
@@ -38,7 +39,6 @@ import {
   osRelease,
 } from "@gjsify/deno-runtime/runtime/js/30_os";
 
-import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
 import { cli, getOs, getUserInfo } from '@gjsify/utils';
 
 export const constants = os;

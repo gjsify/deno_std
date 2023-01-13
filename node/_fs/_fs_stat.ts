@@ -1,8 +1,9 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 import { denoErrorToNodeError } from "../internal/errors.ts";
 import { promisify } from "../internal/util.mjs";
-import { stat as denoStat, statSync as denoStatSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
+
 import { NotFound } from "@gjsify/deno-runtime/runtime/js/01_errors";
+import { stat as denoStat, statSync as denoStatSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
 
 export type statOptions = {
   bigint: boolean;

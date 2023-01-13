@@ -2,11 +2,12 @@
 // Copyright Joyent, Inc. and other Node contributors.
 
 // deno-lint-ignore-file no-inner-declarations
-import { runMicrotasks, setHasTickScheduled, setNextTickCallback, hasTickScheduled, setMacrotaskCallback } from '@gjsify/deno-runtime/core/01_core'
 // import { core } from "./_core.js";
 import { validateFunction } from "./internal/validators.mjs";
 import { _exiting } from "./_process/exiting.js";
 import { FixedQueue } from "./internal/fixed_queue.js";
+
+import { runMicrotasks, setHasTickScheduled, setNextTickCallback, hasTickScheduled, setMacrotaskCallback } from '@gjsify/deno-runtime/core/01_core';
 
 interface Tock {
   callback: (...args: Array<unknown>) => void;

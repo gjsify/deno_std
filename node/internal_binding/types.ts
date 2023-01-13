@@ -21,7 +21,7 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { isProxy } from '@gjsify/deno-runtime/core/01_core';
+import { isProxy as denoIsProxy } from '@gjsify/deno-runtime/core/01_core';
 
 // import { core } from "../_core.js";
 
@@ -121,7 +121,7 @@ export function isPromise(value: unknown): boolean {
 }
 
 export function isProxy(value: unknown): boolean {
-  return isProxy(value);
+  return denoIsProxy(value);
 }
 
 export function isRegExp(value: unknown): boolean {

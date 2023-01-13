@@ -5,6 +5,7 @@ import { denoErrorToNodeError } from "../internal/errors.ts";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
 import { Buffer } from "../buffer.js";
 import { promisify } from "../internal/util.mjs";
+
 import { readDirSync as denoReadDirSync, readDir as denoReadDir } from "@gjsify/deno-runtime/runtime/js/30_fs";
 
 function toDirent(val: Deno.DirEntry): Dirent {

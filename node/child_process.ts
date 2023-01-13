@@ -39,6 +39,8 @@ import { process } from "./process.js";
 import { Buffer } from "./buffer.js";
 import { convertToValidSignal, kEmptyObject } from "./internal/util.mjs";
 
+import { op_npm_process_state } from "@gjsify/deno-runtime/ops/index";
+
 const MAX_BUFFER = 1024 * 1024;
 
 type ForkOptions = ChildProcessOptions;
@@ -140,8 +142,7 @@ export function fork(
 
   Object.assign(options.env ??= {}, {
     // deno-lint-ignore no-explicit-any
-    DENO_DONT_USE_INTERNAL_NODE_COMPAT_STATE: (Deno as any).core.ops
-      .op_npm_process_state(),
+    DENO_DONT_USE_INTERNAL_NODE_COMPAT_STATE: op_npm_process_state(),
   });
 
   return spawn(options.execPath, args, options);

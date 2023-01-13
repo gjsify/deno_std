@@ -41,7 +41,6 @@ import {
   stdin as stdin_,
   stdout as stdout_,
 } from "./_process/streams.mjs";
-import { eventLoopHasMoreWork } from "@gjsify/deno-runtime/core/01_core";
 // import { core } from "./_core.js";
 import { processTicksAndRejections } from "./_next_tick.js";
 
@@ -59,12 +58,13 @@ import * as uv from "./internal_binding/uv.js";
 import type { BindingName } from "./internal_binding/mod.js";
 import { buildAllowedFlags } from "./internal/process/per_thread.mjs";
 
-import { getArgs } from "@gjsify/utils";
+import { getArgs, logSignals } from "@gjsify/utils";
+
+import { eventLoopHasMoreWork } from "@gjsify/deno-runtime/core/01_core";
 import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
 import { execPath as denoExecPath, exit as denoExit, memoryUsage as denoMemoryUsage } from "@gjsify/deno-runtime/runtime/js/30_os";
 import { kill as denoKill } from "@gjsify/deno-runtime/runtime/js/40_process";
 import { Command as DenoCommand } from "@gjsify/deno-runtime/runtime/js/40_spawn";
-import { logSignals } from '@gjsify/utils';
 
 // @ts-ignore Deno[Deno.internal] is used on purpose here
 // const DenoCommand = Deno[Deno?.internal]?.nodeUnstable?.Command ||

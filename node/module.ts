@@ -21,12 +21,6 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import "./global.js";
-import { op_napi_open } from '@gjsify/deno-runtime/ops/index';
-import { evalContext } from '@gjsify/deno-runtime/core/01_core';
-import { PermissionDenied } from '@gjsify/deno-runtime/runtime/js/01_errors';
-import { env } from '@gjsify/deno-runtime/runtime/js/30_os';
-import { cwd, realPathSync, statSync } from '@gjsify/deno-runtime/runtime/js/30_fs';
-import { readFileSync } from '@gjsify/deno-runtime/runtime/js/40_read_file';
 // import { core } from "./_core.js";
 import nodeMods from "./module_all.js";
 import upstreamMods from "./upstream_modules.js";
@@ -52,6 +46,13 @@ import {
   setInterval,
   setTimeout,
 } from "./timers.js";
+
+import { op_napi_open } from '@gjsify/deno-runtime/ops/index';
+import { evalContext } from '@gjsify/deno-runtime/core/01_core';
+import { PermissionDenied } from '@gjsify/deno-runtime/runtime/js/01_errors';
+import { env } from '@gjsify/deno-runtime/runtime/js/30_os';
+import { cwd, realPathSync, statSync } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { readFileSync } from '@gjsify/deno-runtime/runtime/js/40_read_file';
 
 const { hasOwn } = Object;
 const CHAR_FORWARD_SLASH = "/".charCodeAt(0);

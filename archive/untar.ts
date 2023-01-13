@@ -1,7 +1,5 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
-import { SeekMode } from '@gjsify/deno-runtime/runtime/js/12_io';
-
 import {
   FileTypes,
   readBlock,
@@ -10,6 +8,9 @@ import {
   ustarStructure,
 } from "./_common.ts";
 import { readAll } from "../streams/read_all.ts";
+
+import { SeekMode } from '@gjsify/deno-runtime/runtime/js/12_io';
+
 import type { Reader } from "../types.d.ts";
 
 /*!

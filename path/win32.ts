@@ -20,6 +20,7 @@ import {
   normalizeString,
 } from "./_util.ts";
 import { assert } from "../_util/asserts.ts";
+
 import { URL } from '@gjsify/deno-runtime/ext/url/00_url';
 
 export const sep = "\\";

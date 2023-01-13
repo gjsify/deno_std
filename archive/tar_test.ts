@@ -1,7 +1,3 @@
-import { remove } from '@gjsify/deno-runtime/runtime/js/30_fs';
-import { open } from '@gjsify/deno-runtime/runtime/js/40_files';
-import { test } from '@gjsify/deno-runtime/cli';
-
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 /**
  * Tar test
@@ -21,6 +17,10 @@ import { Buffer } from "../io/buffer.js";
 import { copy } from "../streams/copy.js";
 import { readAll } from "../streams/read_all.js";
 import { filePath, testdataDir } from "./_test_common.js";
+
+import { remove } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { open } from '@gjsify/deno-runtime/runtime/js/40_files';
+import { test } from '@gjsify/deno-runtime/cli';
 
 test("createTarArchive", async function () {
   // initialize

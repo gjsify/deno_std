@@ -24,7 +24,6 @@
 
 const kRejection = Symbol.for("nodejs.rejection");
 
-import { EventTarget } from "@gjsify/deno-runtime/ext/web/02_event";
 import { inspect } from "./internal/util/inspect.mjs";
 import {
   AbortError,
@@ -40,6 +39,8 @@ import {
   validateFunction,
 } from "./internal/validators.mjs";
 import { spliceOne } from "./_utils.ts";
+
+import { EventTarget } from "@gjsify/deno-runtime/ext/web/02_event";
 
 const kCapture = Symbol("kCapture");
 const kErrorMonitor = Symbol("events.errorMonitor");
