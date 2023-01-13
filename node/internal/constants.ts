@@ -1,9 +1,9 @@
-import { build } from '@gjsify/deno-runtime'
+import { build } from '@gjsify/deno-runtime/runtime/js/01_build';
 
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
-const isWindows = build.build.os === "windows";
+const isWindows = build.os === "windows";
 
 // Alphabet chars.
 export const CHAR_UPPERCASE_A = 65; /* A */

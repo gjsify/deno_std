@@ -1,4 +1,4 @@
-import { build } from '@gjsify/deno-runtime'
+import { build } from '@gjsify/deno-runtime/runtime/js/01_build';
 
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 let os: {
@@ -197,7 +197,7 @@ let os: {
   UV_UDP_IPV6ONLY?: number;
   UV_UDP_REUSEADDR: number;
 };
-if (build.build.os === "darwin") {
+if (build.os === "darwin") {
   os = {
     UV_UDP_REUSEADDR: 4,
     dlopen: {
@@ -329,7 +329,7 @@ if (build.build.os === "darwin") {
       PRIORITY_HIGHEST: -20,
     },
   };
-} else if (build.build.os === "linux") {
+} else if (build.os === "linux") {
   os = {
     UV_UDP_REUSEADDR: 4,
     dlopen: {

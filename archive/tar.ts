@@ -1,6 +1,7 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
-import { files, fs } from '@gjsify/deno-runtime/index';
+import { stat } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { open, FsFile } from '@gjsify/deno-runtime/runtime/js/40_files';
 
 import {
   FileTypes,
@@ -53,13 +54,13 @@ const ustar = "ustar\u000000";
  * Simple file reader
  */
 class FileReader implements Reader {
-  #file?: files.FsFile;
+  #file?: FsFile;
 
   constructor(private filePath: string) {}
 
   public async read(p: Uint8Array): Promise<number | null> {
     if (!this.#file) {
-      this.#file = await files.open(this.filePath, { read: true });
+      this.#file = await open(this.filePath, { read: true });
     }
     const res = await this.#file.read(p);
     if (res === null) {
@@ -203,7 +204,7 @@ export class Tar {
     // set meta data
     let info: Deno.FileInfo | undefined;
     if (opts.filePath) {
-      info = await fs.stat(opts.filePath);
+      info = await stat(opts.filePath);
       if (info.isDirectory) {
         info.size = 0;
         opts.reader = new Buffer();

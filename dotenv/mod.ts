@@ -1,4 +1,6 @@
-import { os, readFile, errors } from '@gjsify/deno-runtime/index';
+import { NotFound } from '@gjsify/deno-runtime/runtime/js/01_errors';
+import { env } from '@gjsify/deno-runtime/runtime/js/30_os';
+import { readTextFileSync, readTextFile } from '@gjsify/deno-runtime/runtime/js/40_read_file';
 
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 /**
@@ -328,8 +330,8 @@ export function loadSync(
 
   if (_export) {
     for (const key in conf) {
-      if (os.env.get(key) !== undefined) continue;
-      os.env.set(key, conf[key]);
+      if (env.get(key) !== undefined) continue;
+      env.set(key, conf[key]);
     }
   }
 
@@ -402,8 +404,8 @@ export async function load(
 
   if (_export) {
     for (const key in conf) {
-      if (os.env.get(key) !== undefined) continue;
-      os.env.set(key, conf[key]);
+      if (env.get(key) !== undefined) continue;
+      env.set(key, conf[key]);
     }
   }
 
@@ -415,9 +417,9 @@ function parseFileSync(
   restrictEnvAccessTo: StringList = [],
 ): Record<string, string> {
   try {
-    return parse(readFile.readTextFileSync(filepath), restrictEnvAccessTo);
+    return parse(readTextFileSync(filepath), restrictEnvAccessTo);
   } catch (e) {
-    if (e instanceof errors.NotFound) return {};
+    if (e instanceof NotFound) return {};
     throw e;
   }
 }
@@ -427,9 +429,9 @@ async function parseFile(
   restrictEnvAccessTo: StringList = [],
 ): Promise<Record<string, string>> {
   try {
-    return parse(await readFile.readTextFile(filepath), restrictEnvAccessTo);
+    return parse(await readTextFile(filepath), restrictEnvAccessTo);
   } catch (e) {
-    if (e instanceof errors.NotFound) return {};
+    if (e instanceof NotFound) return {};
     throw e;
   }
 }
@@ -497,8 +499,8 @@ function readEnv(restrictEnvAccessTo: StringList) {
         accessedEnvVars: Record<string, string>,
         envVarName: string,
       ): Record<string, string> => {
-        if (os.env.get(envVarName)) {
-          accessedEnvVars[envVarName] = os.env.get(envVarName) as string;
+        if (env.get(envVarName)) {
+          accessedEnvVars[envVarName] = env.get(envVarName) as string;
         }
         return accessedEnvVars;
       },
@@ -506,7 +508,7 @@ function readEnv(restrictEnvAccessTo: StringList) {
     );
   }
 
-  return os.env.toObject();
+  return env.toObject();
 }
 
 export class MissingEnvVarsError extends Error {

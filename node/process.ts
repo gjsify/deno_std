@@ -41,7 +41,8 @@ import {
   stdin as stdin_,
   stdout as stdout_,
 } from "./_process/streams.mjs";
-import { core } from "./_core.js";
+import { eventLoopHasMoreWork } from "@gjsify/deno-runtime/core/01_core";
+// import { core } from "./_core.js";
 import { processTicksAndRejections } from "./_next_tick.js";
 
 // TODO(kt3k): Give better types to stdio objects
@@ -408,7 +409,7 @@ class Process extends EventEmitter {
     globalThis.addEventListener("beforeunload", (e) => {
       super.emit("beforeExit", process.exitCode || 0);
       processTicksAndRejections();
-      if (core.eventLoopHasMoreWork()) {
+      if (eventLoopHasMoreWork()) {
         e.preventDefault();
       }
     });

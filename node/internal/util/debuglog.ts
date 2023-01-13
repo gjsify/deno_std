@@ -2,8 +2,8 @@
 // Copyright Joyent and Node contributors. All rights reserved. MIT license.
 
 import { getPid } from '@gjsify/utils';
-import { os, errors } from '@gjsify/deno-runtime/index';
-
+import { PermissionDenied } from '@gjsify/deno-runtime/runtime/js/01_errors';
+import { env } from '@gjsify/deno-runtime/runtime/js/30_os';
 
 import { sprintf } from "../../../fmt/printf.js";
 import { inspect } from "./inspect.mjs";
@@ -110,9 +110,9 @@ export function debuglog(
 
 let debugEnv;
 try {
-  debugEnv = os.env.get("NODE_DEBUG") ?? "";
+  debugEnv = env.get("NODE_DEBUG") ?? "";
 } catch (error) {
-  if (error instanceof errors.PermissionDenied) {
+  if (error instanceof PermissionDenied) {
     debugEnv = "";
   } else {
     throw error;

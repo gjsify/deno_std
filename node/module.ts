@@ -21,8 +21,13 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import "./global.js";
-
-import { core } from "./_core.js";
+import { op_napi_open } from '@gjsify/deno-runtime/ops/index';
+import { evalContext } from '@gjsify/deno-runtime/core/01_core';
+import { PermissionDenied } from '@gjsify/deno-runtime/runtime/js/01_errors';
+import { env } from '@gjsify/deno-runtime/runtime/js/30_os';
+import { cwd, realPathSync, statSync } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { readFileSync } from '@gjsify/deno-runtime/runtime/js/40_read_file';
+// import { core } from "./_core.js";
 import nodeMods from "./module_all.js";
 import upstreamMods from "./upstream_modules.js";
 
@@ -68,12 +73,12 @@ function stat(filename: string): StatResult {
     if (result !== undefined) return result;
   }
   try {
-    const info = Deno.statSync(filename);
+    const info = statSync(filename);
     const result = info.isFile ? 0 : 1;
     if (statCache !== null) statCache.set(filename, result);
     return result;
   } catch (e) {
-    if (e instanceof Deno.errors.PermissionDenied) {
+    if (e instanceof PermissionDenied) {
       throw new Error("CJS loader requires --allow-read.");
     }
     return -1;
@@ -703,8 +708,8 @@ class Module {
   }
 
   static _initPaths() {
-    const homeDir = Deno.env.get("HOME");
-    const nodePath = Deno.env.get("NODE_PATH");
+    const homeDir = env.get("HOME");
+    const nodePath = env.get("NODE_PATH");
 
     // Removed $PREFIX/bin/node case
 
@@ -740,7 +745,7 @@ class Module {
     // preloaded modules.
     const parent = new Module("internal/preload", null);
     try {
-      parent.paths = Module._nodeModulePaths(Deno.cwd());
+      parent.paths = Module._nodeModulePaths(cwd());
     } catch (e) {
       if (
         !(e instanceof Error) ||
@@ -876,7 +881,7 @@ function readPackage(requestPath: string): PackageInfo | null {
   let json: string | undefined;
   try {
     json = new TextDecoder().decode(
-      Deno.readFileSync(path.toNamespacedPath(jsonPath)),
+      readFileSync(path.toNamespacedPath(jsonPath)),
     );
   } catch {
     // pass
@@ -981,7 +986,7 @@ function tryFile(requestPath: string, _isMain: boolean): string | false {
 }
 
 function toRealPath(requestPath: string): string {
-  return Deno.realPathSync(requestPath);
+  return realPathSync(requestPath);
 }
 
 // Given a path, check if the file exists with any of the set extensions
@@ -1310,7 +1315,7 @@ function wrapSafe(
 ): RequireWrapper {
   // TODO(bartlomieju): fix this
   const wrapper = Module.wrap(content);
-  const [f, err] = core.evalContext(wrapper, filename);
+  const [f, err] = evalContext(wrapper, filename);
   if (err) {
     if ((process as any).mainModule === cjsModuleInstance) {
       enrichCJSError(err.thrown);
@@ -1328,7 +1333,7 @@ Module._extensions[".js"] = (module: Module, filename: string) => {
       throw new Error(`Importing ESM module: ${filename}.`);
     }
   }
-  const content = new TextDecoder().decode(Deno.readFileSync(filename));
+  const content = new TextDecoder().decode(readFileSync(filename));
   module._compile(content, filename);
 };
 
@@ -1339,7 +1344,7 @@ Module._extensions[".mjs"] = (_module: Module, filename: string) => {
 
 // Native extension for .json
 Module._extensions[".json"] = (module: Module, filename: string) => {
-  const content = new TextDecoder().decode(Deno.readFileSync(filename));
+  const content = new TextDecoder().decode(readFileSync(filename));
   // manifest code removed
   try {
     module.exports = JSON.parse(stripBOM(content));
@@ -1351,7 +1356,7 @@ Module._extensions[".json"] = (module: Module, filename: string) => {
 };
 
 Module._extensions[".node"] = (module: Module, filename: string) => {
-  module.exports = core.ops.op_napi_open(filename);
+  module.exports = op_napi_open(filename);
 };
 
 function createRequireFromPath(filename: string): RequireFunction {

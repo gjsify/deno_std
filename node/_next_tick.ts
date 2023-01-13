@@ -2,8 +2,8 @@
 // Copyright Joyent, Inc. and other Node contributors.
 
 // deno-lint-ignore-file no-inner-declarations
-
-import { core } from "./_core.js";
+import { runMicrotasks, setHasTickScheduled, setNextTickCallback, hasTickScheduled, setMacrotaskCallback } from '@gjsify/deno-runtime/core/01_core'
+// import { core } from "./_core.js";
 import { validateFunction } from "./internal/validators.mjs";
 import { _exiting } from "./_process/exiting.js";
 import { FixedQueue } from "./internal/fixed_queue.js";
@@ -59,26 +59,26 @@ export function processTicksAndRejections() {
       // FIXME(bartlomieju): Deno currently doesn't support async hooks
       // emitAfter(asyncId);
     }
-    core.runMicrotasks();
+    runMicrotasks();
     // FIXME(bartlomieju): Deno currently doesn't unhandled rejections
     // } while (!queue.isEmpty() || processPromiseRejections());
   } while (!queue.isEmpty());
-  core.setHasTickScheduled(false);
+  setHasTickScheduled(false);
   // FIXME(bartlomieju): Deno currently doesn't unhandled rejections
   // setHasRejectionToWarn(false);
 }
 
-if (typeof core.setNextTickCallback !== "undefined") {
+if (typeof setNextTickCallback !== "undefined") {
   function runNextTicks() {
     // FIXME(bartlomieju): Deno currently doesn't unhandled rejections
     // if (!hasTickScheduled() && !hasRejectionToWarn())
     //   runMicrotasks();
     // if (!hasTickScheduled() && !hasRejectionToWarn())
     //   return;
-    if (!core.hasTickScheduled()) {
-      core.runMicrotasks();
+    if (!hasTickScheduled()) {
+      runMicrotasks();
     }
-    if (!core.hasTickScheduled()) {
+    if (!hasTickScheduled()) {
       return true;
     }
 
@@ -86,8 +86,8 @@ if (typeof core.setNextTickCallback !== "undefined") {
     return true;
   }
 
-  core.setNextTickCallback(processTicksAndRejections);
-  core.setMacrotaskCallback(runNextTicks);
+  setNextTickCallback(processTicksAndRejections);
+  setMacrotaskCallback(runNextTicks);
 
   function __nextTickNative<T extends Array<unknown>>(
     this: unknown,
@@ -122,7 +122,7 @@ if (typeof core.setNextTickCallback !== "undefined") {
     }
 
     if (queue.isEmpty()) {
-      core.setHasTickScheduled(true);
+      setHasTickScheduled(true);
     }
     // FIXME(bartlomieju): Deno currently doesn't support async hooks
     // const asyncId = newAsyncId();

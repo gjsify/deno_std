@@ -1,6 +1,6 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
-import { io } from '@gjsify/deno-runtime/index';
+import { SeekMode } from '@gjsify/deno-runtime/runtime/js/12_io';
 
 import {
   FileTypes,
@@ -143,7 +143,7 @@ export class TarEntry implements Reader {
     if (typeof (this.#reader as Deno.Seeker).seek === "function") {
       await (this.#reader as Deno.Seeker).seek(
         this.#entrySize - this.#read,
-        io.SeekMode.Current,
+        SeekMode.Current,
       );
       this.#read = this.#entrySize;
     } else {

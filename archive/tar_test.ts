@@ -1,4 +1,5 @@
-import {files, fs } from '@gjsify/deno-runtime/index';
+import { remove } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { open } from '@gjsify/deno-runtime/runtime/js/40_files';
 import { test } from '@gjsify/deno-runtime/cli';
 
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
@@ -113,16 +114,16 @@ test("directoryEntryType", async function () {
   });
 
   const outputFile = resolve(testdataDir, "directory_type_test.tar");
-  const file = await files.open(outputFile, { create: true, write: true });
+  const file = await open(outputFile, { create: true, write: true });
   await copy(tar.getReader(), file);
   file.close();
 
-  const reader = await files.open(outputFile, { read: true });
+  const reader = await open(outputFile, { read: true });
   const untar = new Untar(reader);
   for await (const entry of untar) {
     assertEquals(entry.type, "directory");
   }
 
   reader.close();
-  await fs.remove(outputFile);
+  await remove(outputFile);
 });
