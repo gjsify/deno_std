@@ -1,9 +1,12 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
-import * as net from "./net.js";
-import { assertEquals } from "../testing/asserts.js";
-import { deferred } from "../async/deferred.js";
-import * as http from "./http.js";
+import * as net from "./net.ts";
+import { assertEquals } from "../testing/asserts.ts";
+import { deferred } from "../async/deferred.ts";
+import * as path from "./path.ts";
+import * as http from "./http.ts";
+import { assert } from "../_util/asserts.ts";
+import { URL } from "./url.ts";
 
 Deno.test("[node/net] close event emits after error event", async () => {
   const socket = net.createConnection(27009, "doesnotexist");
@@ -49,4 +52,48 @@ Deno.test("[node/net] the port is available immediately after close callback", a
     httpServer.close(() => p.resolve());
   });
   await p;
+});
+
+Deno.test("[node/net] net.connect().unref() works", async () => {
+  const ctl = new AbortController();
+  await Deno.serve(() => {
+    return new Response("hello");
+  }, {
+    signal: ctl.signal,
+    onListen: async () => {
+      const { stdout, stderr } = await new Deno.Command(Deno.execPath(), {
+        args: [
+          "eval",
+          `
+            import * as net from "./net.ts";
+            const socket = net.connect(9000, () => {
+              console.log("connected");
+              socket.unref();
+              socket.on("data", (data) => console.log(data.toString()));
+              socket.write("GET / HTTP/1.1\\n\\n");
+            });
+          `,
+        ],
+        cwd: path.dirname(path.fromFileUrl(new URL(import.meta.url))),
+      }).output();
+      if (stderr.length > 0) {
+        console.log(new TextDecoder().decode(stderr));
+      }
+      assertEquals(new TextDecoder().decode(stdout), "connected\n");
+      ctl.abort();
+    },
+  });
+});
+
+Deno.test({
+  name: "[node/net] throws permission error instead of unknown error",
+  permissions: "none",
+  fn: () => {
+    try {
+      const s = new net.Server();
+      s.listen(3000);
+    } catch (e) {
+      assert(e instanceof Deno.errors.PermissionDenied);
+    }
+  },
 });

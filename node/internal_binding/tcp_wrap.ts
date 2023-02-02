@@ -209,6 +209,8 @@ export class TCP extends ConnectionWrap {
         return codeMap.get("EADDRINUSE")!;
       } else if (e instanceof Deno.errors.AddrNotAvailable) {
         return codeMap.get("EADDRNOTAVAIL")!;
+      } else if (e instanceof Deno.errors.PermissionDenied) {
+        throw e;
       }
 
       // TODO(cmorten): map errors to appropriate error codes.
@@ -229,11 +231,19 @@ export class TCP extends ConnectionWrap {
     if (this.#listener) {
       this.#listener.ref();
     }
+
+    if (this[kStreamBaseField]) {
+      this[kStreamBaseField].ref();
+    }
   }
 
   override unref() {
     if (this.#listener) {
       this.#listener.unref();
+    }
+
+    if (this[kStreamBaseField]) {
+      this[kStreamBaseField].unref();
     }
   }
 
