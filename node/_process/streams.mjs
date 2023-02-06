@@ -12,8 +12,8 @@ import { Duplex, Readable, Writable } from "../stream.ts";
 import { stdio } from "./stdio.mjs";
 import { fs as fsConstants } from "../internal_binding/constants.ts";
 
-import { stderr as denoStderr, stdin as denoStdin, stdout as denoStdout } from '@gjsify/deno-runtime/runtime/js/30_fs';
-import { fstatSync } from '@gjsify/deno-runtime/runtime/js/40_files';
+import { stderr as denoStderr, stdin as denoStdin, stdout as denoStdout } from '@gjsify/deno-runtime/runtime/js/40_files';
+import { fstatSync } from '@gjsify/deno-runtime/runtime/js/30_fs';
 import { isatty, consoleSize } from '@gjsify/deno-runtime/runtime/js/40_tty';
 import { build } from '@gjsify/deno-runtime/runtime/js/01_build';
 
