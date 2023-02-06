@@ -12,9 +12,10 @@ import { Duplex, Readable, Writable } from "../stream.ts";
 import { stdio } from "./stdio.mjs";
 import { fs as fsConstants } from "../internal_binding/constants.ts";
 
-import { stderr as denoStderr, stdin as denoStdin, stdout as denoStdout, fstatSync } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { stderr as denoStderr, stdin as denoStdin, stdout as denoStdout } from '@gjsify/deno-runtime/runtime/js/30_fs';
 import { fstatSync } from '@gjsify/deno-runtime/runtime/js/40_files';
 import { isatty, consoleSize } from '@gjsify/deno-runtime/runtime/js/40_tty';
+import { build } from '@gjsify/deno-runtime/runtime/js/01_build';
 
 // https://github.com/nodejs/node/blob/00738314828074243c9a52a228ab4c68b04259ef/lib/internal/bootstrap/switches/is_main_thread.js#L41
 function createWritableStdioStream(writer, name) {
@@ -117,7 +118,7 @@ function _guessStdinType(fd) {
     const fileInfo = fstatSync?.(fd);
 
     // https://github.com/nodejs/node/blob/v18.12.1/deps/uv/src/unix/tty.c#L333
-    if (Deno.build.os !== "windows") {
+    if (build.os !== "windows") {
       switch (fileInfo.mode & fsConstants.S_IFMT) {
         case fsConstants.S_IFREG:
         case fsConstants.S_IFCHR:
@@ -147,7 +148,7 @@ function _guessStdinType(fd) {
     // TODO(PolarETech): Need a better way to identify a character file on Windows.
     // "EISDIR" error occurs when stdin is "null" on Windows,
     // so use the error as a workaround.
-    if (Deno.build.os === "windows" && e.code === "EISDIR") return "FILE";
+    if (build.os === "windows" && e.code === "EISDIR") return "FILE";
   }
 
   return "UNKNOWN";

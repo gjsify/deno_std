@@ -1,7 +1,8 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
-import { promisify } from "../internal/util.mjs";
 
 import { realPath, realPathSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
+
+import { promisify } from "../internal/util.mjs";
 
 type Options = { encoding: string };
 type Callback = (err: Error | null, path?: string) => void;

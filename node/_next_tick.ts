@@ -3,11 +3,12 @@
 
 // deno-lint-ignore-file no-inner-declarations
 // import { core } from "./_core.js";
+
+import { runMicrotasks, setHasTickScheduled, setNextTickCallback, hasTickScheduled, setMacrotaskCallback } from '@gjsify/deno-runtime/core/01_core';
+
 import { validateFunction } from "./internal/validators.mjs";
 import { _exiting } from "./_process/exiting.js";
 import { FixedQueue } from "./internal/fixed_queue.js";
-
-import { runMicrotasks, setHasTickScheduled, setNextTickCallback, hasTickScheduled, setMacrotaskCallback } from '@gjsify/deno-runtime/core/01_core';
 
 interface Tock {
   callback: (...args: Array<unknown>) => void;

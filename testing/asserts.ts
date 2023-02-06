@@ -10,11 +10,11 @@
  * @module
  */
 
+import { URL } from '@gjsify/deno-runtime/ext/url/00_url';
+
 import { red, stripColor } from "../fmt/colors.ts";
 import { buildMessage, diff, diffstr } from "./_diff.ts";
 import { format } from "./_format.ts";
-
-import { URL } from '@gjsify/deno-runtime/ext/url/00_url';
 
 const CAN_NOT_DISPLAY = "[Cannot display]";
 

@@ -20,12 +20,6 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { notImplemented } from "./_utils.js";
-import { validateIntegerRange } from "./_utils.js";
-import { EOL as fsEOL } from "../fs/eol.js";
-import process from "./process.js";
-import { isWindows, osType } from "../_util/os.js";
-import { os } from "./internal_binding/constants.js";
 import GLib from '@gjsify/types/GLib-2.0';
 
 import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
@@ -40,6 +34,13 @@ import {
 } from "@gjsify/deno-runtime/runtime/js/30_os";
 
 import { cli, getOs, getUserInfo } from '@gjsify/utils';
+
+import { notImplemented } from "./_utils.js";
+import { validateIntegerRange } from "./_utils.js";
+import { EOL as fsEOL } from "../fs/eol.js";
+import process from "./process.js";
+import { isWindows, osType } from "../_util/os.js";
+import { os } from "./internal_binding/constants.js";
 
 export const constants = os;
 

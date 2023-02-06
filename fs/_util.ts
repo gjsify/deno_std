@@ -1,8 +1,9 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
-import * as path from "../path/mod.ts";
-import { basename, fromFileUrl, normalize } from "../path/mod.ts";
 
 import { URL } from '@gjsify/deno-runtime/ext/url/00_url';
+
+import * as path from "../path/mod.ts";
+import { basename, fromFileUrl, normalize } from "../path/mod.ts";
 
 /**
  * Test whether or not `dest` is a sub-directory of `src`

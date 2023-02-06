@@ -1,4 +1,7 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+
+import { lstat as denoLstat, lstatSync as denoLstatSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
+
 import {
   BigIntStats,
   CFISBIS,
@@ -8,8 +11,6 @@ import {
   Stats,
 } from "./_fs_stat.js";
 import { promisify } from "../internal/util.mjs";
-
-import { lstat as denoLstat, lstatSync as denoLstatSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
 
 export function lstat(path: string | URL, callback?: statCallback): void;
 export function lstat(

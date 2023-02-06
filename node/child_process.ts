@@ -2,7 +2,9 @@
 
 // This module implements 'child_process' module of Node.JS API.
 // ref: https://nodejs.org/api/child_process.html
-import { core } from "./_core.ts";
+
+import { op_npm_process_state } from "@gjsify/deno-runtime/ops/index";
+
 import {
   ChildProcess,
   ChildProcessOptions,
@@ -39,8 +41,6 @@ import { createDeferredPromise } from "./internal/util.mjs";
 import { process } from "./process.js";
 import { Buffer } from "./buffer.js";
 import { convertToValidSignal, kEmptyObject } from "./internal/util.mjs";
-
-import { op_npm_process_state } from "@gjsify/deno-runtime/ops/index";
 
 const MAX_BUFFER = 1024 * 1024;
 

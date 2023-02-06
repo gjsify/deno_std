@@ -4,16 +4,16 @@
 // The following are all the process APIs that don't depend on the stream module
 // They have to be split this way to prevent a circular dependency
 
-import { isWindows } from "../../_util/os.js";
-import { nextTick as _nextTick } from "../_next_tick.js";
-import { _exiting } from "./exiting.js";
-
-import { getPid } from "@gjsify/utils";
-
 import { version as denoVersion } from "@gjsify/deno-runtime/runtime/js/01_version"
 import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
 import { env as denoEnv } from "@gjsify/deno-runtime/runtime/js/30_os";
 import { chdir as denoChdir, cwd as denoCwd } from "@gjsify/deno-runtime/runtime/js/30_fs"
+
+import { getPid } from "@gjsify/utils";
+
+import { isWindows } from "../../_util/os.js";
+import { nextTick as _nextTick } from "../_next_tick.js";
+import { _exiting } from "./exiting.js";
 
 /** Returns the operating system CPU architecture for which the Deno binary was compiled */
 function _arch(): string {

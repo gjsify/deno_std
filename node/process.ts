@@ -1,6 +1,12 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
+import { eventLoopHasMoreWork } from "@gjsify/deno-runtime/core/01_core";
+import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
+import { execPath as denoExecPath, exit as denoExit, memoryUsage as denoMemoryUsage } from "@gjsify/deno-runtime/runtime/js/30_os";
+import { kill as denoKill } from "@gjsify/deno-runtime/runtime/js/40_process";
+import { Command as DenoCommand } from "@gjsify/deno-runtime/runtime/js/40_spawn";
+
 import { notImplemented, warnNotImplemented } from "./_utils.js";
 import { EventEmitter } from "./events.js";
 import { validateString } from "./internal/validators.mjs";
@@ -59,12 +65,6 @@ import type { BindingName } from "./internal_binding/mod.js";
 import { buildAllowedFlags } from "./internal/process/per_thread.mjs";
 
 import { getArgs, logSignals } from "@gjsify/utils";
-
-import { eventLoopHasMoreWork } from "@gjsify/deno-runtime/core/01_core";
-import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
-import { execPath as denoExecPath, exit as denoExit, memoryUsage as denoMemoryUsage } from "@gjsify/deno-runtime/runtime/js/30_os";
-import { kill as denoKill } from "@gjsify/deno-runtime/runtime/js/40_process";
-import { Command as DenoCommand } from "@gjsify/deno-runtime/runtime/js/40_spawn";
 
 // @ts-ignore Deno[Deno.internal] is used on purpose here
 // const DenoCommand = Deno[Deno?.internal]?.nodeUnstable?.Command ||

@@ -9,6 +9,11 @@
  * **to run this test**
  * deno run --allow-read archive/tar_test.ts
  */
+
+import { remove } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { open } from '@gjsify/deno-runtime/runtime/js/40_files';
+import { test } from '@gjsify/deno-runtime/cli';
+
 import { assert, assertEquals } from "../testing/asserts.js";
 import { resolve } from "../path/mod.js";
 import { Tar } from "./tar.js";
@@ -17,10 +22,6 @@ import { Buffer } from "../io/buffer.js";
 import { copy } from "../streams/copy.js";
 import { readAll } from "../streams/read_all.js";
 import { filePath, testdataDir } from "./_test_common.js";
-
-import { remove } from '@gjsify/deno-runtime/runtime/js/30_fs';
-import { open } from '@gjsify/deno-runtime/runtime/js/40_files';
-import { test } from '@gjsify/deno-runtime/cli';
 
 test("createTarArchive", async function () {
   // initialize

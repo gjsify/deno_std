@@ -1,12 +1,13 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+
+import { readDirSync as denoReadDirSync, readDir as denoReadDir } from "@gjsify/deno-runtime/runtime/js/30_fs";
+
 import { asyncIterableToCallback } from "./_fs_watch.ts";
 import Dirent from "./_fs_dirent.ts";
 import { denoErrorToNodeError } from "../internal/errors.ts";
 import { getValidatedPath } from "../internal/fs/utils.mjs";
 import { Buffer } from "../buffer.js";
 import { promisify } from "../internal/util.mjs";
-
-import { readDirSync as denoReadDirSync, readDir as denoReadDir } from "@gjsify/deno-runtime/runtime/js/30_fs";
 
 function toDirent(val: Deno.DirEntry): Dirent {
   return new Dirent(val);

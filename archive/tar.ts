@@ -1,4 +1,8 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+
+import { stat } from '@gjsify/deno-runtime/runtime/js/30_fs';
+import { open, FsFile } from '@gjsify/deno-runtime/runtime/js/40_files';
+
 import {
   FileTypes,
   type TarInfo,
@@ -6,9 +10,6 @@ import {
   type TarOptions,
   ustarStructure,
 } from "./_common.ts";
-
-import { stat } from '@gjsify/deno-runtime/runtime/js/30_fs';
-import { open, FsFile } from '@gjsify/deno-runtime/runtime/js/40_files';
 
 import type { Reader } from "../types.d.ts";
 

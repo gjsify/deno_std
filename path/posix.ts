@@ -3,6 +3,8 @@
 // Ported from https://github.com/browserify/path-browserify/
 // This module is browser compatible.
 
+import { URL } from '@gjsify/deno-runtime/ext/url/00_url';
+
 import type { FormatInputPathObject, ParsedPath } from "./_interface.ts";
 import { CHAR_DOT } from "./_constants.ts";
 
@@ -16,8 +18,6 @@ import {
   stripSuffix,
   stripTrailingSeparators,
 } from "./_util.ts";
-
-import { URL } from '@gjsify/deno-runtime/ext/url/00_url';
 
 export const sep = "/";
 export const delimiter = ":";

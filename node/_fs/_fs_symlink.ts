@@ -1,10 +1,11 @@
 // Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+
+import { symlink as denoSymlink, symlinkSync as denoSymlinkSync, stat, statSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
+
 import { CallbackWithError } from "./_fs_common.ts";
 import { fromFileUrl } from "../path.ts";
 import { promisify } from "../internal/util.mjs";
 import { URL } from '../url.js';
-
-import { symlink as denoSymlink, symlinkSync as denoSymlinkSync, stat, statSync } from "@gjsify/deno-runtime/runtime/js/30_fs";
 
 type SymlinkType = "file" | "dir";
 
