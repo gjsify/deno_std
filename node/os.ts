@@ -20,7 +20,7 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import GLib from '@gjsify/types/GLib-2.0';
+import GLib from 'gi://GLib?version=2.0';
 
 import { build } from "@gjsify/deno-runtime/runtime/js/01_build";
 import {

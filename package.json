@@ -43,12 +43,13 @@
     "node"
   ],
   "devDependencies": {
+    "@girs/gjs": "^3.0.0-beta.12",
     "@gjsify/cli": "workspace:^",
     "@gjsify/esbuild-plugin-transform-ext": "workspace:^",
     "@gjsify/unit": "workspace:^",
     "@types/node": "^18.13.0",
     "open-cli": "^7.1.0",
-    "typescript": "^5.0.0-beta"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "@gjsify/deno-runtime": "workspace:^"
