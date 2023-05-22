@@ -43,7 +43,7 @@
     "node"
   ],
   "devDependencies": {
-    "@girs/gjs": "^3.0.0-beta.12",
+    "@girs/gjs": "^3.0.0-beta.16",
     "@gjsify/cli": "workspace:^",
     "@gjsify/esbuild-plugin-transform-ext": "workspace:^",
     "@gjsify/unit": "workspace:^",
