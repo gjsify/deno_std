@@ -17,11 +17,11 @@ export function access(
     mode = fs.F_OK;
   }
 
-  path = getValidatedPath(path).toString();
+  const pathStr = getValidatedPath(path).toString();
   mode = getValidMode(mode, "access");
   const cb = makeCallback(callback);
 
-  Deno.lstat(path).then((info) => {
+  Deno.lstat(pathStr).then((info) => {
     if (info.mode === null) {
       // If the file mode is unavailable, we pretend it has
       // the permission

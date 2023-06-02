@@ -587,10 +587,10 @@ function main() {
     },
   });
   const port = Number(serverArgs.port);
-  const headers = serverArgs.header || [];
-  const host = serverArgs.host;
-  const certFile = serverArgs.cert;
-  const keyFile = serverArgs.key;
+  const headers = serverArgs.header || [] as string[];
+  const host = serverArgs.host as string;
+  const certFile = serverArgs.cert  as string;
+  const keyFile = serverArgs.key  as string;
 
   if (serverArgs.help) {
     printUsage();
@@ -616,11 +616,11 @@ function main() {
   const handler = (req: Request): Promise<Response> => {
     return serveDir(req, {
       fsRoot: target,
-      showDirListing: serverArgs["dir-listing"],
-      showDotfiles: serverArgs.dotfiles,
-      enableCors: serverArgs.cors,
-      quiet: !serverArgs.verbose,
-      headers,
+      showDirListing: serverArgs["dir-listing"] as boolean,
+      showDotfiles: serverArgs.dotfiles as boolean,
+      enableCors: serverArgs.cors as boolean,
+      quiet: !serverArgs.verbose as boolean,
+      headers: headers as string[],
     });
   };
 

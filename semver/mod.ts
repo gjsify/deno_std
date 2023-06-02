@@ -1707,6 +1707,7 @@ export function maxSatisfying<T extends string | SemVer>(
       }
     }
   });
+  // @ts-ignore
   return max;
 }
 
@@ -1738,6 +1739,7 @@ export function minSatisfying<T extends string | SemVer>(
       }
     }
   });
+  // @ts-ignore
   return min;
 }
 
