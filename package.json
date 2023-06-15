@@ -48,11 +48,11 @@
     "node"
   ],
   "devDependencies": {
-    "@girs/gjs": "^3.0.4",
+    "@girs/gjs": "^3.1.0",
     "@gjsify/cli": "workspace:^",
     "@gjsify/esbuild-plugin-transform-ext": "workspace:^",
     "@gjsify/unit": "workspace:^",
-    "@types/node": "^18.16.16",
+    "@types/node": "^20.3.1",
     "open-cli": "^7.2.0",
     "typescript": "^5.1.3"
   },
