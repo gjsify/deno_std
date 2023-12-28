@@ -1,6 +1,6 @@
 {
   "name": "@gjsify/deno_std",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Gjsify fork of Deno standard library to make use of the node compatibility layer",
   "main": "lib/index.js",
   "module": "lib/index.js",
