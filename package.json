@@ -56,8 +56,8 @@
     "@gjsify/esbuild-plugin-transform-ext": "workspace:^",
     "@gjsify/unit": "workspace:^",
     "@types/node": "^20.10.5",
-    "open-cli": "^7.2.0",
-    "typescript": "^5.1.3"
+    "open-cli": "^8.0.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@gjsify/deno-runtime": "workspace:^"
