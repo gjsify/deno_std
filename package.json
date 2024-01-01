@@ -51,11 +51,11 @@
     "lib"
   ],
   "devDependencies": {
-    "@girs/gjs": "^3.2.6",
+    "@girs/gjs": "^3.2.7",
     "@gjsify/cli": "workspace:^",
     "@gjsify/esbuild-plugin-transform-ext": "workspace:^",
     "@gjsify/unit": "workspace:^",
-    "@types/node": "^20.10.5",
+    "@types/node": "^20.10.6",
     "open-cli": "^8.0.0",
     "typescript": "^5.3.3"
   },
